@@ -15,21 +15,18 @@ class ContactPageView(TemplateView):
     template_name = 'contact.html'
 
 
-class PortfolioPageView(TemplateView):
-    template_name = 'portfolio.html'
+class AlbumsStorePageView(TemplateView):
+    template_name = 'albums-store.html'
 
 
-class PortfolioSinglePageView(TemplateView):
-    template_name = 'portfolio-single.html'
+class ElementsPageView(TemplateView):
+    template_name = 'elements.html'
 
 
-class ServicesPageView(TemplateView):
-    template_name = 'services.html'
+class EventPageView(TemplateView):
+    template_name = 'event.html'
 
 
 class BlogPageView(TemplateView):
     template_name = 'blog.html'
 
-
-class BlogSinglePageView(TemplateView):
-    template_name = 'blog-single.html'
