@@ -93,6 +93,11 @@
                   <li><a href="{% url 'blog' %}">News</a></li>
                   <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul>
+                <ul class="bgmusic">
+                  <li>Virgo Sample</li>
+                  <li id="musicplay">Play</li>
+                  <li id="musicpause">Pause</li>
+                </ul>
               </div>
               <!-- Nav End -->
 
@@ -163,6 +168,13 @@
       audio.autoplay = true;
       audio.loop = true;
       audio.play();
+
+      $( "#musicplay" ).click(function() {
+        audio.play();
+      });
+      $( "#musicpause" ).click(function() {
+        audio.pause();
+      });
     });
     </script>
   </body>

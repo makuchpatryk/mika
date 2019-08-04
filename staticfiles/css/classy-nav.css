@@ -588,3 +588,16 @@ img {
 /* Fallback Responsive CSS */
 
 /*# sourceMappingURL=classy-nav.css.map */
+.classynav .bgmusic li {
+margin-right: 10px;
+}
+
+.classynav .bgmusic .musicplay, .classynav .bgmusic .musicpause {
+    cursor: pointer;
+}
+.classynav .bgmusic .musicplay:hover {
+  color: #ddd;
+}
+.classynav .bgmusic .musicpause:hover {
+  color: #ddd;
+}
