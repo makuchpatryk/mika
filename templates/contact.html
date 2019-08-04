@@ -65,7 +65,7 @@
 <!-- ##### Contact Area End ##### -->
 
 <!-- ##### Contact Area Start ##### -->
-<section class="contact-area section-padding-0-100">
+<section class="contact-area section-padding-100 bg-img bg-overlay bg-fixed has-bg-img" style="background-image: url({% static 'img/bg-img/bg-2.jpg' %});">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -80,37 +80,39 @@
             <div class="col-12">
                 <!-- Contact Form Area -->
                 <div class="contact-form-area">
-                    <form action="#" method="post">
+                    {% if message_sent %}
+                    <p>Message has been sent.</p>
+                    {% endif %}
+                    <form method="post" action="">
+                        {% csrf_token %}
                         <div class="row">
-                            <div class="col-md-6 col-lg-4">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="name" placeholder="Name">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group wow fadeInUp" data-wow-delay="200ms">
+                                    <div class="error-form">{{ form.errors.email }}</div>
+                                    {{ form.email }}
                                 </div>
                             </div>
-                            <div class="col-md-6 col-lg-4">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" id="email" placeholder="E-mail">
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                            <div class="col-lg-6">
+                                <div class="form-group wow fadeInUp" data-wow-delay="300ms">
+                                    <div class="error-form">{{ form.errors.subject }}</div>
+                                    {{ form.subject }}
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="form-group">
-                                    <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                <div class="form-group wow fadeInUp" data-wow-delay="400ms">
+                                    <div class="error-form">{{ form.errors.message }}</div>
+                                    {{ form.message }}
                                 </div>
                             </div>
-                            <div class="col-12 text-center">
-                                <button class="btn oneMusic-btn mt-30" type="submit">Send <i class="fa fa-angle-double-right"></i></button>
-                            </div>
+                            <button class="btn oneMusic-btn mt-30 send-form" type="submit">Send <i class="fa fa-angle-double-right"></i></button>
+                            <button class="btn oneMusic-btn mt-30" type="reset" name="reset" value="Clear Form">Clear Form</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <!-- ##### Contact Area End ##### -->
 </section>
 <!-- ##### Contact Area End ##### -->
 {% endblock %}
