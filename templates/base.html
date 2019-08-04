@@ -135,33 +135,36 @@
           </div>
         </div>
       </div>
-      <audio id="myaudio" autoplay class="audioplayer" loop>
-        <source src="{% static '/audio/Virgo_Jingle.mp3' %}" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </footer>
-      <!-- ##### Footer Area Start ##### -->
+    </footer>
+    <!-- ##### Footer Area Start ##### -->
 
-      <!-- ##### All Javascript Script ##### -->
-      <!-- jQuery-2.2.4 js -->
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
 
-      <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
-      <!-- Popper js -->
-      <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
-      <!-- Bootstrap js -->
-      <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
-      <!-- All Plugins js -->
-      <script src="{% static 'js/plugins/plugins.js' %}"></script>
-      <!-- Active js -->
-      <script src="{% static 'js/active.js' %}"></script>
-      <script src="{% static 'js/particles.min.js' %}"></script>
-      <script src="{% static 'js/particle.js' %}"></script>
-      <script>
-      $(document).ready(function() {
-        var audio = document.getElementById("myaudio");
-        audio.volume = 0.05;
-      });
-      </script>
-    </body>
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+    <!-- All Plugins js -->
+    <script src="{% static 'js/plugins/plugins.js' %}"></script>
+    <!-- Active js -->
+    <script src="{% static 'js/active.js' %}"></script>
+    <script src="{% static 'js/particles.min.js' %}"></script>
+    <script src="{% static 'js/particle.js' %}"></script>
+    <script>
+    $(document).ready(function() {
+      var source = "{% static '/audio/Virgo_Jingle.mp3' %}"
+      var audio = new Audio();
+      audio.src = source;
+      audio.id = 'audio';
 
-    </html>
+      audio.volume = 0.05;
+      audio.autoplay = true;
+      audio.loop = true;
+      audio.play();
+    });
+    </script>
+  </body>
+
+  </html>
