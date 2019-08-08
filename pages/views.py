@@ -21,7 +21,6 @@ class ContactPageView(FormView):
     success_url = '/'
 
     def form_valid(self, form):
-        import ipdb; ipdb.set_trace()
         emial = form.send_email()
         if emial:
             return render(self.request, 'contact.html', {
