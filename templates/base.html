@@ -11,13 +11,14 @@
   <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
   <!-- Title -->
-  <title>One Music - Modern Music HTML5 Template</title>
+  <title>MIKA - Modern Music</title>
 
   <!-- Favicon -->
   <link rel="icon" href="img/core-img/favicon.ico">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
 </head>
 
@@ -41,62 +42,25 @@
         <div class="container">
           <!-- Menu -->
           <nav class="classy-navbar justify-content-between" id="oneMusicNav">
-
-            <!-- Nav brand -->
-            <a href="{% url 'index' %}" class="nav-brand"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
-            <!-- Navbar Toggler -->
-            <div class="classy-navbar-toggler">
-              <span class="navbarToggler"><span></span><span></span><span></span></span>
-            </div>
-
-            <!-- Menu -->
+            <a href="{% url 'index' %}" class="nav-brand dynamic"><img src="{% static 'img/logo.png' %}" alt=""></a>
+            <a href="{% url 'index' %}" class="nav-brand static"><img src="{% static 'img/logo_white.png' %}" alt=""></a>
             <div class="classy-menu">
-
-              <!-- Close Button -->
-              <div class="classycloseIcon">
-                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-              </div>
-
-              <!-- Nav Start -->
               <div class="classynav">
-                <ul>
-                  <li><a href="{% url 'index' %}">Home</a></li>
-                  <li><a href="{% url 'albums_store' %}">Albums</a></li>
-                  <li><a href="#">Pages</a>
+                <ul class="menu">
+                  <li><a href="{% url 'index' %}">Glowna</a></li>
+                  <li><a href="#">Albumy</a>
                     <ul class="dropdown">
                       <li><a href="{% url 'index' %}">Home</a></li>
                       <li><a href="{% url 'albums_store' %}">Albums</a></li>
-                      <li><a href="{% url 'event' %}">Events</a></li>
-                      <li><a href="{% url 'blog' %}">News</a></li>
-                      <li><a href="{% url 'contact' %}">Contact</a></li>
-                      <li><a href="{% url 'elements' %}">Elements</a></li>
-                      <li><a href="#">Dropdown</a>
-                        <ul class="dropdown">
-                          <li><a href="#">Even Dropdown</a></li>
-                          <li><a href="#">Even Dropdown</a></li>
-                          <li><a href="#">Even Dropdown</a></li>
-                          <li><a href="#">Even Dropdown</a>
-                            <ul class="dropdown">
-                              <li><a href="#">Deeply Dropdown</a></li>
-                              <li><a href="#">Deeply Dropdown</a></li>
-                              <li><a href="#">Deeply Dropdown</a></li>
-                              <li><a href="#">Deeply Dropdown</a></li>
-                              <li><a href="#">Deeply Dropdown</a></li>
-                            </ul>
-                          </li>
-                          <li><a href="#">Even Dropdown</a></li>
-                        </ul>
-                      </li>
                     </ul>
                   </li>
-                  <li><a href="{% url 'event' %}">Events</a></li>
-                  <li><a href="{% url 'blog' %}">News</a></li>
-                  <li><a href="{% url 'contact' %}">Contact</a></li>
+                  <li><a href="{% url 'blog' %}">O mnie</a></li>
+                  <li><a href="{% url 'blog' %}">Galeria</a></li>
+                  <li><a href="{% url 'contact' %}">Kontakt</a></li>
                 </ul>
                 <ul class="bgmusic">
-                  <li>Virgo Sample</li>
-                  <li id="musicplay">Play</li>
-                  <li id="musicpause">Pause</li>
+                  <li id="musicplay"><i class="fa fa-play"></i></li>
+                  <li id="musicpause"><i class="fa fa-pause"></i></li>
                 </ul>
               </div>
               <!-- Nav End -->
@@ -147,36 +111,14 @@
     <!-- jQuery-2.2.4 js -->
 
     <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
-    <!-- Popper js -->
-    <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
-    <!-- Bootstrap js -->
-    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
-    <!-- All Plugins js -->
-    <script src="{% static 'js/plugins/plugins.js' %}"></script>
-    <!-- Active js -->
-    <script src="{% static 'js/active.js' %}"></script>
-    <script src="{% static 'js/particles.min.js' %}"></script>
-    <script src="{% static 'js/particle.js' %}"></script>
+
     <script>
-    $(document).ready(function() {
-      var source = "{% static '/audio/Virgo_Jingle.mp3' %}"
-      var audio = new Audio();
-      audio.src = source;
-      audio.id = 'audio';
+    var data = {
+      source: "{% static '/audio/Virgo_Jingle.mp3' %}",
+    };
 
-      audio.volume = 0.05;
-      audio.autoplay = true;
-      audio.loop = true;
-      audio.play();
-
-      $( "#musicplay" ).click(function() {
-        audio.play();
-      });
-      $( "#musicpause" ).click(function() {
-        audio.pause();
-      });
-    });
     </script>
+    <script src="{% static 'js/main.js' %}"></script>
   </body>
 
   </html>
