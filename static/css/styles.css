@@ -1,0 +1,88 @@
+@font-face {
+	font-family: 'Futura';
+	src: url('../font/Futura-T-OT-Book_19064.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
+* {
+	box-sizing: border-box;
+	font-family: 'Futura', Fallback, sans-serif;
+	font-weight: 200;
+	font-size: 16px;
+}
+html, body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+a {
+	text-decoration: none;
+	color: #555;
+}
+ul, ol {
+	list-style: none;
+	display: inline-block;
+}
+
+body {
+	background-color: white;
+}
+header {
+	padding: 10px;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	color: white;
+}
+.nav-brand {
+	max-width: 100px;
+}
+.nav-brand.dynamic {
+	display: none;
+}
+.nav-brand img {
+	margin-top: 5px;
+	max-width: 100px;
+	vertical-align: top;
+	display: inline-block;
+}
+.classy-menu {
+	vertical-align: top;
+	display: inline-block;
+	width: calc(100% - 105px);
+}
+ul.menu {
+	float: right;
+	width: 445px;
+	padding-right: 20px;
+}
+ul.menu li {
+	display: inline-block;
+	width: auto;
+	padding-left: 20px;
+}
+ul.menu li a {
+	color: white;
+}
+.dropdown {
+	display: none;
+}
+.hero-area {
+	width: 100%;
+	height: 100%;
+}
+
+.bg-img {
+	width: 100%;
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.bgmusic {
+	display: inline-block;
+}
+.bgmusic li {
+	float: left;
+	margin-right: 20px;
+}
