@@ -5,7 +5,19 @@
 <!-- ##### Hero Area Start ##### -->
 <section class="hero-area">
     <!-- Slide Img -->
-    <div class="bg-img" style="background-image: url({% static 'img/bg/bg_1.jpg' %});"></div>
+    <div id="slider">
+      <a href="#" class="control_next">></a>
+      <a href="#" class="control_prev"><</a>
+      <ul>
+
+        <li class="bg-img" style="background-image: url({% static 'img/bg/bg_1.jpg' %}); display: none;"></li>
+        <li class="bg-img" style="background-image: url({% static 'img/bg/bg_2.jpg' %}); display: none;"></li>
+        <li class="bg-img" style="background-image: url({% static 'img/bg/bg_3.jpg' %}); display: none;"></li>
+        <li class="bg-img" style="background-image: url({% static 'img/bg/bg_4.jpg' %}); display: none;"></li>
+        <li class="bg-img" style="background-image: url({% static 'img/bg/bg_5.jpg' %}); display: none;"></li>
+        <li class="bg-img" style="background-image: url({% static 'img/bg/bg_6.jpg' %}); display: none;"></li>
+      </ul>
+    </div>
     <!-- Slide Content -->
     <div class="container">
         <div class="row">
