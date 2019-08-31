@@ -109,6 +109,7 @@ ul.menu li a {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	position: absolute;
 }
 .bgmusic {
 	display: inline-block;
@@ -132,4 +133,12 @@ if it's not present, don't show loader */
 	height: 100%;
 	z-index: 9999;
 	background: url(http://smallenvelop.com/wp-content/uploads/2014/08/Preloader_11.gif) center no-repeat #333;
+}
+.se-pre-con img {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translate(-50%);
 }

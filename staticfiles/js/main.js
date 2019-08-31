@@ -1,7 +1,6 @@
 $(document).ready(function()
 {
-  //paste this code under the head tag or in a separate js file.
-	// Wait for window load
+
 	$(window).load(function() {
 		// Animate loader off screen
 		$(".se-pre-con").fadeOut("slow");
@@ -29,13 +28,13 @@ $(document).ready(function()
     }, 5000);
 
     function nextSlide() {
-      $('#slider ul li:nth-child(' + x + ')').hide();
+      $('#slider ul li:nth-child(' + x + ')').fadeOut(1000);
       if (x > 5)
       {
         x = 0;
       }
         x++;
-        $('#slider ul li:nth-child(' + x + ')').fadeIn('fast');
+        $('#slider ul li:nth-child(' + x + ')').fadeIn(1200);
     };
     var navbar = document.getElementById("navbar");
     var sticky = navbar.offsetTop;
