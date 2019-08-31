@@ -15,10 +15,6 @@ $(document).ready(function()
   $( "#musicpause" ).click(function() {
     audio.pause();
   });
-});
-
-$(document).ready(function()
-{
     x = 1;
     $('#slider ul li:nth-child(' + x + ')').show();
     setInterval(function () {
@@ -34,5 +30,16 @@ $(document).ready(function()
         x++;
         $('#slider ul li:nth-child(' + x + ')').fadeIn('fast');
     };
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+    myFunction()
+    window.onscroll = function() {myFunction()};
 
+    function myFunction() {
+      if (window.pageYOffset > sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
 });
