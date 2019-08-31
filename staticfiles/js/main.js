@@ -1,11 +1,5 @@
 $(document).ready(function()
 {
-
-	$(window).load(function() {
-		// Animate loader off screen
-		$(".se-pre-con").fadeOut("slow");
-	});
-
   var audio = new Audio();
   audio.src = data['source'];
   audio.id = 'audio';
@@ -13,7 +7,16 @@ $(document).ready(function()
   audio.volume = 0.05;
   audio.autoplay = true;
   audio.loop = true;
-  audio.play();
+
+
+		playPromise = audio.play();
+		if (playPromise !== undefined) {
+		  playPromise.then(function() {
+				console.log('started');
+		  }).catch(function(error) {
+				console.log('error');
+		  });
+		}
 
   $( "#musicplay" ).click(function() {
     audio.play();
@@ -21,6 +24,11 @@ $(document).ready(function()
   $( "#musicpause" ).click(function() {
     audio.pause();
   });
+
+	$(window).load(function() {
+		// Animate loader off screen
+		$(".se-pre-con").fadeOut("slow");
+	});
     x = 1;
     $('#slider ul li:nth-child(' + x + ')').show();
     setInterval(function () {
