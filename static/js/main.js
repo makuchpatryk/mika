@@ -8,28 +8,27 @@ $(document).ready(function()
   audio.autoplay = true;
   audio.loop = true;
 
-
-		playPromise = audio.play();
-		if (playPromise !== undefined) {
-		  playPromise.then(function() {
-				console.log('started');
-		  }).catch(function(error) {
-				console.log('error');
-        audio.play();
-		  });
-		}
-
-    audio.addEventListener('ended', function() {
-      this.currentTime = 0;
-      this.play();
-    }, false);
-
   $( "#musicplay" ).click(function() {
     audio.play();
   });
   $( "#musicpause" ).click(function() {
     audio.pause();
   });
+
+	playPromise = audio.play();
+	if (playPromise !== undefined) {
+	  playPromise.then(function() {
+			console.log('started');
+	  }).catch(function(error) {
+			console.log('error');
+      $( "#musicplay" ).click()
+	  });
+	}
+
+  audio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+  }, false);
 
 	$(window).load(function() {
 		// Animate loader off screen
