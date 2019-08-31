@@ -19,6 +19,11 @@ $(document).ready(function()
 		  });
 		}
 
+    audio.addEventListener('ended', function() {
+      this.currentTime = 0;
+      this.play();
+    }, false);
+
   $( "#musicplay" ).click(function() {
     audio.play();
   });
