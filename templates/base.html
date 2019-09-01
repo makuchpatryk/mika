@@ -19,7 +19,21 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <script>
+  var data = {
+    source: "{% static '/audio/Virgo_Jingle.mp3' %}",
+    slideIndex: 1
+  };
+  </script>
+  <script>
+    var audio = new Audio();
+    audio.src = data['source'];
+    audio.id = 'audio';
+    audio.muted = true;
 
+    audio.volume = 0.05;
+    audio.loop = true;
+  </script>
 </head>
 
 <body>
@@ -99,14 +113,6 @@
     </footer>
 
     <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
-
-    <script>
-    var data = {
-      source: "{% static '/audio/Virgo_Jingle.mp3' %}",
-      slideIndex: 1
-    };
-
-    </script>
     <script src="{% static 'js/main.js' %}"></script>
     {% block javascript %}{% endblock javascript %}
     </body>

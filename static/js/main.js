@@ -1,35 +1,33 @@
+
 $(document).ready(function()
 {
-  var audio = new Audio();
-  audio.src = data['source'];
-  audio.id = 'audio';
-
-  audio.volume = 0.05;
-  audio.autoplay = true;
-  audio.loop = true;
-
   $( "#musicplay" ).click(function() {
     audio.play();
+    audio.muted = false;
   });
   $( "#musicpause" ).click(function() {
     audio.pause();
+    audio.muted = true;
   });
 
 	playPromise = audio.play();
 	if (playPromise !== undefined) {
     setTimeout(function() {
     	  playPromise.then(function() {
+          audio.muted = false;
     			console.log('started');
     	  }).catch(function(error) {
     			console.log('error');
+          $( "#musicplay" ).trigger('click');
     	  });
-    }, 1000);
+    }, 3000);
 	}
-
-  audio.addEventListener('ended', function() {
-    this.currentTime = 0;
-    this.play();
-  }, false);
+  setInterval(function()
+  {
+  	audio.currentTime = 0;
+  	audio.play();
+    audio.muted = false;
+  }, 30500);
 
 	$(window).load(function() {
 		// Animate loader off screen
