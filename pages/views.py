@@ -45,3 +45,7 @@ class EventPageView(TemplateView):
 
 class BlogPageView(TemplateView):
     template_name = 'blog.html'
+
+
+class GalleryPageView(TemplateView):
+    template_name = 'gallery.html'

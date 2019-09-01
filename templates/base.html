@@ -23,15 +23,6 @@
 </head>
 
 <body>
-  <!-- Preloader -->
-  <div class="preloader d-flex align-items-center justify-content-center">
-    <div class="lds-ellipsis">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
   <div class="se-pre-con">
   <img src="{% static 'img/svg/home.svg' %}" />
 </div>
@@ -57,7 +48,7 @@
                     </ul>
                   </li>
                   <li><a href="{% url 'blog' %}">O mnie</a></li>
-                  <li><a href="{% url 'blog' %}">Galeria</a></li>
+                  <li><a href="{% url 'gallery' %}">Galeria</a></li>
                   <li><a href="{% url 'contact' %}">Kontakt</a></li>
                 </ul>
                 <ul class="bgmusic">
@@ -88,9 +79,8 @@
       <div class="row d-flex flex-wrap align-items-center">
         <div class="col-12 col-md-6">
           <a href="#"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
-          <p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          <p class="copywrite-text"><a href="#">
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with by Patryk Makuch</p>
           </div>
 
           <div class="col-12 col-md-6">
@@ -107,20 +97,18 @@
         </div>
       </div>
     </footer>
-    <!-- ##### Footer Area Start ##### -->
-
-    <!-- ##### All Javascript Script ##### -->
-    <!-- jQuery-2.2.4 js -->
 
     <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
 
     <script>
     var data = {
       source: "{% static '/audio/Virgo_Jingle.mp3' %}",
+      slideIndex: 1
     };
 
     </script>
     <script src="{% static 'js/main.js' %}"></script>
+    {% block javascript %}{% endblock javascript %}
     </body>
 
   </html>
