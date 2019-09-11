@@ -12,7 +12,7 @@ class NameForm(forms.Form):
         }, widget=forms.TextInput(attrs={
             "placeholder": "Email", "class": "form-control"}))
     subject = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Your subject", 'class': 'form-control'}))
-    message = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Your message", 'class': 'form-control'}))
+    message = forms.CharField(widget=forms.Textarea(attrs={"placeholder": "Your message", 'class': 'form-control'}))
 
     def send_email(self):
         mail = send_mail(

@@ -34,6 +34,10 @@ header {
 	width: 100%;
 	color: white;
 	z-index: 2;
+	background-color: #333;
+}
+.index header {
+background: none;
 }
 .nav-brand {
 	max-width: 100px;
@@ -69,7 +73,7 @@ header.sticky .bgmusic li {
 }
 ul.menu {
 	float: right;
-	width: 445px;
+	width: 470px;
 	padding-right: 20px;
 }
 ul.menu li {
@@ -249,6 +253,27 @@ ul.menu li a {
   animation-name: fade;
   animation-duration: 1.5s;
 }
+.contact-details {
+	margin-top: 74px;
+	padding: 10px 20px;
+	margin-bottom: 30px;
+}
+.contact-area {
+    padding: 0 20px;
+	}
+.contact-details .details {
+	display: inline-block;
+	vertical-align: top;
+width: 49%;
+}
+.contact-details .map {
+	display: inline-block;
+width: 49%;
+vertical-align: top;
+}
+.contact-area {
+
+}
 
 @-webkit-keyframes fade {
   from {opacity: .4}
@@ -258,4 +283,68 @@ ul.menu li a {
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
+}
+.footer-area {
+	margin-top: 20px;
+	background-color: #333;
+	color: white;
+}
+
+.copywrite-text {
+	padding-left: 10px;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	color: white;
+}
+.copywrite-text a {
+	color: white;
+}
+
+.footer-nav ul {
+	padding-left: 10px;
+}
+.footer-nav ul li a {
+	color: white;
+}
+.footer-nav ul li {
+	display: inline-block;
+	padding-right: 10px;
+	color: white;
+}
+.contact-form-area form {
+	width: 100%;
+}
+.contact-form-area form .col-lg-6 {
+	width: 49.8%;
+	display: inline-block;;
+}
+.contact-form-area form .col-md-12 {
+	width: 100%;
+}
+
+.contact-form-area form #id_email,
+.contact-form-area form #id_subject,
+.contact-form-area form #id_message {
+	width: 100%;
+	border-radius: 4px;
+	padding: 10px;
+	border: 1px solid #ddd;
+	margin-bottom: 15px;
+}
+
+.contact-form-area form #id_message {
+	height: 200px;
+}
+
+button {
+	padding: 10px;
+	background: #333;
+	border: none;
+	color: white;
+	border-radius: 4px;
+	font-weight: 600;
+	cursor: pointer;
+}
+button:hover {
+	background-color: #555;
 }

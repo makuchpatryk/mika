@@ -1,13 +1,16 @@
 
 $(document).ready(function()
 {
+  stopmusic = false;
   $( "#musicplay" ).click(function() {
     audio.play();
     audio.muted = false;
+    stopmusic = false;
   });
   $( "#musicpause" ).click(function() {
     audio.pause();
     audio.muted = true;
+    stopmusic = true;
   });
 
 	playPromise = audio.play();
@@ -24,9 +27,12 @@ $(document).ready(function()
 	}
   setInterval(function()
   {
-  	audio.currentTime = 0;
-  	audio.play();
-    audio.muted = false;
+    if( !stopmusic )
+    {
+    	audio.currentTime = 0;
+    	audio.play();
+      audio.muted = false;
+    }
   }, 30500);
 
 	$(window).load(function() {
