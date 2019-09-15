@@ -383,3 +383,24 @@ h3 {
 	padding: 20px;
 	margin-top: 74px;
 }
+.album1, .album2 {
+	padding: 20px;
+}
+.album1 h3, .album2 h3 {
+	text-align: center;
+}
+.album1 img, .album1 .details, .album2 img, .album2 .details {
+	display: inline-block;
+	width: 47.7%;
+	vertical-align: top;
+}
+.album1 img, .album2 img {
+	height: 400px;
+	margin: 20px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.more a {
+	font-size: 12px;
+}
