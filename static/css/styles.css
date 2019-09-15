@@ -348,3 +348,24 @@ button {
 button:hover {
 	background-color: #555;
 }
+.about-us {
+	padding: 20px;
+}
+.about-us .details {
+	display: inline-block;
+	width: 49.7%;
+	vertical-align: top;
+	padding: 20px;
+	margin-top: 74px;
+}
+.about-us .image {
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 74px;
+	width: 49.7%;
+	padding: 20px;
+}
+h3 {
+	font-size: 22px;
+	font-weight: 600;
+}
