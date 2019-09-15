@@ -33,7 +33,7 @@ $(document).ready(function()
     	audio.play();
       audio.muted = false;
     }
-  }, 31000);
+  }, 30700);
 
 	$(window).load(function() {
 		// Animate loader off screen
