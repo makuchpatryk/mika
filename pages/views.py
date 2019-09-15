@@ -47,5 +47,8 @@ class BlogPageView(TemplateView):
     template_name = 'blog.html'
 
 
-class GalleryPageView(TemplateView):
-    template_name = 'gallery.html'
+class GalleryMainPageView(TemplateView):
+    template_name = 'gallery-main.html'
+
+class GalleryAlmagestPageView(TemplateView):
+    template_name = 'gallery-almagest.html'

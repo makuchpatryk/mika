@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+<!-- Slideshow container -->
+<div class="gallery"></div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+  showSlides(data['slideIndex']);
+</script>
+{% endblock javascript %}

@@ -1,11 +1,21 @@
-. sc@font-face {
+@font-face {
 	font-family: 'Futura';
 	src: url('../font/Futura-T-OT-Book_19064.ttf')  format('truetype'), /* Safari, Android, iOS */
 }
 
+@font-face {
+	font-family: 'Futura_SC';
+	src: url('../font/Futura-SC-T-OT-Book_19037.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
+@font-face {
+	font-family: 'Futura_ICG';
+	src: url('../font/Futura_ICG_Book_Oblique.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
 * {
 	box-sizing: border-box;
-	font-family: 'Futura', Fallback, sans-serif;
+	font-family: 'Futura', 'Futura_SC', 'Futura_ICG', sans-serif;
 	font-weight: 200;
 	font-size: 16px;
 }
@@ -368,4 +378,8 @@ button:hover {
 h3 {
 	font-size: 22px;
 	font-weight: 600;
+}
+.gallery {
+	padding: 20px;
+	margin-top: 74px;
 }
