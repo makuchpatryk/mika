@@ -6,6 +6,11 @@ from django.views.generic.edit import FormView
 from .forms import NameForm
 from django.contrib import messages
 
+import os
+from django.conf import settings
+
+from django.templatetags.static import static
+
 
 class IndexPageView(TemplateView):
     template_name = 'index.html'
@@ -47,8 +52,15 @@ class BlogPageView(TemplateView):
     template_name = 'blog.html'
 
 
-class GalleryMainPageView(TemplateView):
-    template_name = 'gallery-main.html'
+def gallery_almagest(request):
+    path = settings.MEDIA_ROOT
+    img_list = os.listdir(path + '/images/aYz-Domoslawice/')
+    context = {'images' : img_list, 'folder': 'aYz-Domoslawice'}
+    return render(request, "gallery/gallery.html", context)
 
-class GalleryAlmagestPageView(TemplateView):
-    template_name = 'gallery-almagest.html'
+
+def ayz_proba(request):
+    path = settings.MEDIA_ROOT
+    img_list = os.listdir(path + '/images/aYz-proba/')
+    context = {'images' : img_list, 'folder': 'aYz-proba'}
+    return render(request, "gallery/gallery.html", context)

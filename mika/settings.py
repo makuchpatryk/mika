@@ -136,3 +136,7 @@ EMAIL_HOST_USER = 'tomasz.s.mika@gmail.com'
 EMAIL_HOST_PASSWORD = '354657Tm'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'

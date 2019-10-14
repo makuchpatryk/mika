@@ -37,6 +37,24 @@ ul, ol {
 body {
 	background-color: white;
 }
+
+// Simple Lightbo
+
+.lightbox-opened:before {
+	background-color: #333;
+	background-color: rgba(#333, 0.9);
+	color: #eee;
+	content: "x";
+	font-family: sans-serif;
+	padding: 6px 12px;
+	position: fixed;
+	text-transform: uppercase;
+}
+
+.lightbox-opened img {
+	margin-top: 100px;
+	max-width: 900px;
+}
 header {
 	padding: 10px;
 	position: absolute;
@@ -403,4 +421,57 @@ h3 {
 }
 .more a {
 	font-size: 12px;
+}
+
+img {
+  max-width: 100%;
+}
+
+// No Background Scroll
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.lightbox-opened {
+	padding-top: 100px;
+  background-color: #333;
+  background-color: rgba(0,0,0, 0.9);
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  overflow-y: scroll;
+  padding: 24px;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+
+.slideshow-container {
+	margin-top: 90px;
+}
+.slideshow-container .img {
+	width: 200px;
+	height: 200px;
+	display: inline-block;
+	float: left;
+	overflow: hidden;
+	padding: 10px;
+	border-radius: 10px;
+}
+.slideshow-container .img .image-el {
+		height: 100%;
+		width: 100%;
+		display: block;
+		background-repeat: no-repeat;
+		background-size: 170%;
+		background-position: center;
+		border-radius: 10px;
+}
+.slideshow-container .img .image-el:hover {
+	opacity: 0.7;
+}
+.clear {
+	clear: both;
 }

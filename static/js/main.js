@@ -68,28 +68,47 @@ $(document).ready(function()
     }
 });
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(data['slideIndex'] += n);
-}
+// // Next/previous controls
+// function plusSlides(n) {
+//   showSlides(data['slideIndex'] += n);
+// }
+//
+// // Thumbnail image controls
+// function currentSlide(n) {
+//   showSlides(data['slideIndex'] = n);
+// }
+//
+// function showSlides(n) {
+//   var i;
+//   var slides = document.getElementsByClassName("mySlides");
+//   var dots = document.getElementsByClassName("dot");
+//   if (n > slides.length) {data['slideIndex'] = 1}
+//   if (n < 1) {data['slideIndex'] = slides.length}
+//   for (i = 0; i < slides.length; i++) {
+//       slides[i].style.display = "none";
+//   }
+//   for (i = 0; i < dots.length; i++) {
+//       dots[i].className = dots[i].className.replace(" active", "");
+//   }
+//   slides[data['slideIndex']-1].style.display = "block";
+//   dots[data['slideIndex']-1].className += " active";
+// }
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(data['slideIndex'] = n);
-}
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {data['slideIndex'] = 1}
-  if (n < 1) {data['slideIndex'] = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[data['slideIndex']-1].style.display = "block";
-  dots[data['slideIndex']-1].className += " active";
-}
+(function($) {
+
+  // Open Lightbox
+  $('.open-lightbox').on('click', function(e) {
+    e.preventDefault();
+    var image = $(this).attr('href');
+    $('html').addClass('no-scroll');
+    $('body').append('<div class="lightbox-opened"><img src="' + image + '"></div>');
+  });
+
+  // Close Lightbox
+    $('body').on('click', '.lightbox-opened', function() {
+    $('html').removeClass('no-scroll');
+    $('.lightbox-opened').remove();
+  });
+
+})(jQuery);
