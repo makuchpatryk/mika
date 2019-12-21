@@ -52,15 +52,48 @@ class BlogPageView(TemplateView):
     template_name = 'blog.html'
 
 
-def gallery_almagest(request):
+class GalleryView(TemplateView):
+    template_name = 'gallery-main.html'
+
+
+def akustycznie(request):
     path = settings.MEDIA_ROOT
-    img_list = os.listdir(path + '/images/aYz-Domoslawice/')
-    context = {'images' : img_list, 'folder': 'aYz-Domoslawice'}
+    img_list = os.listdir(path + '/images/akustycznie/')
+    context = {'images' : img_list, 'folder': 'akustycznie'}
+    import ipdb; ipdb.set_trace()
     return render(request, "gallery/gallery.html", context)
 
 
-def ayz_proba(request):
+def koncert(request):
     path = settings.MEDIA_ROOT
-    img_list = os.listdir(path + '/images/aYz-proba/')
-    context = {'images' : img_list, 'folder': 'aYz-proba'}
+    img_list = os.listdir(path + '/images/koncert/')
+    context = {'images' : img_list, 'folder': 'koncert'}
+    return render(request, "gallery/gallery.html", context)
+
+
+def Sesja_2016(request):
+    path = settings.MEDIA_ROOT
+    img_list = os.listdir(path + '/images/sesja_2016/')
+    context = {'images' : img_list, 'folder': 'Sesja_2016'}
+    return render(request, "gallery/gallery.html", context)
+
+
+def Sesja_2017(request):
+    path = settings.MEDIA_ROOT
+    img_list = os.listdir(path + '/images/sesja_2017/')
+    context = {'images' : img_list, 'folder': 'Sesja_2017'}
+    return render(request, "gallery/gallery.html", context)
+
+
+def Sesja_2019(request):
+    path = settings.MEDIA_ROOT
+    img_list = os.listdir(path + '/images/sesja_2019/')
+    context = {'images' : img_list, 'folder': 'Sesja_2019'}
+    return render(request, "gallery/gallery.html", context)
+
+
+def sesja_ayz(request):
+    path = settings.MEDIA_ROOT
+    img_list = os.listdir(path + '/images/sesja_ayz/')
+    context = {'images' : img_list, 'folder': 'sesja_ayz'}
     return render(request, "gallery/gallery.html", context)

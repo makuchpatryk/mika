@@ -9,8 +9,13 @@ urlpatterns = [
     url(r'^about/$', views.AboutPageView.as_view(), name='about'),
     url(r'^blog/$', views.BlogPageView.as_view(), name='blog'),
 
-    url(r'^gallery-almagest/$', views.gallery_almagest, name='gallery_almagest'),
-    url(r'^ayz-proba/$', views.ayz_proba, name='ayz_proba'),
+    url(r'^gallery/$', views.GalleryView.as_view(), name='gallery'),
+    url(r'^gallery/akustycznie/$', views.akustycznie, name='akustycznie'),
+    url(r'^gallery/koncert/$', views.koncert, name='koncert'),
+    url(r'^gallery/sesja-1/$', views.Sesja_2016, name='sesja_2016'),
+    url(r'^gallery/sesja-2/$', views.Sesja_2017, name='sesja_2017'),
+    url(r'^gallery/sesja-3/$', views.Sesja_2019, name='sesja_2019'),
+    url(r'^gallery/sesja-ayz/$', views.sesja_ayz, name='sesja_ayz'),
 
     url(r'^albums-store/$', views.AlbumsStorePageView.as_view(), name='albums_store'),
     url(r'^contact/$', views.ContactPageView.as_view(), name='contact'),
