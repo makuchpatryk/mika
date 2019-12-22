@@ -101,14 +101,54 @@ $(document).ready(function()
   $('.open-lightbox').on('click', function(e) {
     e.preventDefault();
     var image = $(this).attr('href');
+    var id = parseInt($(this).parent().index())+1
+    var last = parseInt($('.slideshow-container .img').last().index())+1
     $('html').addClass('no-scroll');
     $('body').append('<div class="lightbox-opened"><img src="' + image + '"></div>');
+    $('body').append('<div class="gal-nav"></div>');
+    console.log(id, id-1)
+    if(id != 1 )
+    {
+        var n = id-1
+        $('body').find('.gal-nav').append('<a class="prev" onclick="plusSlides(' + n + ')">&#10094;</a>');
+    }
+    if(id != last+1)
+    {
+        var n = id+1
+        $('body').find('.gal-nav').append('<a class="next" onclick="plusSlides(' + n + ')">&#10095;</a>');
+    }
+
   });
 
   // Close Lightbox
-    $('body').on('click', '.lightbox-opened', function() {
-    $('html').removeClass('no-scroll');
-    $('.lightbox-opened').remove();
-  });
+    $('body').on('click', '.lightbox-opened', function()
+    {
+        $('html').removeClass('no-scroll');
+        $('.lightbox-opened').remove();
+        $('.gal-nav').remove();
+    });
 
 })(jQuery);
+
+function plusSlides(n)
+{
+    $('.lightbox-opened').remove();
+    $('.gal-nav').remove();
+    var className = '#img_' + n
+    var url = $(className + ' a').attr('href');
+    console.log(url)
+    var id = parseInt($(className).index())+1
+    var last = parseInt($('.slideshow-container .img').last().index())+1
+    $('body').append('<div class="lightbox-opened"><img src="' + url + '"></div>');
+    $('body').append('<div class="gal-nav"></div>');
+    if(id != 0 )
+    {
+        var n = id-1
+        $('body').find('.gal-nav').append('<a class="prev" onclick="plusSlides(' + n + ')">&#10094;</a>');
+    }
+    if(id != last)
+    {
+        var n = id+1
+        $('body').find('.gal-nav').append('<a class="next" onclick="plusSlides(' + n + ')">&#10095;</a>');
+    }
+}
