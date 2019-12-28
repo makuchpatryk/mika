@@ -6,6 +6,7 @@
 	font-family: 'Montserrat', sans-serif; */
 	font-weight: 200;
 	font-size: 16px;
+	color: white;
 }
 html, body {
 	padding: 0;
@@ -196,7 +197,7 @@ ul.menu li a {
 
 
 /* Slideshow container */
-.slideshow-container {
+.slideshow-container, .gallery-main-container {
   max-width: 1000px;
   position: relative;
   margin: auto;
@@ -406,9 +407,18 @@ h3 {
 .album1 h3, .album2 h3 {
 	text-align: center;
 }
+.album1 .image, .album2 .image {
+	width: 47.7%;
+	display: inline-block;
+}
+.album1 img, .album2 img {
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 10px;
+}
 .album1 img, .album1 .details, .album2 img, .album2 .details {
 	display: inline-block;
-	width: 47.7%;
+	width: 550px;
 	vertical-align: top;
 }
 .album2 .details, .album1 .details {
@@ -424,6 +434,18 @@ h3 {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+@media (max-width: 1024px)
+{
+	.album1 .image, .album2 .image {
+		width: 100%;
+		display: inline-block;
+	}
+	.album1 img, .album2 img {
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+	}
 }
 .more a {
 	font-size: 12px;
@@ -482,12 +504,43 @@ img {
 .clear {
 	clear: both;
 }
-.gallery-main-container .img {
-	width: 33%;
-	height: 400px;
-	display: inline-block;
+.gallery-main-container {
+	margin-top: 85px;
 }
-.gallery-main-container .img span {
+.gallery-main-container .img {
+	width: 300px;
+	height: 300px;
+	display: inline-block;
+	padding: 10px;
+	position: relative;
+	z-index: 2;
+}
+.gallery-main-container .img p {
+	position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -80%);
+	color: white;
+	display: none;
+}
+.gallery-main-container .img:hover p {
+	display: block;
+	font-size: 20px;
+	font-weight: 800;
+}
+.gallery-main-container .img .placeholder-img {
+	background: grey;
+	top: 5px;
+	position: absolute;
+	width: 100%;
+	display: block;
+	left: 5px;
+	width: 280px;
+	height: 280px;
+	border-radius: 10px;
+	z-index: -1;
+}
+.gallery-main-container .img .image-el {
     height: 100%;
     width: 100%;
     display: block;

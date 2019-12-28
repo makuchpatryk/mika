@@ -66,34 +66,24 @@ $(document).ready(function()
         navbar.classList.remove("sticky");
       }
     }
+
+    $(document).keyup(function(e)
+    {
+        var id = parseInt($('.lightbox-opened img').data('key'))
+        console.log(id)
+        if (e.keyCode == '37')
+        {
+            if (id-1 != 0)
+            {
+               plusSlides(id-1)
+            }
+        }
+        else if (e.keyCode == '39')
+        {
+           plusSlides(id+1)
+        }
+    });
 });
-
-// // Next/previous controls
-// function plusSlides(n) {
-//   showSlides(data['slideIndex'] += n);
-// }
-//
-// // Thumbnail image controls
-// function currentSlide(n) {
-//   showSlides(data['slideIndex'] = n);
-// }
-//
-// function showSlides(n) {
-//   var i;
-//   var slides = document.getElementsByClassName("mySlides");
-//   var dots = document.getElementsByClassName("dot");
-//   if (n > slides.length) {data['slideIndex'] = 1}
-//   if (n < 1) {data['slideIndex'] = slides.length}
-//   for (i = 0; i < slides.length; i++) {
-//       slides[i].style.display = "none";
-//   }
-//   for (i = 0; i < dots.length; i++) {
-//       dots[i].className = dots[i].className.replace(" active", "");
-//   }
-//   slides[data['slideIndex']-1].style.display = "block";
-//   dots[data['slideIndex']-1].className += " active";
-// }
-
 
 (function($) {
 
@@ -104,20 +94,8 @@ $(document).ready(function()
     var id = parseInt($(this).parent().index())+1
     var last = parseInt($('.slideshow-container .img').last().index())+1
     $('html').addClass('no-scroll');
-    $('body').append('<div class="lightbox-opened"><img src="' + image + '"></div>');
-    $('body').append('<div class="gal-nav"></div>');
-    console.log(id, id-1)
-    if(id != 1 )
-    {
-        var n = id-1
-        $('body').find('.gal-nav').append('<a class="prev" onclick="plusSlides(' + n + ')">&#10094;</a>');
-    }
-    if(id != last+1)
-    {
-        var n = id+1
-        $('body').find('.gal-nav').append('<a class="next" onclick="plusSlides(' + n + ')">&#10095;</a>');
-    }
-
+    $('body').append('<div class="lightbox-opened"><img data-key="'+ id +'" src="' + image + '"></div>');
+    addNav(id, last)
   });
 
   // Close Lightbox
@@ -136,19 +114,24 @@ function plusSlides(n)
     $('.gal-nav').remove();
     var className = '#img_' + n
     var url = $(className + ' a').attr('href');
-    console.log(url)
     var id = parseInt($(className).index())+1
     var last = parseInt($('.slideshow-container .img').last().index())+1
-    $('body').append('<div class="lightbox-opened"><img src="' + url + '"></div>');
+    $('body').append('<div class="lightbox-opened"><img data-key="'+ id +'" src="' + url + '"></div>');
+    addNav(id, last)
+}
+
+function addNav(id, last)
+{
     $('body').append('<div class="gal-nav"></div>');
+    console.log(id, last)
     if(id != 0 )
     {
         var n = id-1
-        $('body').find('.gal-nav').append('<a class="prev" onclick="plusSlides(' + n + ')">&#10094;</a>');
+        $('body').find('.gal-nav').append('<a class="prev" onkeydown="plusSlides(' + n + ')" onclick="plusSlides(' + n + ')">&#10094;</a>');
     }
     if(id != last)
     {
         var n = id+1
-        $('body').find('.gal-nav').append('<a class="next" onclick="plusSlides(' + n + ')">&#10095;</a>');
+        $('body').find('.gal-nav').append('<a class="next" onkeydown="plusSlides(' + n + ')" onclick="plusSlides(' + n + ')">&#10095;</a>');
     }
 }
