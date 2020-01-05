@@ -66,23 +66,6 @@ $(document).ready(function()
         navbar.classList.remove("sticky");
       }
     }
-
-    $(document).keyup(function(e)
-    {
-        var id = parseInt($('.lightbox-opened img').data('key'))
-        console.log(id)
-        if (e.keyCode == '37')
-        {
-            if (id-1 != 0)
-            {
-               plusSlides(id-1)
-            }
-        }
-        else if (e.keyCode == '39')
-        {
-           plusSlides(id+1)
-        }
-    });
 });
 
 (function($) {

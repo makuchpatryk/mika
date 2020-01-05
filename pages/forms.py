@@ -23,3 +23,15 @@ class NameForm(forms.Form):
             fail_silently=False,
         )
         return mail
+
+class PreorderForm(NameForm):
+    def send_email(self):
+        sub = ''.format('Preorder : ', self.cleaned_data['subject'])
+        mail = send_mail(
+            sub,
+            self.cleaned_data['message'],
+            self.cleaned_data['email'],
+            [settings.EMAIL_HOST_USER],
+            fail_silently=False,
+        )
+        return mail

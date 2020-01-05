@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block body_class %}
+<body class="index">
+{% endblock body_class %}
+{% block content %}
+<!-- ##### Hero Area Start ##### -->
+<div class="container">
+    <div class="row">
+      <section class="album1">
+      <h3>AWE - At World’s End</h3>
+      <span class="image">
+          <img style="background-image: url({% static 'img/cover/awe.jpg' %});" alt=""  border="">
+      </span>
+      <div class="details">
+      <p>Album, który stanowi dokumentacje strumienia świadomości z podróży, podczas których powstawał. Zdominowany przez motywy bliskości, miłości, i wiary w elektroniczno-rockowej oprawie muzycznej,
+      </p>
+      </div>
+    </section>
+    <section class="preview">
+        <h3>Preview</h3>
+        <span class="video">
+            <iframe id="player" type="text/html" src="http://www.youtube.com/embed/jvItJBZv-Nc" frameborder="0"></iframe>
+            <iframe id="player" type="text/html" src="http://www.youtube.com/embed/eHEvDZoZqyo" frameborder="0"></iframe>
+            <iframe id="player" type="text/html" src="http://www.youtube.com/embed/S_cI50AjZCs" frameborder="0"></iframe>
+        </span>
+        <div class="lists" id="songs-list">
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+            </section>
+    <section class="songs">
+    </section>
+    </div>
+</div>
+{% endblock %}

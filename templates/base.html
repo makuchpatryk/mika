@@ -19,7 +19,7 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-<link href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:400,700|Mukta:400,700|Quicksand:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:400,700|Mukta:400,700|Quicksand:400,700&display=swap" rel="stylesheet">
   <script>
   var data = {
     source: "{% static '/audio/Virgo_Jingle.mp3' %}",
@@ -58,10 +58,11 @@
               <div class="classynav">
                 <ul class="menu">
                   <li><a href="{% url 'index' %}">Glowna</a></li>
-                  <li><a href="#">Albumy</a>
+                  <li class="nav-dropdown"><a href="#">Albumy</a>
                     <ul class="dropdown">
-                      <li><a href="{% url 'index' %}">Home</a></li>
-                      <li><a href="{% url 'albums_store' %}">Albums</a></li>
+                      <li><a href="{% url 'albums_almagest' %}">Almagest</a></li>
+                      <li><a href="{% url 'albums_awe' %}">Awe</a></li>
+                      <li><a href="{% url 'albums_pyl' %}">Pyl</a></li>
                     </ul>
                   </li>
                   <li><a href="{% url 'about' %}">O mnie</a></li>

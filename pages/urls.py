@@ -17,7 +17,9 @@ urlpatterns = [
     url(r'^gallery/sesja-3/$', views.Sesja_2019, name='sesja_2019'),
     url(r'^gallery/sesja-ayz/$', views.sesja_ayz, name='sesja_ayz'),
 
-    url(r'^albums-store/$', views.AlbumsStorePageView.as_view(), name='albums_store'),
+    url(r'^albums-almagest/$', views.AlbumsAlmagestPageView.as_view(), name='albums_almagest'),
+    url(r'^albums-awe/$', views.AlbumsAwePageView.as_view(), name='albums_awe'),
+    url(r'^albums-pyl/$', views.AlbumsPylPageView.as_view(), name='albums_pyl'),
     url(r'^contact/$', views.ContactPageView.as_view(), name='contact'),
     url(r'^elements/$', views.ElementsPageView.as_view(), name='elements'),
     url(r'^event/$', views.EventPageView.as_view(),name='event'),

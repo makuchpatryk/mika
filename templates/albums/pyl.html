@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block body_class %}
+<body class="index">
+{% endblock body_class %}
+{% block content %}
+<!-- ##### Hero Area Start ##### -->
+<div class="container">
+    <div class="row">
+      <section class="album1">
+      <h3>Pyl</h3>
+      <span class="image">
+          <img style="background-image: url({% static 'img/cover/almagest.jpg' %});" alt=""  border="">
+      </span>
+      <div class="details">
+      <p>Almagest to zbiór różnych pomysłów muzycznych i wynik bardzo wielu inspiracji z pierwszych lat twórczości. Jest to raczej kolaż bardziej niż album. Charakteryzuje się “garażowym” brzmieniem i eklektyzmem.
+      </p>
+      <span class="more"><a href="#">wiecej ≫</a></span>
+      </div>
+    </section>
+    <section class="preview">
+        <h3>Preview</h3>
+        <span class="video">
+            <iframe id="player" type="text/html" src="http://www.youtube.com/embed/jvItJBZv-Nc" frameborder="0"></iframe>
+            <iframe id="player" type="text/html" src="http://www.youtube.com/embed/eHEvDZoZqyo" frameborder="0"></iframe>
+            <iframe id="player" type="text/html" src="http://www.youtube.com/embed/S_cI50AjZCs" frameborder="0"></iframe>
+        </span>
+        <div class="lists" id="songs-list">
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+            </section>
+    <section class="preorder">
+        <!-- Contact Form Area -->
+        <div class="contact-form-area">
+            {% if message_sent %}
+            <p>Message has been sent.</p>
+            {% endif %}
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group wow fadeInUp" data-wow-delay="200ms">
+                            <div class="error-form">{{ form.errors.email }}</div>
+                            {{ form.email }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group wow fadeInUp" data-wow-delay="300ms">
+                            <div class="error-form">{{ form.errors.subject }}</div>
+                            {{ form.subject }}
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group wow fadeInUp" data-wow-delay="400ms">
+                            <div class="error-form">{{ form.errors.message }}</div>
+                            {{ form.message }}
+                        </div>
+                    </div>
+                    <button class="btn oneMusic-btn mt-30 send-form" type="submit">Send <i class="fa fa-angle-double-right"></i></button>
+                    <button class="btn oneMusic-btn mt-30" type="reset" name="reset" value="Clear Form">Clear Form</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    </div>
+</div>
+{% endblock %}

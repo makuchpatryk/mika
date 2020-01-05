@@ -36,7 +36,7 @@
       <div class="details">
       <p>Almagest to zbiór różnych pomysłów muzycznych i wynik bardzo wielu inspiracji z pierwszych lat twórczości. Jest to raczej kolaż bardziej niż album. Charakteryzuje się “garażowym” brzmieniem i eklektyzmem.
       </p>
-      <span class="more"><a href="#">wiecej ≫</a></span>
+      <span class="more"><a href="{% url 'albums_almagest' %}">wiecej ≫</a></span>
       </div>
     </section>
 
@@ -48,9 +48,21 @@
       <div class="details">
         <p>Album, który stanowi dokumentacje strumienia świadomości z podróży, podczas których powstawał. Zdominowany przez motywy bliskości, miłości, i wiary w elektroniczno-rockowej oprawie muzycznej,
         </p>
-        <span class="more"><a href="#">wiecej ≫</a></span>
+        <span class="more"><a href="{% url 'albums_almagest' %}">wiecej ≫</a></span>
       </div>
     </section>
+
+    <section class="album3">
+    <h3>Pyl</h3>
+    <span class="image">
+        <img style="background-image: url({% static 'img/cover/awe.jpg' %});" alt="" border="">
+    </span>
+    <div class="details">
+      <p>Album, który stanowi dokumentacje strumienia świadomości z podróży, podczas których powstawał. Zdominowany przez motywy bliskości, miłości, i wiary w elektroniczno-rockowej oprawie muzycznej,
+      </p>
+      <span class="more"><a href="{% url 'albums_pyl' %}">wiecej ≫</a></span>
+    </div>
+  </section>
     </div>
 </div>
 {% endblock %}

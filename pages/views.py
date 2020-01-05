@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.shortcuts import get_object_or_404, render
 from django.views.generic.edit import FormView
-from .forms import NameForm
+from .forms import NameForm, PreorderForm
 from django.contrib import messages
 
 import os
@@ -36,9 +36,26 @@ class ContactPageView(FormView):
         return super().form_invalid(form)
 
 
-class AlbumsStorePageView(TemplateView):
-    template_name = 'albums-store.html'
+class AlbumsAlmagestPageView(TemplateView):
+    template_name = 'albums/almagest.html'
 
+class AlbumsAwePageView(TemplateView):
+    template_name = 'albums/awe.html'
+
+class AlbumsPylPageView(FormView):
+    template_name = 'albums/pyl.html'
+    form_class = PreorderForm
+    success_url = '/'
+
+    def form_valid(self, form):
+        emial = form.send_email()
+        if emial:
+            return render(self.request, 'albums/pyl.html', {
+                'form': form, 'message_sent': True})
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        return super().form_invalid(form)
 
 class ElementsPageView(TemplateView):
     template_name = 'elements.html'
