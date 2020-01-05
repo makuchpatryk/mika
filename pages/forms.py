@@ -15,6 +15,7 @@ class NameForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea(attrs={"placeholder": "Your message", 'class': 'form-control'}))
 
     def send_email(self):
+        sub = '{} : {} : {}'.format('Contact',self.cleaned_data['email'],  self.cleaned_data['subject'])
         mail = send_mail(
             self.cleaned_data['subject'],
             self.cleaned_data['message'],
@@ -26,7 +27,7 @@ class NameForm(forms.Form):
 
 class PreorderForm(NameForm):
     def send_email(self):
-        sub = ''.format('Preorder : ', self.cleaned_data['subject'])
+        sub = '{} : {} : {}'.format('Preorder',self.cleaned_data['email'],  self.cleaned_data['subject'])
         mail = send_mail(
             sub,
             self.cleaned_data['message'],
