@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404, render
 from django.views.generic.edit import FormView
 from .forms import NameForm, PreorderForm
 from django.contrib import messages
+from django.core.cache import cache
 
 import os
 from django.conf import settings
@@ -77,12 +78,12 @@ def akustycznie(request):
     path = settings.MEDIA_ROOT
     img_list = os.listdir(path + '/images/akustycznie/')
     context = {'images' : img_list, 'folder': 'akustycznie'}
-    import ipdb; ipdb.set_trace()
     return render(request, "gallery/gallery.html", context)
 
 
 def koncert(request):
     path = settings.MEDIA_ROOT
+
     img_list = os.listdir(path + '/images/koncert/')
     context = {'images' : img_list, 'folder': 'koncert'}
     return render(request, "gallery/gallery.html", context)

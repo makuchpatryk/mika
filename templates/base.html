@@ -98,26 +98,20 @@
         <div class="col-12 col-md-6">
           <a href="#"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
           <p class="copywrite-text"><a href="#">
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with by Patryk Makuch</p>
-          </div>
-
-          <div class="col-12 col-md-6">
-            <div class="footer-nav">
-                <ul class="menu">
-                  <li><a href="{% url 'index' %}">Glowna</a></li>
-                  <li><a href="{% url 'about' %}">O mnie</a></li>
-                  <li><a href="{% url 'gallery' %}">Galeria</a></li>
-                  <li><a href="{% url 'contact' %}">Kontakt</a></li>
-                </ul>
-            </div>
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | by Patryk Makuch</p>
           </div>
         </div>
       </div>
-    </footer>
+  </footer>
 
     <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+    <script type="text/javascript">
+        document._scd = {}
+        document._scd['data'] = {
+            'MUSIC_PLAYING': {% if MUSIC_PLAYING %}true{% else %}false{% endif %},
+        }
+    </script>
     {% block javascript %}{% endblock javascript %}
     </body>
-
-  </html>
+ </html>
