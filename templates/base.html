@@ -109,7 +109,11 @@
     <script type="text/javascript">
         document._scd = {}
         document._scd['data'] = {
-            'MUSIC_PLAYING': {% if MUSIC_PLAYING %}true{% else %}false{% endif %},
+            'music': {% if MUSIC_PLAYING %}true{% else %}false{% endif %},
+        }
+        document._scd['routing'] = {
+            'music_play': "{% url 'music_play' %}",
+            'music_stop': "{% url 'music_stop' %}",
         }
     </script>
     {% block javascript %}{% endblock javascript %}
