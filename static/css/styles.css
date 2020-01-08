@@ -74,7 +74,8 @@ header.sticky {
 }
 
 header.sticky ul.menu li a,
-header.sticky .bgmusic li {
+header.sticky .bgmusic li,
+header.sticky .bgmusic li i {
 	color: #333;
 }
 .nav-brand img {

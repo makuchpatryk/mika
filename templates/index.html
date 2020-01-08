@@ -28,10 +28,22 @@
 <!-- Slide Content -->
 <div class="container">
     <div class="row">
-      <section class="album1">
+        <section class="album1">
+        <h3>Pyl</h3>
+        <span class="image">
+            <img src="{% static 'img/cover/awe.jpg' %}" alt="" border="">
+        </span>
+        <div class="details">
+          <p>Album, który stanowi dokumentacje strumienia świadomości z podróży, podczas których powstawał. Zdominowany przez motywy bliskości, miłości, i wiary w elektroniczno-rockowej oprawie muzycznej,
+          </p>
+          <span class="more"><a href="{% url 'albums_pyl' %}">wiecej ≫</a></span>
+        </div>
+      </section>
+
+      <section class="album2">
       <h3>Almagest</h3>
       <span class="image">
-          <img style="background-image: url({% static 'img/cover/almagest.jpg' %});" alt=""  border="">
+          <img src="{% static 'img/cover/almagest.jpg' %}" alt=""  border="">
       </span>
       <div class="details">
       <p>Almagest to zbiór różnych pomysłów muzycznych i wynik bardzo wielu inspiracji z pierwszych lat twórczości. Jest to raczej kolaż bardziej niż album. Charakteryzuje się “garażowym” brzmieniem i eklektyzmem.
@@ -40,10 +52,10 @@
       </div>
     </section>
 
-      <section class="album2">
+      <section class="album3">
       <h3>AWE - At World’s End</h3>
       <span class="image">
-          <img style="background-image: url({% static 'img/cover/awe.jpg' %});" alt="" border="">
+          <img src="{% static 'img/cover/awe.jpg' %}" alt="" border="">
       </span>
       <div class="details">
         <p>Album, który stanowi dokumentacje strumienia świadomości z podróży, podczas których powstawał. Zdominowany przez motywy bliskości, miłości, i wiary w elektroniczno-rockowej oprawie muzycznej,
@@ -51,18 +63,6 @@
         <span class="more"><a href="{% url 'albums_almagest' %}">wiecej ≫</a></span>
       </div>
     </section>
-
-    <section class="album3">
-    <h3>Pyl</h3>
-    <span class="image">
-        <img style="background-image: url({% static 'img/cover/awe.jpg' %});" alt="" border="">
-    </span>
-    <div class="details">
-      <p>Album, który stanowi dokumentacje strumienia świadomości z podróży, podczas których powstawał. Zdominowany przez motywy bliskości, miłości, i wiary w elektroniczno-rockowej oprawie muzycznej,
-      </p>
-      <span class="more"><a href="{% url 'albums_pyl' %}">wiecej ≫</a></span>
-    </div>
-  </section>
     </div>
 </div>
 {% endblock %}
