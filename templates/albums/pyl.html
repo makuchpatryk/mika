@@ -2,42 +2,67 @@
 
 {% load static %}
 {% block body_class %}
-<body class="index">
+<body class="album-page">
 {% endblock body_class %}
 {% block content %}
 <!-- ##### Hero Area Start ##### -->
 <div class="container">
     <div class="row">
       <section class="album1">
-      <h3>Pyl</h3>
+      <h3>Pył</h3>
       <span class="image">
-          <img style="background-image: url({% static 'img/cover/almagest.jpg' %});" alt=""  border="">
+          <img src="{% static 'img/cover/pyl.png' %}" alt=""  border="">
       </span>
       <div class="details">
-      <p>Almagest to zbiór różnych pomysłów muzycznych i wynik bardzo wielu inspiracji z pierwszych lat twórczości. Jest to raczej kolaż bardziej niż album. Charakteryzuje się “garażowym” brzmieniem i eklektyzmem.
-      </p>
-      <span class="more"><a href="#">wiecej ≫</a></span>
+      <p>Ulotne chwilę i wspomnienia westchnień nad odkrytym pięknem. Zapachy szczęścia i pełni życia.
+Debiut studyjny. W całości w języku polskim. Liryczne teksty, taneczne rytmy oraz uwspółcześnione retro brzmienia.
+Dostępny na platformach streamingowych, w wersji fizycznej na CD oraz w wersji cyfrowej na serwisie Bandcamp oraz Itunes.</p>
       </div>
     </section>
     <section class="preview">
-        <h3>Preview</h3>
+        <h4>Preview</h4>
         <span class="video">
             <iframe id="player" type="text/html" src="http://www.youtube.com/embed/jvItJBZv-Nc" frameborder="0"></iframe>
             <iframe id="player" type="text/html" src="http://www.youtube.com/embed/eHEvDZoZqyo" frameborder="0"></iframe>
             <iframe id="player" type="text/html" src="http://www.youtube.com/embed/S_cI50AjZCs" frameborder="0"></iframe>
         </span>
         <div class="lists" id="songs-list">
+            <h4>Lista Piosenek</h4>
             <ul>
-                <li></li>
+                <li>1. Kiss</li>
+                <li>2. Dobre sny</li>
+                <li>3. Jabłka</li>
+                <li>4. Niebo złote Ci otworzę</li>
+                <li>5. W podcieniach stałem</li>
+                <li>6. Przyjdź</li>
+                <li>7. Tylko, tylko</li>
+                <li>8. Wierzę Ci</li>
+                <li>9. Palcem planety obracasz</li>
+                <li>10. Chcę dać mój czas</li>
+                <li>11. Dziś jest inaczej</li>
+                <li>12. Piosenka wieczorna</li>
             </ul>
         </div>
             </section>
-    <section class="preorder">
+    <section class="preorder" id="preorder">
         <!-- Contact Form Area -->
+        <h3>Przedsprzedaz</h3>
+        <p>Zamawiając przedpremierowo zyskujesz:</p>
+        <ul class="list-features">
+            <li>- wersje płyty super deluxe z dedykacją</li>
+            <li>- zestaw kostek z logiem MIKA - recznie wykonana torbe z logiem MIKA,</li>
+            <li>- 3 druki z ilustracjami piosenek na papierze wysokiej jakosci,</li>
+            <li>- darmową przesyłkę</li>
+        </ul>
+        <span class="price">cena: 49.99 zl</span>
+        <span class="account-num">Płyta zostanie do Ciebie wysłane po zaksięgowaniu wpłaty. Numer konta do zapłaty:
+            <span class="num">86 1020 4984 0000 4402 0134 9232</span>
+        </span>
+        <span class="order">Zamów, wypełniając poniższy formularz:</span>
         <div class="contact-form-area">
             {% if message_sent %}
-            <p>Message has been sent.</p>
-            {% endif %}
+            <p>Wiadomość zostala wyslana.</p>
+            {% else %}
             <form method="post" action="">
                 {% csrf_token %}
                 <div class="row">
@@ -49,20 +74,21 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group wow fadeInUp" data-wow-delay="300ms">
-                            <div class="error-form">{{ form.errors.subject }}</div>
-                            {{ form.subject }}
+                            <div class="error-form">{{ form.errors.name_on_disk }}</div>
+                            {{ form.name_on_disk }}
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-group wow fadeInUp" data-wow-delay="400ms">
-                            <div class="error-form">{{ form.errors.message }}</div>
-                            {{ form.message }}
+                            <div class="error-form">{{ form.errors.adres_to_send }}</div>
+                            {{ form.adres_to_send }}
                         </div>
                     </div>
-                    <button class="btn oneMusic-btn mt-30 send-form" type="submit">Send <i class="fa fa-angle-double-right"></i></button>
-                    <button class="btn oneMusic-btn mt-30" type="reset" name="reset" value="Clear Form">Clear Form</button>
+                    <button class="btn oneMusic-btn mt-30 send-form" type="submit">Wyslij <i class="fa fa-angle-double-right"></i></button>
+                    <button class="btn oneMusic-btn mt-30" type="reset" name="reset" value="Clear Form">Wyczysc Formularz</button>
                 </div>
             </form>
+            {% endif %}
         </div>
     </section>
 

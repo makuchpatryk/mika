@@ -10,6 +10,9 @@
     <!-- Slide Img -->
     <div id="slider">
       <section class="home-info">
+        <p>02.02.2020<p>
+        <p>Premiera nowej płyty "Pył"<p>
+        <a class="link-to-preoreder" href="#preorder">Zamów przedpremierowo już dziś z darmową przesyłką!</a>
         <p>Przygoda. Miłość. Czas wracać do żródeł.</p>
 
         <h3>Tomasz Mika - Muzyka</h3>
@@ -29,27 +32,26 @@
 <div class="container">
     <div class="row">
         <section class="album1">
-        <h3>Pyl</h3>
+        <h3>Pył</h3>
         <span class="image">
-            <img src="{% static 'img/cover/awe.jpg' %}" alt="" border="">
+            <img src="{% static 'img/cover/pyl.png' %}" alt="" border="">
         </span>
         <div class="details">
-          <p>Album, który stanowi dokumentacje strumienia świadomości z podróży, podczas których powstawał. Zdominowany przez motywy bliskości, miłości, i wiary w elektroniczno-rockowej oprawie muzycznej,
-          </p>
+          <p>Ulotne chwilę i wspomnienia westchnień nad odkrytym pięknem. Zapachy szczęścia i pełni życia. Debiut studyjny. W całości w języku polskim. Liryczne teksty, taneczne rytmy oraz uwspółcześnione retro brzmienia. Dostępny na platformach streamingowych, w wersji fizycznej na CD oraz w wersji cyfrowej na serwisie Bandcamp oraz Itunes.</p>
           <span class="more"><a href="{% url 'albums_pyl' %}">wiecej ≫</a></span>
         </div>
       </section>
 
       <section class="album2">
       <h3>Almagest</h3>
-      <span class="image">
-          <img src="{% static 'img/cover/almagest.jpg' %}" alt=""  border="">
-      </span>
       <div class="details">
       <p>Almagest to zbiór różnych pomysłów muzycznych i wynik bardzo wielu inspiracji z pierwszych lat twórczości. Jest to raczej kolaż bardziej niż album. Charakteryzuje się “garażowym” brzmieniem i eklektyzmem.
       </p>
       <span class="more"><a href="{% url 'albums_almagest' %}">wiecej ≫</a></span>
       </div>
+      <span class="image">
+          <img src="{% static 'img/cover/almagest.jpg' %}" alt=""  border="">
+      </span>
     </section>
 
       <section class="album3">
@@ -62,6 +64,54 @@
         </p>
         <span class="more"><a href="{% url 'albums_almagest' %}">wiecej ≫</a></span>
       </div>
+    </section>
+
+    <section class="preorder" id="preorder">
+        <!-- Contact Form Area -->
+        <h3>Przedsprzedaz</h3>
+        <p>Zamawiając przedpremierowo zyskujesz:</p>
+        <ul class="list-features">
+            <li>- wersje płyty super deluxe z dedykacją</li>
+            <li>- zestaw kostek z logiem MIKA - recznie wykonana torbe z logiem MIKA,</li>
+            <li>- 3 druki z ilustracjami piosenek na papierze wysokiej jakosci,</li>
+            <li>- darmową przesyłkę</li>
+        </ul>
+        <span class="price">cena: 49.99 zl</span>
+        <span class="account-num">Płyta zostanie do Ciebie wysłane po zaksięgowaniu wpłaty. Numer konta do zapłaty:
+            <span class="num">86 1020 4984 0000 4402 0134 9232</span>
+        </span>
+        <span class="order">Zamów, wypełniając poniższy formularz:</span>
+        <div class="contact-form-area">
+            {% if message_sent %}
+            <p>Wiadomość zostala wyslana.</p>
+            {% else %}
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group wow fadeInUp" data-wow-delay="200ms">
+                            <div class="error-form">{{ form.errors.email }}</div>
+                            {{ form.email }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group wow fadeInUp" data-wow-delay="300ms">
+                            <div class="error-form">{{ form.errors.name_on_disk }}</div>
+                            {{ form.name_on_disk }}
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group wow fadeInUp" data-wow-delay="400ms">
+                            <div class="error-form">{{ form.errors.adres_to_send }}</div>
+                            {{ form.adres_to_send }}
+                        </div>
+                    </div>
+                    <button class="btn oneMusic-btn mt-30 send-form" type="submit">Wyslij <i class="fa fa-angle-double-right"></i></button>
+                    <button class="btn oneMusic-btn mt-30" type="reset" name="reset" value="Clear Form">Wyczysc Formularz</button>
+                </div>
+            </form>
+            {% endif %}
+        </div>
     </section>
     </div>
 </div>

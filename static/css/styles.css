@@ -94,7 +94,7 @@ header.sticky .bgmusic li i {
 }
 ul.menu {
 	float: right;
-	width: 470px;
+	width: 425px;
 	padding-right: 20px;
 	margin: 12px 0;
 }
@@ -110,12 +110,20 @@ ul.menu li a {
 	display: none;
 	position: absolute;
 	border: white 1px solid;
-	padding: 15px;
 	border-radius: 10px;
+	background-color: rgba(255,255,255,0.7);
+	padding: 5px;
 }
 ul.dropdown li {
 	display: block;
-	padding-left: 0;
+	color: #333;
+	padding: 2px 5px;
+}
+ul.dropdown li a {
+	color: #333 !important;
+}
+ul.dropdown li a:hover {
+	color: #333 !important;
 }
 .hero-area {
 	width: 100%;
@@ -178,7 +186,7 @@ ul.dropdown li {
 
 .home-info {
 	position: absolute;
-	top: 50%;
+	top: 35%;
 	left: 50%;
 	-webkit-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
@@ -352,7 +360,7 @@ vertical-align: top;
 	width: 100%;
 }
 .contact-form-area form .col-lg-6 {
-	width: 49.8%;
+	width: 49.7%;
 	display: inline-block;;
 }
 .contact-form-area form .col-md-12 {
@@ -363,7 +371,10 @@ vertical-align: top;
 }
 .contact-form-area form #id_email,
 .contact-form-area form #id_subject,
-.contact-form-area form #id_message {
+.contact-form-area form #id_item,
+.contact-form-area form #id_message,
+.contact-form-area form #id_adres_to_send,
+.contact-form-area form #id_name_on_disk {
 	width: 100%;
 	border-radius: 4px;
 	padding: 10px;
@@ -371,7 +382,8 @@ vertical-align: top;
 	margin-bottom: 15px;
 }
 
-.contact-form-area form #id_message {
+.contact-form-area form #id_message,
+.contact-form-area form #id_adres_to_send, {
 	height: 200px;
 }
 
@@ -383,6 +395,7 @@ button {
 	border-radius: 4px;
 	font-weight: 600;
 	cursor: pointer;
+	border: 1px solid white;
 }
 button:hover {
 	background-color: #555;
@@ -408,6 +421,11 @@ h3 {
 	font-size: 22px;
 	font-weight: 600;
 }
+h4 {
+	font-size: 18px;
+	font-weight: 600;
+	text-align: center;
+}
 .gallery {
 	padding: 20px;
 	margin-top: 74px;
@@ -429,7 +447,7 @@ h3 {
 }
 .album1 img, .album1 .details, .album2 img, .album2 .details, .album3 img, .album3 .details {
 	display: inline-block;
-	width: 550px;
+	width: 47.7%;
 	vertical-align: top;
 }
 .album2 .details, .album1 .details, .album3 .details {
@@ -440,7 +458,8 @@ h3 {
 	color: #ddd;
 }
 .album1 img, .album2 img, .album3 img {
-	height: 550px;
+	height: 100%;
+	width: calc(100% - 20px);
 	margin: 20px;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -448,9 +467,36 @@ h3 {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	border-radius: 10px;
+}
+.album2 img {
+	padding-right: 0;
+	padding-left: 20px;
+	float: right;
+}
+.preorder {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.preview, .lists {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
 }
 @media (max-width: 1024px)
 {
+	.gallery-main-container .img {
+		width: 100%;
+	}
+	.preorder, .preview, .lists {
+		width: 100%;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.album1 img, .album1 .details, .album2 img, .album2 .details, .album3 img, .album3 .details {
+		width: 100%;
+	}
 	.album1 .image, .album2 .image, .album3 .image {
 		width: 100%;
 		display: inline-block;
@@ -522,7 +568,7 @@ img {
 	margin-top: 85px;
 }
 .gallery-main-container .img {
-	width: 300px;
+	width: 33%;
 	height: 300px;
 	display: inline-block;
 	padding: 10px;
@@ -535,10 +581,9 @@ img {
     top: 50%;
     transform: translate(-50%, -80%);
 	color: white;
-	display: none;
+	text-shadow: 1px 1px 2px #333;
 }
 .gallery-main-container .img:hover p {
-	display: block;
 	font-size: 20px;
 	font-weight: 800;
 }
@@ -549,7 +594,19 @@ img {
 	width: 100%;
 	display: block;
 	left: 5px;
-	width: 280px;
+	width: calc(100% - 20px);
+	height: 280px;
+	border-radius: 10px;
+	z-index: -1;
+}
+.gallery-main-container .img .placeholder-img-2 {
+	background: #555;
+	top: 0;
+	position: absolute;
+	width: 100%;
+	display: block;
+	left: 0;
+	width: calc(100% - 20px);
 	height: 280px;
 	border-radius: 10px;
 	z-index: -1;
@@ -570,4 +627,63 @@ img {
 
 .nav-dropdown:hover ul.dropdown li a {
 	color: white;
+}
+.video iframe {
+	width: 100%;
+	min-height: 430px;
+}
+b {
+	font-weight: 600;
+}
+.album-page .container .row {
+	margin-top: 30px;
+}
+.about-page h3 {
+	margin-top: 0;
+}
+.link-to-preoreder {
+	color: #e5ff0a;
+	font-weight: 600;
+}
+.preorder-btn {
+	font-weight: 400 !important;
+	position: absolute;
+	font-size: 16px;
+	top: 17px;
+	right: 450px;
+	font-weight: 600;
+	border-radius: 4px;
+	padding: 3px 10px;
+	border: 2px solid white;
+	color: white;
+}
+.preorder-btn:hover {
+	background-color: #aaa;
+}
+
+header.sticky .preorder-btn {
+	border: 2px solid #333;
+	color: #333;
+}
+.price {
+	display: block;
+	font-weight: 600;
+	font-size: 22px;
+}
+.account-num .num {
+	display: block;
+	font-size: 22px;
+	font-weight: 600;
+}
+.order {
+	display: block;
+	margin-top: 20px;
+	font-weight: 600;
+	font-size: 22px;
+}
+@media (max-width: 1024px)
+{
+	.gallery-main-container .img {
+		width: 100%;
+	}
 }

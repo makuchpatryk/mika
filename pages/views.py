@@ -13,9 +13,20 @@ from django.conf import settings
 from django.templatetags.static import static
 
 
-class IndexPageView(TemplateView):
+class IndexPageView(FormView):
     template_name = 'index.html'
+    form_class = PreorderForm
+    success_url = '/'
 
+    def form_valid(self, form):
+        emial = form.send_email()
+        if emial:
+            return render(self.request, 'index.html', {
+                'form': form, 'message_sent': True})
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        return super().form_invalid(form)
 
 class AboutPageView(TemplateView):
     template_name = 'about.html'
@@ -50,6 +61,7 @@ class AlbumsPylPageView(FormView):
 
     def form_valid(self, form):
         emial = form.send_email()
+
         if emial:
             return render(self.request, 'albums/pyl.html', {
                 'form': form, 'message_sent': True})

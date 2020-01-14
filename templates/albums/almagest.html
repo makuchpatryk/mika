@@ -2,7 +2,7 @@
 
 {% load static %}
 {% block body_class %}
-<body class="index">
+<body class="album-page">
 {% endblock body_class %}
 {% block content %}
 <!-- ##### Hero Area Start ##### -->
@@ -11,23 +11,36 @@
       <section class="album1">
       <h3>Almagest</h3>
       <span class="image">
-          <img style="background-image: url({% static 'img/cover/almagest.jpg' %});" alt=""  border="">
+          <img src="{% static 'img/cover/almagest.jpg' %}" alt=""  border="">
       </span>
       <div class="details">
-      <p>Almagest to zbiór różnych pomysłów muzycznych i wynik bardzo wielu inspiracji z pierwszych lat twórczości. Jest to raczej kolaż bardziej niż album. Charakteryzuje się “garażowym” brzmieniem i eklektyzmem.
-      </p>
+      <p>Almagest to zbiór różnych pomysłów muzycznych i wynik bardzo wielu inspiracji z pierwszych lat twórczości. W całości w języku polskim, z wyjątkiem jednej piosenki w elfickim języku Quenya. Jest to raczej kolaż bardziej niż album. Charakteryzuje się “garażowym” brzmieniem i eklektyzmem.
+Almagestu można posłuchać na Youtube.</p>
       </div>
     </section>
     <section class="preview">
-        <h3>Preview</h3>
+        <h4>Preview</h4>
         <span class="video">
             <iframe id="player" type="text/html" src="http://www.youtube.com/embed/h97-yQ5Wl1U" frameborder="0"></iframe>
             <iframe id="player" type="text/html" src="http://www.youtube.com/embed/F6x9YQ-NJsg" frameborder="0"></iframe>
             <iframe id="player" type="text/html" src="http://www.youtube.com/embed/LCZBQ9AIqDg" frameborder="0"></iframe>
         </span>
         <div class="lists" id="songs-list">
+            <h4>Lista Piosenek</h4>
             <ul>
-                <li></li>
+                <li>1. Obroty</li>
+                <li>2. Śnieżnobiały stan</li>
+                <li>3. Tęsknie</li>
+                <li>4. Lothrien</li>
+                <li>5. Odejdź stąd</li>
+                <li>6. Eliza</li>
+                <li>7. Patologika</li>
+                <li>8. Dziewczyna</li>
+                <li>9. Sanktuarium</li>
+                <li>10. Autobus</li>
+                <li>11. Rafinrok</li>
+                <li>12. Otwórz, czekam</li>
+                <li>13. Piosenka wieczorna</li>
             </ul>
         </div>
             </section>

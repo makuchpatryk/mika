@@ -14,7 +14,7 @@
   <title>MIKA</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="img/core-img/favicon.ico">
+  <link rel="icon" href="{% static 'img/favicon.ico' %}">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -54,15 +54,17 @@
           <nav class="classy-navbar justify-content-between" id="oneMusicNav">
             <a href="{% url 'index' %}" class="nav-brand dynamic"><img src="{% static 'img/logo.png' %}" alt=""></a>
             <a href="{% url 'index' %}" class="nav-brand static"><img src="{% static 'img/logo_white.png' %}" alt=""></a>
+            <a class="preorder-btn" href="{% url 'albums_pyl' %}#preorder" style="font-weight: 600;">Przedsprzedaz</a>
             <div class="classy-menu">
               <div class="classynav">
                 <ul class="menu">
                   <li><a href="{% url 'index' %}">Glowna</a></li>
                   <li class="nav-dropdown"><a href="#">Albumy</a>
                     <ul class="dropdown">
-                      <li><a href="{% url 'albums_almagest' %}">Almagest</a></li>
-                      <li><a href="{% url 'albums_awe' %}">Awe</a></li>
-                      <li><a href="{% url 'albums_pyl' %}">Pyl</a></li>
+                        <li><a href="{% url 'albums_pyl' %}" style="font-weight: 600;">Pył</a></li>
+                        <li><a href="{% url 'albums_awe' %}">Awe</a></li>
+                        <li><a href="{% url 'albums_almagest' %}">Almagest</a></li>
+
                     </ul>
                   </li>
                   <li><a href="{% url 'about' %}">O mnie</a></li>
