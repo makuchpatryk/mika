@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+<!-- Slideshow container -->
+<div class="gallery-main-container">
+	<div class="img">
+		<span class="placeholder-img-2"></span>
+		<span class="placeholder-img"></span>
+		<a href="{% url 'akustycznie' %}"><span class="image-el" style="background-image: url('{% static 'img/gallery' %}/akustycznie/podglad.JPG')"></span>
+		<p>Akustycznie</p>
+		</a>
+	</div>
+	<div class="img">
+		<span class="placeholder-img-2"></span>
+		<span class="placeholder-img"></span>
+		<a href="{% url 'koncert' %}"><span class="image-el" style="background-image: url('{% static 'img/gallery' %}/koncert/podglad.JPG')"></span>
+		<p>Koncert</p>
+		</a>
+	</div>
+	<div class="img">
+		<span class="placeholder-img-2"></span>
+		<span class="placeholder-img"></span>
+		<a href="{% url 'sesja_2016' %}"><span class="image-el" style="background-image: url('{% static 'img/gallery' %}/sesja_2016/podglad.jpg')"></span>
+		<p>Sesja 2016</p>
+		</a>
+	</div>
+	<div class="img">
+		<span class="placeholder-img-2"></span>
+		<span class="placeholder-img"></span>
+		<a href="{% url 'sesja_2017' %}"><span class="image-el" style="background-image: url('{% static 'img/gallery' %}/sesja_2017/podglad.jpg')"></span>
+		<p>Sesja 2017</p>
+		</a>
+	</div>
+	<div class="img">
+		<span class="placeholder-img-2"></span>
+		<span class="placeholder-img"></span>
+		<a href="{% url 'sesja_2019' %}"><span class="image-el" style="background-image: url('{% static 'img/gallery' %}/sesja_2019/podglad.jpg')"></span>
+			<p>Sesja 2019</p>
+		</a>
+	</div>
+	<div class="img">
+		<span class="placeholder-img-2"></span>
+		<span class="placeholder-img"></span>
+		<a href="{% url 'sesja_ayz' %}"><span class="image-el" style="background-image: url('{% static 'img/gallery' %}/sesja_ayz/podglad.JPG')"></span>
+		<p>Sesja AYZ</p>
+		</a>
+	</div>
+  	<div class="clear"></div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock javascript %}

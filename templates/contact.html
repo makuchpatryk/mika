@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- ##### Contact Area Start ##### -->
+<section class="contact-details">
+    <div class="container">
+        <div class="row">
+
+            <div class="details">
+                <div class="contact-content mb-100">
+                    <!-- Title -->
+                        <h3>Chcesz otrzymać ofertę koncertową? Nawiązać współpracę? Masz inne pytania?</h3>
+                        <p>Wyślij mi wiadomość</p>
+                    <!-- Single Contact Info -->
+                    <p>Email: <b>teespeem@gmail.com</b> albo <b>tomasz.s.mika@gmail.com</b></p>
+                    <p>Nr Tel: <b>796 344 108</b><p>
+
+                    <p>Linki do mediów społecznościowych:</p>
+                    <!-- Contact Social Info -->
+                    <div class="contact-social-info mt-50">
+                        <a href="https://www.youtube.com/channel/UCV1SSJ-YZ8qG1_wCC-Pkd6Q" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/MIKAmuzyka/" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/tomasz_mika_muzyka/" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- ##### Contact Area End ##### -->
+
+<!-- ##### Contact Area Start ##### -->
+<section class="contact-area">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <!-- Contact Form Area -->
+                <div class="contact-form-area">
+                    {% if message_sent %}
+                    <p>Wiadomość zostala wyslana.</p>
+                    {% else %}
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <div class="form-group wow fadeInUp" data-wow-delay="200ms">
+                                    <div class="error-form">{{ form.errors.email }}</div>
+                                    {{ form.email }}
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group wow fadeInUp" data-wow-delay="300ms">
+                                    <div class="error-form">{{ form.errors.subject }}</div>
+                                    {{ form.subject }}
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group wow fadeInUp" data-wow-delay="400ms">
+                                    <div class="error-form">{{ form.errors.message }}</div>
+                                    {{ form.message }}
+                                </div>
+                            </div>
+                            <button class="btn oneMusic-btn mt-30 send-form" type="submit">Wyslij <i class="fa fa-angle-double-right"></i></button>
+                            <button class="btn oneMusic-btn mt-30" type="reset" name="reset" value="Clear Form">Wyczysc Formularz</button>
+                        </div>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Contact Area End ##### -->
+</section>
+<!-- ##### Contact Area End ##### -->
+{% endblock %}
