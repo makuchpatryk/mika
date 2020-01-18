@@ -15,7 +15,7 @@
   						{% if strs|get_by_index:ext_idx == 'JPG' or strs|get_by_index:ext_idx == 'jpg' %}
                             <!-- Full-width images with number and caption text -->
                             <div class="img" id="img_{{forloop.counter}}">
-                                <a href="{% get_media_prefix %}images/{{ folder }}/{{ image }}" class="open-lightbox"><span class="image-el" style="background-image: url({% get_media_prefix %}images/{{ folder }}/{{ image }})"></span></a>
+                                <a href="{% static 'img/gallery' %}/{{ folder }}/{{ image }}" class="open-lightbox"><span class="image-el" style="background-image: url({% static 'img/gallery' %}/{{ folder }}/{{ image }})"></span></a>
                             </div>
                         {% endif %}
   					{% endwith %}
