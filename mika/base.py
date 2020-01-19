@@ -149,3 +149,6 @@ CACHES = {
         'LOCATION': '127.0.0.1:11211',
     }
 }
+
+with open(os.path.join(BASE_DIR, 'version')) as version_file:
+    VERSION = version_file.readline().strip()
