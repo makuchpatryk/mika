@@ -687,3 +687,6 @@ header.sticky .preorder-btn {
 		width: 100%;
 	}
 }
+.gallery .se-pre-con {
+	display: none;
+}
