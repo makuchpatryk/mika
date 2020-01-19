@@ -87,14 +87,14 @@ class GalleryView(TemplateView):
 
 
 def akustycznie(request):
-    path = settings.MEDIA_ROOT
+    path = settings.STATIC_ROOT
     img_list = os.listdir(path + '/images/akustycznie/')
     context = {'images' : img_list, 'folder': 'akustycznie'}
     return render(request, "gallery/gallery.html", context)
 
 
 def koncert(request):
-    path = settings.MEDIA_ROOT
+    path = settings.STATIC_ROOT
 
     img_list = os.listdir(path + '/images/koncert/')
     context = {'images' : img_list, 'folder': 'koncert'}
@@ -102,21 +102,21 @@ def koncert(request):
 
 
 def Sesja_2016(request):
-    path = settings.MEDIA_ROOT
+    path = settings.STATIC_ROOT
     img_list = os.listdir(path + '/images/sesja_2016/')
     context = {'images' : img_list, 'folder': 'sesja_2016'}
     return render(request, "gallery/gallery.html", context)
 
 
 def Sesja_2017(request):
-    path = settings.MEDIA_ROOT
+    path = settings.STATIC_ROOT
     img_list = os.listdir(path + '/images/sesja_2017/')
     context = {'images' : img_list, 'folder': 'sesja_2017'}
     return render(request, "gallery/gallery.html", context)
 
 
 def Sesja_2019(request):
-    path = settings.MEDIA_ROOT
+    path = settings.STATIC_ROOT
     img_list = os.listdir(path + '/images/sesja_2019/')
     context = {'images' : img_list, 'folder': 'sesja_2019'}
     return render(request, "gallery/gallery.html", context)
