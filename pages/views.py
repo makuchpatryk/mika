@@ -87,43 +87,43 @@ class GalleryView(TemplateView):
 
 
 def akustycznie(request):
-    path = settings.STATIC_ROOT
-    img_list = os.listdir(path + '/images/akustycznie/')
+    path = settings.STATICFILES_DIRS[0]
+    img_list = os.listdir(path + '/img/gallery/akustycznie/')
     context = {'images' : img_list, 'folder': 'akustycznie'}
     return render(request, "gallery/gallery.html", context)
 
 
 def koncert(request):
-    path = settings.STATIC_ROOT
+    path = settings.STATICFILES_DIRS[0]
 
-    img_list = os.listdir(path + '/images/koncert/')
+    img_list = os.listdir(path + '/img/gallery/koncert/')
     context = {'images' : img_list, 'folder': 'koncert'}
     return render(request, "gallery/gallery.html", context)
 
 
 def Sesja_2016(request):
-    path = settings.STATIC_ROOT
-    img_list = os.listdir(path + '/images/sesja_2016/')
+    path = settings.STATICFILES_DIRS[0]
+    img_list = os.listdir(path + '/img/gallery/sesja_2016/')
     context = {'images' : img_list, 'folder': 'sesja_2016'}
     return render(request, "gallery/gallery.html", context)
 
 
 def Sesja_2017(request):
-    path = settings.STATIC_ROOT
-    img_list = os.listdir(path + '/images/sesja_2017/')
+    path = settings.STATICFILES_DIRS[0]
+    img_list = os.listdir(path + '/img/gallery/sesja_2017/')
     context = {'images' : img_list, 'folder': 'sesja_2017'}
     return render(request, "gallery/gallery.html", context)
 
 
 def Sesja_2019(request):
-    path = settings.STATIC_ROOT
-    img_list = os.listdir(path + '/images/sesja_2019/')
+    path = settings.STATICFILES_DIRS[0]
+    img_list = os.listdir(path + '/img/gallery/sesja_2019/')
     context = {'images' : img_list, 'folder': 'sesja_2019'}
     return render(request, "gallery/gallery.html", context)
 
 
 def sesja_ayz(request):
-    path = settings.MEDIA_ROOT
-    img_list = os.listdir(path + '/images/sesja_ayz/')
+    path = settings.STATICFILES_DIRS[0]
+    img_list = os.listdir(path + '/img/gallery/sesja_ayz/')
     context = {'images' : img_list, 'folder': 'sesja_ayz'}
     return render(request, "gallery/gallery.html", context)
