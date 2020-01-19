@@ -417,6 +417,9 @@ button:hover {
 	margin-top: 74px;
 	width: 49.7%;
 	padding: 20px;
+
+}
+.about-us .image img {
 	border-radius: 10px;
 }
 h3 {
