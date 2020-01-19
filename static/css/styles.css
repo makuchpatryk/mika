@@ -757,3 +757,8 @@ header.sticky .preorder-btn {
 		right: 80px;
 	}
 }
+
+.contact-social-info i {
+	font-size: 30px;
+	padding: 0 5px; 
+}

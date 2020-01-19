@@ -10,9 +10,9 @@ class NameForm(forms.Form):
             "invalid": "Adres email jest nie wlasciwy",
             "required": "Prosze podaj swoj adres email",
         }, widget=forms.TextInput(attrs={
-            "placeholder": "Twoj emial...", "class": "form-control"}))
-    subject = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Twoj tytul...", 'class': 'form-control'}))
-    message = forms.CharField(widget=forms.Textarea(attrs={"placeholder": "Twoj wiadomość...", 'class': 'form-control'}))
+            "placeholder": "Twoj email...", "class": "form-control"}))
+    subject = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Twoj tytuł...", 'class': 'form-control'}))
+    message = forms.CharField(widget=forms.Textarea(attrs={"placeholder": "Twoja wiadomość...", 'class': 'form-control'}))
 
     def send_email(self):
         sub = '{} : {} : {}'.format('Contact',self.cleaned_data['email'],  self.cleaned_data['subject'])
