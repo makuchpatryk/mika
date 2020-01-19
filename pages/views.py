@@ -100,7 +100,6 @@ def koncert(request):
     context = {'images' : img_list, 'folder': 'koncert'}
     return render(request, "gallery/gallery.html", context)
 
-
 def Sesja_2016(request):
     path = settings.STATICFILES_DIRS[0]
     img_list = os.listdir(path + '/img/gallery/sesja_2016/')

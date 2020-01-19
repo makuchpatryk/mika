@@ -79,6 +79,25 @@
               <!-- Nav End -->
 
             </div>
+            <span class="hamburger">
+                <i class="fa fa-bars"></i>
+            </span>
+            <div class="mobile-menu" style="display: none;">
+                <ul class="menu">
+                  <li><a href="{% url 'index' %}">Glowna</a></li>
+                  <li class="nav-dropdown"><a href="#">Albumy</a>
+                    <ul class="sub">
+                        <li><a href="{% url 'albums_pyl' %}" style="font-weight: 600;">Pył</a></li>
+                        <li><a href="{% url 'albums_awe' %}">Awe</a></li>
+                        <li><a href="{% url 'albums_almagest' %}">Almagest</a></li>
+
+                    </ul>
+                  </li>
+                  <li><a href="{% url 'about' %}">O mnie</a></li>
+                  <li><a href="{% url 'gallery' %}">Galeria</a></li>
+                  <li><a href="{% url 'contact' %}">Kontakt</a></li>
+                </ul>
+            </div>
           </nav>
         </div>
       </div>

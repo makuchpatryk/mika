@@ -18,7 +18,7 @@ $(document).ready(function()
     audio.muted = true;
     stopmusic = true;
   });
-
+  console.log(document._scd['data']['music'])
     if(document._scd['data']['music']) {
         playPromise = audio.play();
     	if (playPromise !== undefined) {
@@ -47,10 +47,21 @@ $(document).ready(function()
 		$(".se-pre-con").fadeOut("slow");
 	});
     x = 1;
+    y = 0;
     $('#slider ul li:nth-child(' + x + ')').show();
     setInterval(function () {
         nextSlide();
     }, 5000);
+    $('.phrase-' + y%2 ).show();
+    setInterval(function () {
+        nextPhrase();
+    }, 10000);
+
+    function nextPhrase() {
+      $('.phrase-' + y%2 ).fadeOut(0);
+        y++;
+        $('.phrase-' + y%2 ).fadeIn(0);
+    };
 
     function nextSlide() {
       $('#slider ul li:nth-child(' + x + ')').fadeOut(1000);
@@ -82,7 +93,12 @@ $(document).ready(function()
 
         return false;
     });
+
+    $( ".hamburger" ).click(function() {
+        $('.mobile-menu').toggle();
+    })
 });
+
 
 (function($) {
 
