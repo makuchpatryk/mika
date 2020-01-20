@@ -11,7 +11,7 @@ class NameForm(forms.Form):
             "required": "Prosze podaj swoj adres email",
         }, widget=forms.TextInput(attrs={
             "placeholder": "Twoj email...", "class": "form-control"}))
-    subject = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Twoj tytuł...", 'class': 'form-control'}))
+    subject = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Temat...", 'class': 'form-control'}))
     message = forms.CharField(widget=forms.Textarea(attrs={"placeholder": "Twoja wiadomość...", 'class': 'form-control'}))
 
     def send_email(self):
