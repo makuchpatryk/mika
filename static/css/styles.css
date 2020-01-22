@@ -819,6 +819,7 @@ header.sticky .preorder-btn {
 .kup a {
 	font-weight: 800;
 	color: white;
-    font-size: 18px;
+    font-size: 22px;
 	text-align: center;
+	text-decoration: underline;
 }
