@@ -137,8 +137,7 @@ function plusSlides(n)
 
 function addNav(id, last)
 {
-    $('body').append('<div class="gal-nav"></div>');
-    console.log(id, last)
+    $('body').find('.lightbox-opened').append('<div class="gal-nav"></div>');
     if(id != 0 )
     {
         var n = id-1

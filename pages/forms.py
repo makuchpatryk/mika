@@ -10,7 +10,7 @@ class NameForm(forms.Form):
             "invalid": "Adres email jest nie wlasciwy",
             "required": "Prosze podaj swoj adres email",
         }, widget=forms.TextInput(attrs={
-            "placeholder": "Twoj email...", "class": "form-control"}))
+            "placeholder": "Twój email...", "class": "form-control"}))
     subject = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Temat...", 'class': 'form-control'}))
     message = forms.CharField(widget=forms.Textarea(attrs={"placeholder": "Twoja wiadomość...", 'class': 'form-control'}))
 
