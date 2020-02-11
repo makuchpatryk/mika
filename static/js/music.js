@@ -27,10 +27,7 @@ $(document).ready(function()
 	if(!stopmusic)
 	{
 		playPromise = audio.play();
-		if(tillPlayed)
-		{
-			audio.currentTime = 0;
-		}
+		audio.currentTime = 0;
 		if (playPromise !== undefined)
 		{
 			setTimeout(function() {
