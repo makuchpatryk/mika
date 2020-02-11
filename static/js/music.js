@@ -27,7 +27,9 @@ $(document).ready(function()
 	if(!stopmusic)
 	{
 		playPromise = audio.play();
-		if(tillPlayed){
+		if(tillPlayed)
+		{
+			console.log('tillPlayed', tillPlayed)
 			audio.currentTime = tillPlayed;
 		}
 		if (playPromise !== undefined)
