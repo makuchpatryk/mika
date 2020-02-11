@@ -29,7 +29,6 @@ $(document).ready(function()
 		playPromise = audio.play();
 		if(tillPlayed)
 		{
-			console.log('tillPlayed', tillPlayed)
 			audio.currentTime = tillPlayed;
 		}
 		if (playPromise !== undefined)
@@ -51,7 +50,7 @@ $(document).ready(function()
 		}, 30700);
 		setInterval(function(){
 			update_time_song(audio)
-		},1000);
+		},500);
 	}
 
 });
