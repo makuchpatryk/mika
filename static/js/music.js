@@ -2,7 +2,7 @@ $(document).ready(function()
 {
 	var tillPlayed = getCookie('timePlayed');
 	var stopPlayed = getCookie('stopPlayed');
-
+	console.log("tillPlayed", tillPlayed, "stopPlayed", stopPlayed)
 	if (!stopPlayed || stopPlayed=='undefined')
 	{
 		stopmusic = false;
