@@ -1,47 +1,5 @@
-
 $(document).ready(function()
 {
-  stopmusic = false;
-  $( "#musicplay" ).click(function() {
-    $.post(document._scd['routing']['music_play'], function( data ) {
-        console.log("success");
-    });
-    audio.play();
-    audio.muted = false;
-    stopmusic = false;
-  });
-  $( "#musicpause" ).click(function() {
-    $.post(document._scd['routing']['music_stop'], function( data ) {
-        console.log("success");
-    });
-    audio.pause();
-    audio.muted = true;
-    stopmusic = true;
-  });
-  console.log(document._scd['data']['music'])
-    if(document._scd['data']['music']) {
-        playPromise = audio.play();
-    	if (playPromise !== undefined) {
-        setTimeout(function() {
-        	  playPromise.then(function() {
-              audio.muted = false;
-        			console.log('started');
-        	  }).catch(function(error) {
-        			console.log('error');
-              $( "#musicplay" ).trigger('click');
-        	  });
-        }, 3000);
-    	}
-      setInterval(function(){
-        if( !stopmusic )
-        {
-        	audio.currentTime = 0;
-        	audio.play();
-          audio.muted = false;
-        }
-      }, 30700);
-
-    }
 	$(window).load(function() {
 		// Animate loader off screen
 		$(".se-pre-con").fadeOut("slow");
