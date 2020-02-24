@@ -121,6 +121,13 @@ def Sesja_2019(request):
     return render(request, "gallery/gallery.html", context)
 
 
+def Sesja_2020(request):
+    path = settings.STATICFILES_DIRS[0]
+    img_list = os.listdir(path + '/img/gallery/sesja_2020/')
+    context = {'images' : img_list, 'folder': 'sesja_2020'}
+    return render(request, "gallery/gallery.html", context)
+
+
 def sesja_ayz(request):
     path = settings.STATICFILES_DIRS[0]
     img_list = os.listdir(path + '/img/gallery/sesja_ayz/')
