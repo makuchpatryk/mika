@@ -381,6 +381,7 @@ vertical-align: top;
 }
 .contact-form-area form #id_email,
 .contact-form-area form #id_subject,
+.contact-form-area form #id_number,
 .contact-form-area form #id_item,
 .contact-form-area form #id_message,
 .contact-form-area form #id_adres_to_send,
@@ -822,4 +823,20 @@ header.sticky .preorder-btn {
     font-size: 22px;
 	text-align: center;
 	text-decoration: underline;
+}
+
+.messages {
+	z-index: 10;
+	color: white;
+	width: 100%;
+	background: red;
+	display: block;
+	position: fixed;
+	top: 55px;
+}
+.messages ul {
+	padding: 0;
+}
+.messages .errorlist {
+	margin-left: 20px;
 }

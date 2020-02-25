@@ -68,9 +68,52 @@
     </section>
 
     <section class="preorder" id="preorder">
-
         <h3>Sprzedaż „Pył”</h3>
-        <p class="kup"><a href="https://tomaszmika.bandcamp.com/releases">Zamów wersje cyfrową lub wersje fizyczną płyty z książeczką z tekstami oraz ilustracjami piosenek klikając tutaj.</a></p>
+        <p>Zamów wersję fizyczną CD z książeczką z tekstami oraz ilustracjami piosenek wypełniając formularz poniżej (płatność przelewem).</p>
+        <span class="price">cena: 30.00 zl</span>
+        <span class="account-num">Płyta zostanie do Ciebie wysłane po zaksięgowaniu wpłaty. Numer konta do zapłaty:
+            <span class="num">86 1020 4984 0000 4402 0134 9232</span>
+        </span>
+        <p>W tytule przelewu wpisz: TWOJE NAZWISKO - PYŁ”</p>
+        <span class="order">Zamów, wypełniając poniższy formularz:</span>
+        <div class="contact-form-area">
+            {% if message_sent %}
+            <p>Płyta zostanie do Ciebie wysłana.</p>
+            {% else %}
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="form-group wow fadeInUp" data-wow-delay="200ms">
+                            <div class="error-form">{{ form.errors.email }}</div>
+                            {{ form.email }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group wow fadeInUp" data-wow-delay="300ms">
+                            <div class="error-form">{{ form.errors.subject }}</div>
+                            {{ form.subject }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group wow fadeInUp" data-wow-delay="300ms">
+                            <div class="error-form">{{ form.errors.number }}</div>
+                            {{ form.number }}
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group wow fadeInUp" data-wow-delay="400ms">
+                            <div class="error-form">{{ form.errors.adres_to_send }}</div>
+                            {{ form.adres_to_send }}
+                        </div>
+                    </div>
+                    <button class="btn oneMusic-btn mt-30 send-form" type="submit">Wyslij <i class="fa fa-angle-double-right"></i></button>
+                    <button class="btn oneMusic-btn mt-30" type="reset" name="reset" value="Clear Form">Wyczysc Formularz</button>
+                </div>
+            </form>
+            {% endif %}
+        </div>
+        <p class="kup"><a href="https://tomaszmika.bandcamp.com/releases">Możesz również zamówić wersję cyfrową lub wersje fizyczną CD z książeczką z tekstami oraz ilustracjami piosenek przez serwis Bandcamp, klikając tutaj.</a></p>
         <p>Album jest także dostępny do posłuchania na Spotify, Apple Music, Tidal, Soundcloud, Youtube Music oraz wielu innych platformach streamingowych.</p>
     </section>
     </div>

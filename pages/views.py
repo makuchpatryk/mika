@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.shortcuts import get_object_or_404, render
 from django.views.generic.edit import FormView
-from .forms import NameForm, PreorderForm
+from .forms import NameForm, OrderForm
 from django.contrib import messages
 from django.core.cache import cache
 
@@ -15,7 +15,7 @@ from django.templatetags.static import static
 
 class IndexPageView(FormView):
     template_name = 'index.html'
-    form_class = PreorderForm
+    form_class = OrderForm
     success_url = '/'
 
     def form_valid(self, form):
@@ -26,6 +26,8 @@ class IndexPageView(FormView):
         return super().form_valid(form)
 
     def form_invalid(self, form):
+
+        messages.error(self.request, form.errors)
         return super().form_invalid(form)
 
 class AboutPageView(TemplateView):
@@ -56,7 +58,7 @@ class AlbumsAwePageView(TemplateView):
 
 class AlbumsPylPageView(FormView):
     template_name = 'albums/pyl.html'
-    form_class = PreorderForm
+    form_class = OrderForm
     success_url = '/'
 
     def form_valid(self, form):
@@ -68,6 +70,7 @@ class AlbumsPylPageView(FormView):
         return super().form_valid(form)
 
     def form_invalid(self, form):
+        messages.error(self.request, form.errors)
         return super().form_invalid(form)
 
 class ElementsPageView(TemplateView):

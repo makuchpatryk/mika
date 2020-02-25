@@ -25,7 +25,7 @@ class NameForm(forms.Form):
         )
         return mail
 
-class PreorderForm(forms.Form):
+class OrderForm(forms.Form):
     email = forms.EmailField(
         required=True, label="Email", max_length=255,
         help_text="Powinien byc wlasciwy adres email", error_messages={
@@ -35,11 +35,12 @@ class PreorderForm(forms.Form):
             "placeholder": "Twoj emial...", "class": "form-control"}))
     # item = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Ile sztuk...", 'class': 'form-control'}), initial=1)
     adres_to_send = forms.CharField(widget=forms.Textarea(attrs={"placeholder": "Adres do wysylki...", 'class': 'form-control', 'required': "required"}))
-    name_on_disk = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Imie do dedykacją...", 'class': 'form-control', 'required': "required"}))
+    subject = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Temat...", 'class': 'form-control', 'required': "required"}))
+    number = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Numer kontaktowy...", 'class': 'form-control', 'required': "required"}))
 
     def send_email(self):
-        sub = '{} : {} : {}'.format('Preorder',self.cleaned_data['email'],  self.cleaned_data['name_on_disk'])
-        msg = '{}'.format(self.cleaned_data['adres_to_send'])
+        sub = '{} : {} : {}'.format('Order',self.cleaned_data['email'],  self.cleaned_data['subject'])
+        msg = '{}, numer: {}'.format(self.cleaned_data['adres_to_send'], self.cleaned_data['number'])
         mail = send_mail(
             sub,
             msg,
