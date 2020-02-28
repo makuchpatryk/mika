@@ -32,9 +32,9 @@ class OrderForm(forms.Form):
             "invalid": "Adres email jest nie wlasciwy",
             "required": "Prosze podaj swoj adres email",
         }, widget=forms.TextInput(attrs={
-            "placeholder": "Twoj emial...", "class": "form-control"}))
+            "placeholder": "Twoj email...", "class": "form-control"}))
     # item = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Ile sztuk...", 'class': 'form-control'}), initial=1)
-    adres_to_send = forms.CharField(widget=forms.Textarea(attrs={"placeholder": "Adres do wysylki...", 'class': 'form-control', 'required': "required"}))
+    adres_to_send = forms.CharField(widget=forms.Textarea(attrs={"placeholder": "Adres do wysyłki...", 'class': 'form-control', 'required': "required"}))
     subject = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Temat...", 'class': 'form-control', 'required': "required"}))
     number = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Numer kontaktowy...", 'class': 'form-control', 'required': "required"}))
 
