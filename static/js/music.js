@@ -43,10 +43,14 @@ $(document).ready(function()
 				});
 			}, 100);
 		}
-		setInterval(function(){
-			audio.currentTime = 0;
-			audio.play();
-			audio.muted = false;
+		setInterval(function()
+		{
+			if(!stopmusic)
+			{
+				audio.currentTime = 0;
+				audio.play();
+				audio.muted = false;
+			}
 		}, 30700);
 		setInterval(function(){
 			update_time_song(audio)

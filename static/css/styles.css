@@ -858,3 +858,42 @@ header.sticky .preorder-btn {
 .icons span.itunes {
 	background-image: url('img/icons/itunes.png');
 }
+.left-side {
+	width: 69%;
+	display: inline-block;
+	vertical-align: top;
+	padding-right: 15px;
+}
+.right-side {
+	width: 30%;
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 10px;
+}
+.right-side img {
+	border-radius: 10px;
+}
+
+.bottom-side {
+
+}
+.bottom-side .image {
+	width: 32%;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 1.5%;
+}
+.bottom-side .image:last-of-type {
+	margin-right: 0;
+}
+.bottom-side img {
+	border-radius: 10px;
+}
+@media(max-width: 768px) {
+	.bottom-side .image {
+		width: 100%;
+	}
+}
+.bigger {
+	font-size: 20px;
+}
