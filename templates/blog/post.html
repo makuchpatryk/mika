@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load templatetags %}
+
+{% block content %}
+<!-- ##### Blog Area Start ##### -->
+<div class="blog-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-9">
+                <div class="feed">
+                    <ul>
+                        <li>
+                            <span class="title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></span>
+                            <span class="meta">
+                                <span class="author">author: {{ post.author }}</span>
+                                <span class="time">{{ post.ctime }}</span>
+                            </span>
+                            <span class="content">{{ post.title }}</span>
+                            {% if post.yt_link %}
+                                <span class="video">
+                                    <iframe id="player" type="text/html" src="{{ post.yt_link }}" frameborder="0"></iframe>
+                                </span>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3">
+                <div class="sidebar">
+                    {% other_posts %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Blog Area End ##### -->
+
+{% endblock %}

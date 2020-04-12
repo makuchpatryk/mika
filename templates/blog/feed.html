@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load templatetags %}
+
+{% block content %}
+<!-- ##### Blog Area Start ##### -->
+<div class="blog-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-9">
+                <div class="feed">
+                    <ul>
+                        {% for obj in page_obj.object_list %}
+                            <li>
+                                <span class="title"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></span>
+                                <span class="cat">{{ obj.category.title }}</span>
+                                <span class="meta">
+                                    <span class="author">author: {{ obj.author }}</span>
+                                    <span class="time">{{ obj.ctime }}</span>
+                                </span>
+                                <span class="content">{{ obj.title }}</span>
+                                {% if obj.yt_link %}
+                                    <span class="video">
+                                        <iframe id="player" type="text/html" src="{{ obj.yt_link }}" frameborder="0"></iframe>
+                                    </span>
+                                {% endif %}
+                                {% if obj.tags.all %}
+                                <span class="tags">
+                                    <ul>
+                                        {% for tag in obj.tags.all %}
+                                        <li>#{{ tag }} </li>
+                                        {% endfor %}
+                                    </ul>
+                                </span>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% for contact in page_obj %}
+                    {{ contact.full_name|upper }}<br>
+                    ...
+                {% endfor %}
+
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; first</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span>
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">next</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3">
+                <div class="sidebar">
+                    {% other_posts %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Blog Area End ##### -->
+
+{% endblock %}

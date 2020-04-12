@@ -897,3 +897,88 @@ header.sticky .preorder-btn {
 .bigger {
 	font-size: 20px;
 }
+.blog-area {
+	display: block;
+	margin-top: 70px;
+}
+.blog-area .col-12 {
+	width: 100%;
+	vertical-align: top;
+	display: inline-block;
+}
+.blog-area .col-lg-9 {
+	width: 75%;
+	vertical-align: top;
+	display: inline-block;
+}
+.blog-area .col-lg-3 {
+	width: 24%;
+	display: inline-block;
+	vertical-align: top;
+}
+.feed {
+	display: block;
+	width: 100%;
+    padding: 10px;
+}
+.feed ul {
+	padding: 0;
+	margin: 0;
+	display: block;
+	width: 100%;
+}
+.feed ul li {
+	padding: 15px 10px;
+	border-bottom: 1px solid #777;
+}
+.feed ul li:last-of-type {
+	border-bottom: none;
+}
+.feed ul .title {
+	display: block;
+}
+.feed ul .cat {
+	display: block;
+}
+.feed ul .title a {
+	font-weight: 600;
+	font-size: 20px;
+	color: white;
+}
+
+.feed ul .meta .time {
+	float: right;
+	color: #777;
+}
+.feed ul .meta .author {
+	color: #777;
+}
+.feed ul .content {
+	display: block;
+	margin-top: 10px;
+}
+.feed ul .video {
+	max-width: 600px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.sidebar {
+	padding-left: 20px;
+}
+.other-posts {
+
+}
+.other-posts .title {
+	display: block;
+	font-weight: 600;
+	font-size: 18px;
+}
+.other-posts ul {
+		padding: 0;
+		margin-top: 5px;
+}
+.other-posts .post a {
+	color: white;
+
+}

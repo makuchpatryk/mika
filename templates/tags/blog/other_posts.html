@@ -1,0 +1,10 @@
+<span class="other-posts">
+	<span class="title">Other Posts</span>
+	<ul>
+		{% for obj in posts %}
+		<li class="post">
+			<a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+</span>

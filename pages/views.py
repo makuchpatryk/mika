@@ -6,10 +6,11 @@ from django.views.generic.edit import FormView
 from .forms import NameForm, OrderForm
 from django.contrib import messages
 from django.core.cache import cache
+from django.core.paginator import Paginator
 
 import os
 from django.conf import settings
-
+from . import models
 from django.templatetags.static import static
 
 
@@ -81,12 +82,23 @@ class EventPageView(TemplateView):
     template_name = 'event.html'
 
 
-class BlogPageView(TemplateView):
-    template_name = 'blog.html'
-
-
 class GalleryView(TemplateView):
     template_name = 'gallery-main.html'
+
+
+def feed(request):
+    posts = models.Post.objects.all().order_by('-ctime')
+    paginator = Paginator(posts, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {'page_obj': page_obj}
+    return render(request, "blog/feed.html", context)
+
+
+def post(request, pk):
+    post = models.Post.objects.get(pk=pk)
+    context = {'post': post}
+    return render(request, "blog/post.html", context)
 
 
 def akustycznie(request):

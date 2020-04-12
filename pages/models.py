@@ -6,6 +6,15 @@ from django.urls import reverse
 # Create your models here.
 
 
+class Hashtag(models.Model):
+    title = models.CharField(max_length=30)
+
+    class Meta:
+        ordering = ['title']
+
+    def __str__(self):
+        return self.title
+
 class Category(models.Model):
     title = models.CharField(max_length=255, verbose_name="Title")
 
@@ -17,10 +26,16 @@ class Post(models.Model):
     title = models.CharField(max_length=255, verbose_name="Title")
     image = models.ImageField(upload_to ='uploads/', blank=True)
     ctime = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     text = models.TextField()
+    yt_link = models.TextField(null=True, blank=True)
+    tags = models.ManyToManyField(Hashtag, null=True, blank=True)
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('post', kwargs={'pk': self.pk})
 
 
 class Album(models.Model):

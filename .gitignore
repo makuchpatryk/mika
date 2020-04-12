@@ -4,3 +4,4 @@ migrations
 staticfiles
 mika/wsgi.py
 manage.py
+media
