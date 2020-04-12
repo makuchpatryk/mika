@@ -986,6 +986,8 @@ header.sticky .preorder-btn {
 	border: none;
 	padding: 0;
 	margin-right: 5px;
+	margin-right: 10px;
 	font-weight: 600;
-	
+	float: left;
+
 }
