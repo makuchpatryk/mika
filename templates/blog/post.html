@@ -17,7 +17,7 @@
                                 <span class="author">author: {{ post.author }}</span>
                                 <span class="time">{{ post.ctime }}</span>
                             </span>
-                            <span class="content">{{ post.title }}</span>
+                            <span class="content">{{ post.text }}</span>
                             {% if post.yt_link %}
                                 <span class="video">
                                     <iframe id="player" type="text/html" src="{{ post.yt_link }}" frameborder="0"></iframe>

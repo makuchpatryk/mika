@@ -982,3 +982,10 @@ header.sticky .preorder-btn {
 	color: white;
 
 }
+.feed ul .tags li {
+	border: none;
+	padding: 0;
+	margin-right: 5px;
+	font-weight: 600;
+	
+}
