@@ -29,7 +29,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     text = models.TextField()
     yt_link = models.TextField(null=True, blank=True)
-    tags = models.ManyToManyField(Hashtag, null=True, blank=True)
+    tags = models.ManyToManyField(Hashtag)
 
     def __str__(self):
         return self.title
