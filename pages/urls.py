@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^feed/?$', views.feed, name='feed'),
     url(r'^feed/(?P<pk>\d+)/post/?$', views.post, name='post'),
 
+
     url(r'^gallery/$', views.GalleryView.as_view(), name='gallery'),
     url(r'^gallery/akustycznie/$', views.akustycznie, name='akustycznie'),
     url(r'^gallery/koncert/$', views.koncert, name='koncert'),
