@@ -41,7 +41,7 @@ class Post(models.Model):
 class Album(models.Model):
     album_name = models.CharField(max_length=250)
     album_picture = models.ImageField(upload_to ='uploads/', blank=True)
-    description = models.CharField(max_length=250)
+    description = models.TextField(verbose_name="Description", null=True, blank=True)
     ctime = models.DateTimeField(null=True, blank=True)
     author = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
 
