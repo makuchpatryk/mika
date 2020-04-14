@@ -19,8 +19,8 @@ class NameForm(forms.Form):
         mail = send_mail(
             self.cleaned_data['subject'],
             self.cleaned_data['message'],
-            self.cleaned_data['email'],
-            [settings.EMAIL_HOST_USER],
+            settings.EMAIL_HOST_USER,
+            [settings.EMAIL_RECIVER_USER],
             fail_silently=False,
         )
         return mail
@@ -44,8 +44,8 @@ class OrderForm(forms.Form):
         mail = send_mail(
             sub,
             msg,
-            self.cleaned_data['email'],
-            [settings.EMAIL_HOST_USER],
+            settings.EMAIL_HOST_USER,
+            [settings.EMAIL_RECIVER_USER],
             fail_silently=False,
         )
         return mail

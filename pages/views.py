@@ -8,6 +8,11 @@ from django.contrib import messages
 from django.core.cache import cache
 from django.core.paginator import Paginator
 
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import Http404
+from django.urls import reverse
+from django.shortcuts import HttpResponseRedirect
+
 import os
 from django.conf import settings
 from . import models
@@ -96,9 +101,26 @@ def feed(request):
 
 
 def post(request, pk):
-    post = models.Post.objects.get(pk=pk)
+    try:
+        post = models.Post.objects.get(pk=pk)
+    except ObjectDoesNotExist:
+        raise Http404
+
     context = {'post': post}
     return render(request, "blog/post.html", context)
+
+
+def like_post(request, pk):
+    try:
+        post = models.Post.objects.get(pk=pk)
+        like = models.Like()
+        like.post = post
+        like.save()
+    except ObjectDoesNotExist:
+        raise Http404
+
+    context = {'post': post}
+    return HttpResponseRedirect(reverse('feed'))
 
 
 def akustycznie(request):

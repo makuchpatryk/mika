@@ -34,6 +34,10 @@
                                     </ul>
                                 </span>
                                 {% endif %}
+                                <span class="like-post">
+                                    <span class="btn JS_like_post" data-pk={{obj.pk}}>LIKE</span>
+                                    <span class="number">{{ obj.like_set.all|length }}</span>
+                                </span>
                             </li>
                         {% endfor %}
                     </ul>

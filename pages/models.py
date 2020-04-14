@@ -59,3 +59,8 @@ class Song(models.Model):
 
     def __str__(self):
         return  self.song_name
+
+
+class Like(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, blank=True)
+    ctime = models.DateTimeField(auto_now_add=True, null=True, blank=True)

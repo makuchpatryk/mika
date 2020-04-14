@@ -989,3 +989,30 @@ header.sticky .preorder-btn {
 	font-weight: 600;
 	float: left;
 }
+.ui-dialog {
+	background-color: rgba(255,255,255, 0.5);
+	border: 1px solid #777;
+	border-radius: 10px;
+	color: #333;
+	padding: 10px;
+}
+.ui-corner-all {
+	float: right;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.ui-dialog p {
+	color: #333;
+}
+.ui-dialog-title {
+	color: #333;
+}
+.ui-draggable .ui-dialog-titlebar {
+	background: none;
+	border: none;
+}
+
+.ui-button .ui-icon {
+    background-image: url('img/ui-icons_777777_256x240.png');
+}

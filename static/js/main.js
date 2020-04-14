@@ -56,12 +56,15 @@ $(document).ready(function()
         $('.mobile-menu').toggle();
     })
 
-	// $( ".JS_like_post" ).click(function() {
-	// 	pk = $(this).data('pk');
-	// 	if (getCookie('likePost_' + pk)) return;
-	// 	window.location = document._scd['routing']['like_post'].replace('0', pk);
-	// 	setCookie('likePost_' + pk, false);
-	// });
+	$( ".JS_like_post" ).click(function() {
+		pk = $(this).data('pk');
+		if (getCookie('likePost_' + pk)) {
+			$( "#dialog" ).dialog();
+			return;
+		}
+		window.location = document._scd['routing']['like_post'].replace('0', pk);
+		setCookie('likePost_' + pk, false);
+	});
 });
 
 
