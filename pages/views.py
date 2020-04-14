@@ -25,10 +25,12 @@ class IndexPageView(FormView):
     success_url = '/'
 
     def form_valid(self, form):
-        emial = form.send_email()
-        if emial:
-            return render(self.request, 'index.html', {
-                'form': form, 'message_sent': True})
+        order = create_order(form)
+        if order:
+            emial = form.send_email()
+            if emial:
+                return render(self.request, 'index.html', {
+                    'form': form, 'message_sent': True})
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -68,11 +70,13 @@ class AlbumsPylPageView(FormView):
     success_url = '/'
 
     def form_valid(self, form):
-        emial = form.send_email()
+        order = create_order(form)
+        if order:
+            emial = form.send_email()
 
-        if emial:
-            return render(self.request, 'albums/pyl.html', {
-                'form': form, 'message_sent': True})
+            if emial:
+                return render(self.request, 'albums/pyl.html', {
+                    'form': form, 'message_sent': True})
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -170,3 +174,16 @@ def sesja_ayz(request):
     img_list = os.listdir(path + '/img/gallery/sesja_ayz/')
     context = {'images' : img_list, 'folder': 'sesja_ayz'}
     return render(request, "gallery/gallery.html", context)
+
+
+def create_order(form):
+    try:
+        order = models.Order()
+        order.subject = form.cleaned_data['subject']
+        order.email = form.cleaned_data['email']
+        order.account_number = form.cleaned_data['number']
+        order.adres_to_send = form.cleaned_data['adres_to_send']
+        order.save()
+    except:
+        return False
+    return True
