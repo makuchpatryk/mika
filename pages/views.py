@@ -7,6 +7,7 @@ from .forms import NameForm, OrderForm
 from django.contrib import messages
 from django.core.cache import cache
 from django.core.paginator import Paginator
+from django.core.mail import send_mail
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
@@ -22,21 +23,42 @@ from django.templatetags.static import static
 class IndexPageView(FormView):
     template_name = 'index.html'
     form_class = OrderForm
-    success_url = '/'
+
+
+    def get_success_url(self):
+        return reverse('order_success')
 
     def form_valid(self, form):
         order = create_order(form)
         if order:
             emial = form.send_email()
             if emial:
-                return render(self.request, 'index.html', {
-                    'form': form, 'message_sent': True})
-        return super().form_valid(form)
+                return super().form_valid(form)
+        return HttpResponseRedirect(reverse('order_fail'))
 
     def form_invalid(self, form):
+        return HttpResponseRedirect(reverse('order_fail'))
 
-        messages.error(self.request, form.errors)
-        return super().form_invalid(form)
+
+class AlbumsPylPageView(FormView):
+    template_name = 'albums/pyl.html'
+    form_class = OrderForm
+
+
+    def get_success_url(self):
+        return reverse('order_success')
+
+    def form_valid(self, form):
+        order = create_order(form)
+        if order:
+            emial = form.send_email()
+            if emial:
+                return super().form_valid(form)
+        return HttpResponseRedirect(reverse('order_fail'))
+
+    def form_invalid(self, form):
+        return HttpResponseRedirect(reverse('order_fail'))
+
 
 class AboutPageView(TemplateView):
     template_name = 'about.html'
@@ -64,24 +86,14 @@ class AlbumsAlmagestPageView(TemplateView):
 class AlbumsAwePageView(TemplateView):
     template_name = 'albums/awe.html'
 
-class AlbumsPylPageView(FormView):
-    template_name = 'albums/pyl.html'
-    form_class = OrderForm
-    success_url = '/'
 
-    def form_valid(self, form):
-        order = create_order(form)
-        if order:
-            emial = form.send_email()
+def order_success(request):
+    context = {}
+    return render(request, "order/success.html", context)
 
-            if emial:
-                return render(self.request, 'albums/pyl.html', {
-                    'form': form, 'message_sent': True})
-        return super().form_valid(form)
-
-    def form_invalid(self, form):
-        messages.error(self.request, form.errors)
-        return super().form_invalid(form)
+def order_fail(request):
+    context = {}
+    return render(request, "order/fail.html", context)
 
 class ElementsPageView(TemplateView):
     template_name = 'elements.html'
@@ -187,3 +199,26 @@ def create_order(form):
     except:
         return False
     return True
+
+
+def sent_confimation(request, pk):
+
+    if request.user.is_staff:
+        email = request.GET.get('email', '')
+        if not email:
+            return messages.error(request, 'Error there is not email.')
+
+        order = models.Order.objects.get(pk=pk)
+        order.done = True
+        order.save()
+
+        mail = send_mail(
+            "tomashmika.com : Twoje Zamowienie",
+            "twoje zamowienie zostalo wyslane.",
+            settings.EMAIL_HOST_USER,
+            [email],
+            fail_silently=False,
+        )
+    messages.success(request, 'Sent Confirmation.')
+
+    return HttpResponseRedirect(reverse('admin:pages_order_changelist'))

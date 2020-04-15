@@ -26,4 +26,9 @@ urlpatterns = [
     url(r'^contact/$', views.ContactPageView.as_view(), name='contact'),
     url(r'^elements/$', views.ElementsPageView.as_view(), name='elements'),
     url(r'^event/$', views.EventPageView.as_view(),name='event'),
+
+    url(r'^order-success/?$', views.order_success, name='order_success'),
+    url(r'^order-fail/?$', views.order_fail, name='order_fail'),
+
+    url(r'^sent-confimation/(?P<pk>\d+)/?$', views.sent_confimation, name='sent_confimation'),
 ]

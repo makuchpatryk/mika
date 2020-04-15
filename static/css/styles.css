@@ -825,7 +825,7 @@ header.sticky .preorder-btn {
 	text-decoration: underline;
 }
 
-.messages {
+ul.messages {
 	z-index: 10;
 	color: white;
 	width: 100%;
@@ -833,12 +833,20 @@ header.sticky .preorder-btn {
 	display: block;
 	position: fixed;
 	top: 55px;
-}
-.messages ul {
 	padding: 0;
+	margin-left: 0;
+}
+ul.messages li {
+	padding: 10px 20px;
 }
 .messages .errorlist {
 	margin-left: 20px;
+}
+ul.messages li.success {
+	background-color: green;
+}
+ul.messages li.error {
+	background-color: green;
 }
 .icons a {
 	color : white;
@@ -989,6 +997,9 @@ header.sticky .preorder-btn {
 	font-weight: 600;
 	float: left;
 }
+#dialog {
+	display: none;
+}
 .ui-dialog {
 	background-color: rgba(255,255,255, 0.5);
 	border: 1px solid #777;
@@ -1015,4 +1026,46 @@ header.sticky .preorder-btn {
 
 .ui-button .ui-icon {
     background-image: url('img/ui-icons_777777_256x240.png');
+}
+
+.order-process {
+	padding: 10px;
+	margin-top: 75px;
+}
+.order-process .fail {
+	background-color: #FC1414;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.order-process .success {
+	padding: 20px;
+	border-radius: 10px;
+	background-color: #00a000;
+}
+.order-process p {
+	display: inline-block;
+	font-size: 20px;
+}
+.order-process a {
+	font-weight: 800;
+	font-size: 20px;
+	color: white;
+}
+
+
+.order-process .back-main-page a {
+	color: white;
+	padding: 10px 15px;
+	border-radius: 10px;
+	border:2px solid white;
+	display: inline-block;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 15px;
+	font-size: 14px;
+
+}
+.order-process .back-main-page a:hover {
+	background-color: rgba(255,255,255,0.5);
 }

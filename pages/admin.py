@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.utils.html import format_html
+from django.urls import reverse
 
 # Register your models here.
 from .models import Category, Post, Album, Song, Hashtag, Order
@@ -14,8 +16,16 @@ class SongAdmin(admin.ModelAdmin):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('email', 'ctime', 'done')
+    list_display = ('email', 'ctime', 'send_confirmation', 'done')
     readonly_fields = ['ctime']
+
+    def send_confirmation(self, obj):
+    	if not obj.done:
+		    return format_html(
+		    	'<a href="{}?email={}">Wyslij Potwierdzenie</a>&nbsp;',
+		    	reverse('sent_confimation', kwargs={'pk': obj.pk}),
+				obj.email)
+
 
 
 admin.site.register(Category)

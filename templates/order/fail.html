@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="order-process">
+    <div class="container">
+        <div class="row">
+            <div class="fail">
+                <p>Wystapil Blad. Sprobuj jeszcze raz albo skontakowac sie z nami.</p>
+                <a href="{% url 'contact' %}">Kontakt</a>
+            </div>
+            <span class="back-main-page"><a href="{% url 'index' %}">Wroc do Strony Glownej</a></span>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
