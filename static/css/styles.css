@@ -1037,6 +1037,11 @@ ul.messages li.error {
 	padding: 20px;
 	border-radius: 10px;
 }
+.order-process .info {
+	background-color: #0099CC;
+	padding: 20px;
+	border-radius: 10px;
+}
 
 .order-process .success {
 	padding: 20px;

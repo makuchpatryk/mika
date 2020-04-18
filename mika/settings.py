@@ -7,3 +7,7 @@ DEBUG = False
 STATIC_ROOT = '/home/patryk/project/storage/static/'
 
 PAYPAL_TEST = False
+
+
+PAYPAL_CLIENT = 'PAYPAL_SANDBOX_CLIENT'
+PAYPAL_SECRET = 'PAYPAL_SANDBOX_SECRET'

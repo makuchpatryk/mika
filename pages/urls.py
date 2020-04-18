@@ -32,6 +32,7 @@ urlpatterns = [
 
     url(r'^order-success/?$', views.order_success, name='order_success'),
     url(r'^order-fail/?$', views.order_fail, name='order_fail'),
+    url(r'^order-cancel/?$', views.order_cancel, name='order_cancel'),
 
     url(r'^sent-confimation/(?P<pk>\d+)/?$', views.sent_confimation, name='sent_confimation'),
 ]

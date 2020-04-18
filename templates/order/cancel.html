@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="order-process">
+    <div class="container">
+        <div class="row">
+            <div class="info">
+                <p>Transakcja zostala anulowana.</p>
+            </div>
+            <span class="back-main-page"><a href="{% url 'index' %}">Wroc do Strony Glownej</a></span>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

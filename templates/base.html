@@ -36,6 +36,7 @@
     audio.volume = 0.05;
     audio.loop = true;
   </script>
+
 </head>
 
   {% block body_class %}
@@ -156,7 +157,10 @@
         document._scd['routing'] = {
             'music_play': "{% url 'music_play' %}",
             'music_stop': "{% url 'music_stop' %}",
-            'like_post': "{% url 'like_post' pk=0 %}"
+            'like_post': "{% url 'like_post' pk=0 %}",
+            'order_success': "{% url 'order_success' %}",
+            'order_fail': "{% url 'order_fail' %}",
+            'order_cancel': "{% url 'order_cancel' %}",
         }
     </script>
     {% block javascript %}{% endblock javascript %}

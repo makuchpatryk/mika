@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pages',
     'rest_framework',
-    'paypal.standard.ipn',
 ]
 
 MIDDLEWARE = [
@@ -158,3 +157,6 @@ with open(os.path.join(BASE_DIR, 'version')) as version_file:
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 PAYPAL_TEST = True
+
+PAYPAL_CLIENT = 'AT7JxRqgT7EAYLp-eUF43TJLF7cSBy7rcIpBjCNW5xzhGZLV5Wjx1TZsmmkXVrpnXF87_D1FNDxNkGnS'
+PAYPAL_SECRET = 'EIWD6Z1Nlp_X220Pg8mAe8pP6O7hTfG3JGQs6oELrWYWcl606UNg6s6Aa1H6MYn8oQjj2jojbiE8m6EE'

@@ -53,6 +53,7 @@ class Song(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE, null=True)
     cover = models.ImageField(upload_to ='uploads/', blank=True)
     ctime = models.DateTimeField(null=True, blank=True)
+    yt_link = models.CharField(max_length=250, null=True, blank=True)
 
     song_name = models.CharField(max_length=1000)
     description = models.TextField(null=True, blank=True)
@@ -67,14 +68,27 @@ class Like(models.Model):
 
 
 class Order(models.Model):
-    adres_to_send = models.CharField(max_length=255, verbose_name="Adress", null=False, blank=False)
+    name = models.CharField(max_length=255, verbose_name="Name", null=True, blank=True)
     ctime = models.DateTimeField(auto_now_add=True, null=True, blank=True)
-    account_number = models.CharField(
-        max_length=255, verbose_name="Account Number", null=False, blank=False)
+    phone_number = models.CharField(
+        max_length=255, verbose_name="Phone Number", null=True, blank=True)
     email = models.CharField(max_length=255, verbose_name="Email", null=False, blank=False)
 
-    subject = models.TextField(verbose_name="Subject", null=True, blank=True)
+    adres_to_send = models.TextField(verbose_name="Adress", null=True, blank=True)
     done = models.BooleanField(default=False)
 
+    COMPLETED = 15
+    CANCEL = 16
+    ORDERED = 17
+
+    STATUS_CHOICES = (
+        (ORDERED, 'ordered'),
+        (COMPLETED, 'completed'),
+        (CANCEL, 'done'),
+    )
+
+    status = models.SmallIntegerField(
+        choices=STATUS_CHOICES, default=ORDERED)
+
     def __str__(self):
-        return '{} {}'.format(self.email, self.subject)
+        return '{} {}'.format(self.email, self.adres_to_send)

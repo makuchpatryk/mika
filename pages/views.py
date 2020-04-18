@@ -1,3 +1,5 @@
+import os
+
 from django.shortcuts import render
 # pages/views.py
 from django.views.generic import TemplateView
@@ -14,12 +16,9 @@ from django.http import Http404
 from django.urls import reverse
 from django.shortcuts import HttpResponseRedirect
 
-import os
 from django.conf import settings
 from . import models
 from django.templatetags.static import static
-
-from paypal.standard.forms import PayPalPaymentsForm
 
 
 class IndexPageView(FormView):
@@ -186,7 +185,7 @@ def create_order(form):
         order = models.Order()
         order.subject = form.cleaned_data['subject']
         order.email = form.cleaned_data['email']
-        order.account_number = form.cleaned_data['number']
+        order.phone_number = form.cleaned_data['number']
         order.adres_to_send = form.cleaned_data['adres_to_send']
         order.save()
     except:
@@ -241,21 +240,6 @@ class OrderFormView(FormView):
 
 def order_payment(request):
     context = {}
-    # What you want the button to do.
-    paypal_dict = {
-        "business": "receiver_email@example.com",
-        "amount": "10000000.00",
-        "item_name": "name of the item",
-        "invoice": "unique-invoice-id",
-        "notify_url": request.build_absolute_uri(reverse('paypal-ipn')),
-        "return": request.build_absolute_uri(reverse('order_success')),
-        "cancel_return": request.build_absolute_uri(reverse('order_fail')),
-        "custom": "premium_plan",  # Custom command to correlate to some function later (optional)
-    }
-    # print(paypal_dict)
-    # Create the instance.
-    form = PayPalPaymentsForm(initial=paypal_dict)
-    context = {"form": form}
     return render(request, "order/payment.html", context)
 
 
@@ -267,3 +251,7 @@ def order_success(request):
 def order_fail(request):
     context = {}
     return render(request, "order/fail.html", context)
+
+def order_cancel(request):
+    context = {}
+    return render(request, "order/cancel.html", context)
