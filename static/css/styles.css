@@ -1047,7 +1047,12 @@ ul.messages li.error {
 	display: inline-block;
 	font-size: 20px;
 }
-.order-process a {
+.order-process .success a {
+	font-weight: 800;
+	font-size: 20px;
+	color: white;
+}
+.order-process .fail a {
 	font-weight: 800;
 	font-size: 20px;
 	color: white;

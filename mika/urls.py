@@ -9,5 +9,6 @@ from pages import api_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('pages.urls')),
-    url(r'^api/', include('pages.api_urls'))
+    url(r'^api/', include('pages.api_urls')),
+    url(r'^paypal/', include('paypal.standard.ipn.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -19,6 +19,8 @@ from django.conf import settings
 from . import models
 from django.templatetags.static import static
 
+from paypal.standard.forms import PayPalPaymentsForm
+
 
 class IndexPageView(FormView):
     template_name = 'index.html'
@@ -85,15 +87,6 @@ class AlbumsAlmagestPageView(TemplateView):
 
 class AlbumsAwePageView(TemplateView):
     template_name = 'albums/awe.html'
-
-
-def order_success(request):
-    context = {}
-    return render(request, "order/success.html", context)
-
-def order_fail(request):
-    context = {}
-    return render(request, "order/fail.html", context)
 
 class ElementsPageView(TemplateView):
     template_name = 'elements.html'
@@ -222,3 +215,55 @@ def sent_confimation(request, pk):
     messages.success(request, 'Sent Confirmation.')
 
     return HttpResponseRedirect(reverse('admin:pages_order_changelist'))
+
+
+# Order
+class OrderFormView(FormView):
+    template_name = 'order/form.html'
+    form_class = OrderForm
+
+
+    def get_success_url(self):
+        return reverse('order_payment')
+
+    def form_valid(self, form):
+        try:
+            create_order(form)
+        except:
+            return HttpResponseRedirect(reverse('order_fail'))
+
+        return super().form_valid(form)
+
+
+    def form_invalid(self, form):
+        return HttpResponseRedirect(reverse('order_fail'))
+
+
+def order_payment(request):
+    context = {}
+    # What you want the button to do.
+    paypal_dict = {
+        "business": "receiver_email@example.com",
+        "amount": "10000000.00",
+        "item_name": "name of the item",
+        "invoice": "unique-invoice-id",
+        "notify_url": request.build_absolute_uri(reverse('paypal-ipn')),
+        "return": request.build_absolute_uri(reverse('order_success')),
+        "cancel_return": request.build_absolute_uri(reverse('order_fail')),
+        "custom": "premium_plan",  # Custom command to correlate to some function later (optional)
+    }
+    # print(paypal_dict)
+    # Create the instance.
+    form = PayPalPaymentsForm(initial=paypal_dict)
+    context = {"form": form}
+    return render(request, "order/payment.html", context)
+
+
+def order_success(request):
+    context = {}
+    return render(request, "order/success.html", context)
+
+
+def order_fail(request):
+    context = {}
+    return render(request, "order/fail.html", context)

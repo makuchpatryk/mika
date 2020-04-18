@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="order-process">
+    <div class="container">
+        <div class="row">
+            <h1>Show me the money!</h1>
+            <!-- writes out the form tag automatically -->
+            {{ form.render }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

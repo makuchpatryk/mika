@@ -27,6 +27,9 @@ urlpatterns = [
     url(r'^elements/$', views.ElementsPageView.as_view(), name='elements'),
     url(r'^event/$', views.EventPageView.as_view(),name='event'),
 
+    url(r'^order-form/?$', views.OrderFormView.as_view(), name='order_form'),
+    url(r'^order-payment/?$', views.order_payment, name='order_payment'),
+
     url(r'^order-success/?$', views.order_success, name='order_success'),
     url(r'^order-fail/?$', views.order_fail, name='order_fail'),
 

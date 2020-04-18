@@ -5,3 +5,5 @@ from .base import *
 DEBUG = False
 
 STATIC_ROOT = '/home/patryk/project/storage/static/'
+
+PAYPAL_TEST = False
