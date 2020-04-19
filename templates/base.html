@@ -148,12 +148,24 @@
 
     <script src="{% static 'js/global/general.js' %}?{{ VERSION }}"></script>
     <script src="{% static 'js/main.js' %}?{{ VERSION }}"></script>
+    <script src="{% static 'js/slider.js' %}?{{ VERSION }}"></script>
     <script src="{% static 'js/music.js' %}?{{ VERSION }}"></script>
     <script type="text/javascript">
-        document._scd = {}
+        document._scd = {};
+
+
         document._scd['data'] = {
             'music': {% if MUSIC_PLAYING %}true{% else %}false{% endif %},
-        }
+            'slides': [
+              '{% static "img/bg/bg_1.jpg" %}',
+              '{% static "img/bg/bg_2.jpg" %}',
+              '{% static "img/bg/bg_3.jpg" %}',
+              '{% static "img/bg/bg_4.jpg" %}',
+              '{% static "img/bg/bg_5.jpg" %}',
+              '{% static "img/bg/bg_6.jpg" %}',
+            ],
+        };
+
         document._scd['routing'] = {
             'music_play': "{% url 'music_play' %}",
             'music_stop': "{% url 'music_stop' %}",
@@ -163,8 +175,7 @@
             'order_cancel': "{% url 'order_cancel' %}",
 
             'order_create': "{% url 'order_create' %}",
-
-        }
+        };
     </script>
     {% block javascript %}{% endblock javascript %}
     </body>
