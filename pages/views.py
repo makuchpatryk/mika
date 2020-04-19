@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.shortcuts import get_object_or_404, render
 from django.views.generic.edit import FormView
-from .forms import NameForm, OrderForm
+from .forms import NameForm, OrderForm, OrderPaymentForm
 from django.contrib import messages
 from django.core.cache import cache
 from django.core.paginator import Paginator
@@ -19,7 +19,12 @@ from django.shortcuts import HttpResponseRedirect
 from django.conf import settings
 from . import models
 from django.templatetags.static import static
+from django.views.decorators.http import require_http_methods
 
+from library import exceptions, logic
+
+
+from django.forms.models import model_to_dict
 
 class IndexPageView(FormView):
     template_name = 'index.html'
@@ -38,7 +43,8 @@ class IndexPageView(FormView):
         return HttpResponseRedirect(reverse('order_fail'))
 
     def form_invalid(self, form):
-        return HttpResponseRedirect(reverse('order_fail'))
+        messages.error(self.request, form.errors)
+        return super().form_invalid(form)
 
 
 class AlbumsPylPageView(FormView):
@@ -58,7 +64,8 @@ class AlbumsPylPageView(FormView):
         return HttpResponseRedirect(reverse('order_fail'))
 
     def form_invalid(self, form):
-        return HttpResponseRedirect(reverse('order_fail'))
+        messages.error(self.request, form.errors)
+        return super().form_invalid(form)
 
 
 class AboutPageView(TemplateView):
@@ -183,10 +190,11 @@ def sesja_ayz(request):
 def create_order(form):
     try:
         order = models.Order()
-        order.subject = form.cleaned_data['subject']
+        order.name = form.cleaned_data['subject']
         order.email = form.cleaned_data['email']
         order.phone_number = form.cleaned_data['number']
         order.adres_to_send = form.cleaned_data['adres_to_send']
+        order.status = models.Order.ORDERED
         order.save()
     except:
         return False
@@ -202,9 +210,10 @@ def sent_confimation(request, pk):
 
         order = models.Order.objects.get(pk=pk)
         order.done = True
+        order.status = models.Order.COMPLETED
         order.save()
 
-        mail = send_mail(
+        send_mail(
             "tomashmika.com : Twoje Zamowienie",
             "twoje zamowienie zostalo wyslane.",
             settings.EMAIL_HOST_USER,
@@ -219,39 +228,66 @@ def sent_confimation(request, pk):
 # Order
 class OrderFormView(FormView):
     template_name = 'order/form.html'
-    form_class = OrderForm
-
+    form_class = OrderPaymentForm
+    order_id = None
 
     def get_success_url(self):
-        return reverse('order_payment')
+        return reverse('order_payment', kwargs={'order_id': self.order_id})
 
     def form_valid(self, form):
         try:
-            create_order(form)
-        except:
+            self.order_id = create_order_payment(form)
+        except Exception:
             return HttpResponseRedirect(reverse('order_fail'))
 
         return super().form_valid(form)
 
 
     def form_invalid(self, form):
-        return HttpResponseRedirect(reverse('order_fail'))
+        messages.error(self.request, form.errors)
+        return super().form_invalid(form)
+        # return HttpResponseRedirect(reverse('order_fail'))
 
 
+@require_http_methods(["GET"])
 def order_payment(request):
-    context = {}
+    msg_error = 'Wystapil blad. Jeżeli złozyleś zamowie proszę skontaktuj sie z nami.'
+    context = {
+        'payment_display': True
+    }
+    # if request.method == "GET":
+    #     try:
+    #         order = models.OrderPayment.objects.get(pk=order_id)
+    #         print(order)
+
+    #         if order.status != models.OrderPayment.ORDERED:
+    #             raise exceptions.MikaException()
+    #         context['order'] = model_to_dict(order)
+    #         context['payment_display'] = True
+    #     except ObjectDoesNotExist:
+    #         raise Http404
+    #     except ValueError:
+    #         messages.error(request, msg_error)
+    #     except exceptions.Exception:
+    #         messages.error(request, msg_error)
+    # else:
+    #     messages.error(request, msg_error)
     return render(request, "order/payment.html", context)
 
 
+@require_http_methods(["GET"])
 def order_success(request):
     context = {}
     return render(request, "order/success.html", context)
 
 
+@require_http_methods(["GET"])
 def order_fail(request):
     context = {}
     return render(request, "order/fail.html", context)
 
+
+@require_http_methods(["GET"])
 def order_cancel(request):
     context = {}
     return render(request, "order/cancel.html", context)

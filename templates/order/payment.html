@@ -1,15 +1,18 @@
 {% extends "base.html" %}
 
+{% load templatetags %}
 {% load static %}
 
 {% block content %}
 <div class="order-process">
     <div class="container">
         <div class="row">
+        	{% csrf_token %}
             <h1>Zaplac po przez:</h1>
             <!-- writes out the form tag automatically -->
             <span class="cena"></span>
             <div id="paypal-button-container"></div>
+            {# <span class="back-main-page"><a href="{% url 'index' %}">Wroc do Strony Glownej</a></span> #}
         </div>
     </div>
 </div>
@@ -19,6 +22,7 @@
 {% block javascript %}
 	<script src="https://www.paypal.com/sdk/js?client-id={{ P_AYPAL }}&currency=PLN"></script>
     <script>
+    	var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         paypal.Buttons({
         	style: {
 			  shape: 'pill',
@@ -28,25 +32,53 @@
 			},
 		    createOrder: function(data, actions) {
 		      // This function sets up the details of the transaction, including the amount and line item details.
-		      return actions.order.create({
-		        purchase_units: [{
-		          amount: {
-		            value: {{ PR1C3 }}
-		          }
-		        }]
-		      });
+		    return actions.order.create({
+				purchase_units: [{
+					amount: {
+						value: {{ PR1C3 }}
+					},
+				}]
+		    });
 		    },
-		    onApprove: function(data, actions) {
-				return actions.order.capture().then(function(details) {
-					window.location.href = document._scd['routing']['order_success'];
+			onApprove: function (data, actions) {
+				// Get the order details
+				return actions.order.get().then(function (orderDetails) {
+					return actions.order.capture().then(function () {
+						payload = {
+							'email': typeof orderDetails.payer.email_address === 'undefined' ? '' : orderDetails.payer.email_address,
+							'name': typeof orderDetails.payer.name.given_name === 'undefined' ? '' : orderDetails.payer.name.given_name,
+							'surname': typeof orderDetails.payer.name.surname === 'undefined' ? '' : orderDetails.payer.name.surname,
+							'transation_id': typeof orderDetails.id === 'undefined' ? '' : orderDetails.id,
+
+							'address_1': typeof orderDetails.purchase_units[0].shipping.address.address_line_1 === 'undefined' ? '' : orderDetails.purchase_units[0].shipping.address.address_line_1,
+							'address_2': typeof orderDetails.purchase_units[0].shipping.address.address_line_2 === 'undefined' ? '' : orderDetails.purchase_units[0].shipping.address.address_line_2,
+							'city': typeof orderDetails.purchase_units[0].shipping.address.admin_area_2 === 'undefined' ? '' : orderDetails.purchase_units[0].shipping.address.admin_area_2,
+							'state': typeof orderDetails.purchase_units[0].shipping.address.admin_area_1 === 'undefined' ? '' : orderDetails.purchase_units[0].shipping.address.admin_area_1,
+							'postcode': typeof orderDetails.purchase_units[0].shipping.address.postal_code === 'undefined' ? '' : orderDetails.purchase_units[0].shipping.address.postal_code,
+						}
+						$.ajax({
+		                    method: 'POST',
+		                    url: document._scd['routing']['order_create'],
+		                    headers:{"X-CSRFToken": csrftoken},
+		                    data: payload,
+		                }).done(function(response) {
+		                	window.location.href = document._scd['routing']['order_success'];
+		                })
+		                .fail(function(response) {
+		                	console.log(response, 'fail');
+		                });
+					});
 				});
 			},
 			onError: function (err) {
+			    console.log(err, 'fail');
+			    debugger
+
 				window.location.href = document._scd['routing']['order_fail'];
 			},
-			onCancel: function (data) {
-				window.location.href = document._scd['routing']['order_cancel'];
-			}
+			// onCancel: function (data) {
+			// 	window.location.href = document._scd['routing']['order_cancel'];
+			// }
 		}).render('#paypal-button-container');
     </script>
 {% endblock javascript %}

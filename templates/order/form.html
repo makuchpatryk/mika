@@ -30,7 +30,7 @@
                     <form method="post" action="">
                         {% csrf_token %}
                         <div class="row">
-                            <div class="col-md-12 col-lg-12">
+                            <div class="col-md-6">
                                 <div class="form-group wow fadeInUp" data-wow-delay="200ms">
                                     <div class="error-form">{{ form.errors.email }}</div>
                                     {{ form.email }}
@@ -38,20 +38,50 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group wow fadeInUp" data-wow-delay="300ms">
-                                    <div class="error-form">{{ form.errors.subject }}</div>
-                                    {{ form.subject }}
+                                    <div class="error-form">{{ form.errors.name }}</div>
+                                    {{ form.name }}
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group wow fadeInUp" data-wow-delay="300ms">
-                                    <div class="error-form">{{ form.errors.number }}</div>
-                                    {{ form.number }}
+                                    <div class="error-form">{{ form.errors.surname }}</div>
+                                    {{ form.surname }}
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-lg-6">
+                                <div class="form-group wow fadeInUp" data-wow-delay="300ms">
+                                    <div class="error-form">{{ form.errors.address_1 }}</div>
+                                    {{ form.address_1 }}
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group wow fadeInUp" data-wow-delay="300ms">
+                                    <div class="error-form">{{ form.errors.address_2 }}</div>
+                                    {{ form.address_2 }}
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group wow fadeInUp" data-wow-delay="300ms">
+                                    <div class="error-form">{{ form.errors.city }}</div>
+                                    {{ form.city }}
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group wow fadeInUp" data-wow-delay="300ms">
+                                    <div class="error-form">{{ form.errors.state }}</div>
+                                    {{ form.state }}
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group wow fadeInUp" data-wow-delay="300ms">
+                                    <div class="error-form">{{ form.errors.postcode }}</div>
+                                    {{ form.postcode }}
+                                </div>
+                            </div>
+                            <div class="col-6">
                                 <div class="form-group wow fadeInUp" data-wow-delay="400ms">
-                                    <div class="error-form">{{ form.errors.adres_to_send }}</div>
-                                    {{ form.adres_to_send }}
+                                    <div class="error-form">{{ form.errors.number }}</div>
+                                    {{ form.number }}
                                 </div>
                             </div>
                             <button class="btn oneMusic-btn mt-30 send-form" type="submit">Zaplac <i class="fa fa-angle-double-right"></i></button>

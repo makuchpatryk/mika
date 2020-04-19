@@ -92,3 +92,39 @@ class Order(models.Model):
 
     def __str__(self):
         return '{} {}'.format(self.email, self.adres_to_send)
+
+
+class OrderPayment(models.Model):
+    ctime = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+
+    name = models.CharField(max_length=255, verbose_name="Name", null=True, blank=True)
+    surname = models.CharField(max_length=255, verbose_name="Surname", null=True, blank=True)
+
+    address_1 = models.CharField(
+        max_length=255, verbose_name="Adres line 1", null=False, blank=False)
+    address_2 = models.CharField(max_length=255, verbose_name="Adres line 2", null=True, blank=True)
+    city = models.CharField(max_length=255, verbose_name="City", null=True, blank=True)
+    state = models.CharField(max_length=255, verbose_name="State", null=True, blank=True)
+    postcode = models.CharField(max_length=255, verbose_name="Postcode", null=True, blank=True)
+
+    email = models.CharField(max_length=255, verbose_name="Email", null=False, blank=False)
+    transation_id = models.CharField(
+        max_length=255, verbose_name="Transition", null=True, blank=True)
+
+    done = models.BooleanField(default=False)
+
+    COMPLETED = 15
+    CANCEL = 16
+    ORDERED = 17
+
+    PAYMENT_STATUS_CHOICES = (
+        (ORDERED, 'ordered'),
+        (COMPLETED, 'completed'),
+        (CANCEL, 'done'),
+    )
+
+    status = models.SmallIntegerField(
+        choices=PAYMENT_STATUS_CHOICES, default=ORDERED)
+
+    def __str__(self):
+        return '{} {}'.format(self.email, self.surname)
