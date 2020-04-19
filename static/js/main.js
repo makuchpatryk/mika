@@ -50,7 +50,7 @@ $(document).ready(function()
     var image = $(this).attr('href');
     var id = parseInt($(this).parent().index())+1
     var last = parseInt($('.slideshow-container .img').last().index())+1
-    $('html').addClass('no-scroll');
+
     $('body').append('<div class="lightbox-opened"><img data-key="'+ id +'" src="' + image + '"></div>');
     addNav(id, last)
   });
@@ -58,7 +58,6 @@ $(document).ready(function()
   // Close Lightbox
     $('body').on('click', '.lightbox-opened', function()
     {
-        $('html').removeClass('no-scroll');
         $('.lightbox-opened').remove();
         $('.gal-nav').remove();
     });

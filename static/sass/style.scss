@@ -30,14 +30,16 @@ body {
 // Simple Lightbo
 
 .lightbox-opened:before {
-	background-color: #333;
-	background-color: rgba(#333, 0.9);
 	color: #eee;
 	content: "x";
 	font-family: sans-serif;
 	padding: 6px 12px;
 	position: fixed;
 	text-transform: uppercase;
+	position: absolute;
+    top: 95px;
+    font-weight: 800;
+    right: 64px;
 }
 
 .lightbox-opened img {
@@ -551,17 +553,16 @@ img {
 
 .lightbox-opened {
 	padding-top: 100px;
-  background-color: #333;
-  background-color: rgba(0,0,0, 0.9);
-  cursor: pointer;
-  height: 100%;
-  left: 0;
-  overflow-y: hidden;
-  padding: 24px;
-  position: fixed;
-  text-align: center;
-  top: 0;
-  width: 100%;
+	background-color: #333;
+	background-color: rgba(0,0,0, 0.9);
+	cursor: pointer;
+	height: 100%;
+	left: 0;
+	padding: 24px;
+	position: fixed;
+	text-align: center;
+	top: 0;
+	width: 100%;
 }
 
 .slideshow-container .img {
