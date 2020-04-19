@@ -5,3 +5,4 @@ staticfiles
 mika/wsgi.py
 manage.py
 media
+node_modules
