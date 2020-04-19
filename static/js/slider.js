@@ -30,6 +30,6 @@ $(document).ready(function()
 		}
 		$('#slider ul').append('<li class="bg-img" style="background-image: url(' + document._scd['data']['slides'][x] + '); display: none;"></li>');
 		$('#slider ul li:last-of-type').fadeIn(1200);
-		};
+	};
 
 });
