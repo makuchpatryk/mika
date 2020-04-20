@@ -6,10 +6,12 @@ $(document).ready(function()
     	var pk = $element.data('pk');
     	var number = $element.data('number');
     	var once = true;
+    	var liked = false;
 
 		if (getCookie('likePost_' + pk))
 		{
 			likeOff($element);
+			liked = true;
 		}
 
     	$element.find('.icon').click(function() {
@@ -23,7 +25,7 @@ $(document).ready(function()
     		likeOff();
     	})
     	$element.find('.icon').mouseout(function(){
-    		if (!getCookie('likePost_' + pk))
+    		if (!liked)
 			{
     			likeOn();
     		}
@@ -36,7 +38,7 @@ $(document).ready(function()
     			return;
     		}
     		once = false;
-
+    		liked = true;
 			likeOff();
             likeNumberUp();
 			$.ajax({
