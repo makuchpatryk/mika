@@ -125,19 +125,6 @@ def post(request, pk):
     return render(request, "blog/post.html", context)
 
 
-def like_post(request, pk):
-    try:
-        post = models.Post.objects.get(pk=pk)
-        like = models.Like()
-        like.post = post
-        like.save()
-    except ObjectDoesNotExist:
-        raise Http404
-
-    context = {'post': post}
-    return HttpResponseRedirect(reverse('feed'))
-
-
 def akustycznie(request):
     path = settings.STATICFILES_DIRS[0]
     img_list = os.listdir(path + '/img/gallery/akustycznie/')

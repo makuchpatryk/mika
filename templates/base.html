@@ -146,10 +146,15 @@
     <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
     <script src="{% static 'js/jquery/jquery-ui.min.js' %}"></script>
 
+    <script src="{% static 'js/global/setup.js' %}?{{ VERSION }}"></script>
+    <script src="{% static 'js/global/js-components.js' %}?{{ VERSION }}"></script>
     <script src="{% static 'js/global/general.js' %}?{{ VERSION }}"></script>
     <script src="{% static 'js/main.js' %}?{{ VERSION }}"></script>
     <script src="{% static 'js/slider.js' %}?{{ VERSION }}"></script>
     <script src="{% static 'js/music.js' %}?{{ VERSION }}"></script>
+    <script src="{% static 'js/blog.js' %}?{{ VERSION }}"></script>
+
+
     <script type="text/javascript">
         document._scd = {};
 
@@ -169,13 +174,16 @@
         document._scd['routing'] = {
             'music_play': "{% url 'music_play' %}",
             'music_stop': "{% url 'music_stop' %}",
-            'like_post': "{% url 'like_post' pk=0 %}",
+            'like_post': "{% url 'like_post' %}",
             'order_success': "{% url 'order_success' %}",
             'order_fail': "{% url 'order_fail' %}",
             'order_cancel': "{% url 'order_cancel' %}",
 
             'order_create': "{% url 'order_create' %}",
         };
+        $(document).bind('ready', function() {
+            $('body').trigger('initComponents', ['base']);
+        });
     </script>
     {% block javascript %}{% endblock javascript %}
     </body>

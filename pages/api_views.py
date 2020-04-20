@@ -40,9 +40,25 @@ class OrderCreateView(APIView):
                 body={"errors": form.errors})
 
         payload = form.to_payload(data)
-        print(payload)
         try:
             logic.create_order_payment(payload)
+        except exceptions.MikaException as e:
+            return utils.api_res(
+                body={"errors": e})
+
+        return Response(
+            {"message": "ok"},
+            status=status.HTTP_201_CREATED)
+
+
+class likePostView(APIView):
+    def post(self, request, *args, **kwargs):
+        data = utils.to_query_dict(
+            request.POST if request.POST else request.data)
+
+        uid = int(data.get('uid'))
+        try:
+            logic.like_post(pk=uid)
         except exceptions.MikaException as e:
             return utils.api_res(
                 body={"errors": e})

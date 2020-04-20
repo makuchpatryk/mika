@@ -1,9 +1,7 @@
 $(document).ready(function()
 {
-	console.log(document._scd['data']['slides']);
 	x = 0;
     y = 0;
-    console.log(document._scd['data']['slides'][x]);
     $('#slider ul').html('<li class="bg-img" style="background-image: url(' + document._scd['data']['slides'][x] + ');"></li>');
     setInterval(function () {
         nextSlide();

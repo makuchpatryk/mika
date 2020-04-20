@@ -1,5 +1,7 @@
 from pages import models
 from . import exceptions
+from django.http import Http404
+from django.core.exceptions import ObjectDoesNotExist
 
 
 def create_order_payment(payload):
@@ -23,3 +25,15 @@ def create_order_payment(payload):
     except Exception as e:
         raise exceptions.MikaException(e)
     return order.pk
+
+
+def like_post(pk):
+    try:
+        post = models.Post.objects.get(pk=pk)
+        like = models.Like()
+        like.post = post
+        like.save()
+    except ObjectDoesNotExist as e:
+        raise exceptions.MikaException(e)
+
+    return like

@@ -23,19 +23,20 @@
                                     <iframe id="player" type="text/html" src="{{ post.yt_link }}" frameborder="0"></iframe>
                                 </span>
                             {% endif %}
-                            {% if obj.tags.all %}
+                            {% if post.tags.all %}
                             <span class="tags">
                                 <ul>
-                                    {% for tag in obj.tags.all %}
+                                    {% for tag in post.tags.all %}
                                     <li>#{{ tag }} </li>
                                     {% endfor %}
                                 </ul>
                             </span>
                             {% endif %}
+
                             <span class="like-post">
-                                <span class="btn JS_like_post" data-pk={{obj.pk}}>LIKE</span>
-                                <span class="number">{{ obj.like_set.all|length }}</span>
+                                {% include 'blog/parts/like.html' with obj=post %}
                             </span>
+                            <span class="clearfix"></span>
                         </li>
                     </ul>
                 </div>

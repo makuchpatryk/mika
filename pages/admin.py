@@ -3,7 +3,7 @@ from django.utils.html import format_html
 from django.urls import reverse
 
 # Register your models here.
-from .models import Category, Post, Album, Song, Hashtag, Order, OrderPayment
+from .models import Category, Post, Album, Song, Hashtag, Order, OrderPayment, Like
 
 
 class AlbumAdmin(admin.ModelAdmin):
@@ -41,6 +41,7 @@ class OrderPaymentAdmin(admin.ModelAdmin):
 
 admin.site.register(Category)
 admin.site.register(Post)
+admin.site.register(Like)
 
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderPayment, OrderPaymentAdmin)
