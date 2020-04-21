@@ -5,3 +5,5 @@ DEBUG = True
 
 STATIC_ROOT = '/storage/home/django_learn/storage/static/'
 EMAIL_RECIVER_USER = 'makuchpatryk@gmail.com'
+
+SECURE_SSL_REDIRECT = False
