@@ -5,8 +5,14 @@
   "main": ".eslintrc.js",
   "dependencies": {
     "@babel/register": "^7.0.0-beta.51",
+    "acorn": "^7.1.1",
+    "clean-css": "^4.2.3",
     "gulp": "^4.0.2",
-    "redis": "^2.7.1"
+    "https-proxy-agent": "^5.0.0",
+    "js-yaml": "^3.13.1",
+    "lodash.template": "^4.5.0",
+    "redis": "^2.7.1",
+    "tunnel-agent": "^0.6.0"
   },
   "devDependencies": {
     "babel-core": "^6.3.26",
