@@ -21,6 +21,8 @@
   <link rel="stylesheet" href="{% static 'css/jquery/jquery-ui.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}?{{ VERSION }}">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:400,700|Mukta:400,700|Quicksand:400,700&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/vue"></script>
   <script>
   var data = {
     source: "{% static '/audio/Virgo_Jingle.mp3' %}",
@@ -116,6 +118,10 @@
 
 
   {% block content %}{% endblock %}
+
+  <div id="app">
+    <div v-html="input"></div>
+  </div>
   <div id="dialog" class="like-post-dialog" title="Basic dialog">
       <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
   </div>
@@ -142,6 +148,9 @@
       <a href="https://open.spotify.com/artist/7sfo31WlAvO9zpFrwOq1if?si=c9j_JeMOQOW7ndxRPhp6tw" data-toggle="tooltip" data-placement="top" title="Spotify"><i class="fa fa-spotify" aria-hidden="true"></i></a>
 
   </div>
+    {% block javascript_templates %}
+    {% include "templates.html" %}
+    {% endblock javascript_templates %}
 
     <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
     <script src="{% static 'js/jquery/jquery-ui.min.js' %}"></script>
@@ -153,6 +162,11 @@
     <script src="{% static 'js/slider.js' %}?{{ VERSION }}"></script>
     <script src="{% static 'js/music.js' %}?{{ VERSION }}"></script>
     <script src="{% static 'js/blog.js' %}?{{ VERSION }}"></script>
+    
+
+    <script src="{% static 'js/vue/comment-form.js' %}?{{ VERSION }}"></script>
+
+    
 
     <script type="text/javascript" id="cookieinfo"
       src="{% static 'js/vendor/cookieinfo.min.js' %}" data-close-text="Akceptuję"
@@ -162,7 +176,8 @@
 
     <script type="text/javascript">
         document._scd = {};
-
+        document._scd['components'] = {}
+        document._scd['bus'] = new Vue()
 
         document._scd['data'] = {
             'music': {% if MUSIC_PLAYING %}true{% else %}false{% endif %},
@@ -189,6 +204,7 @@
         $(document).bind('ready', function() {
             $('body').trigger('initComponents', ['base']);
         });
+
     </script>
     {% block javascript %}{% endblock javascript %}
     </body>

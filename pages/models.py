@@ -67,6 +67,14 @@ class Like(models.Model):
     ctime = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
 
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, blank=True)
+    ctime = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    content = models.CharField(max_length=500, null=False, blank=False)
+    name = models.CharField(max_length=100, null=False, blank=False)
+
+
+
 class Order(models.Model):
     name = models.CharField(max_length=255, verbose_name="Name", null=True, blank=True)
     ctime = models.DateTimeField(auto_now_add=True, null=True, blank=True)

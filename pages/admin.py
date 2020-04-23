@@ -3,7 +3,8 @@ from django.utils.html import format_html
 from django.urls import reverse
 
 # Register your models here.
-from .models import Category, Post, Album, Song, Hashtag, Order, OrderPayment, Like
+from .models import Category, Post, Album, Song,\
+    Hashtag, Order, OrderPayment, Like, Comment
 
 
 class AlbumAdmin(admin.ModelAdmin):
@@ -39,9 +40,14 @@ class OrderPaymentAdmin(admin.ModelAdmin):
                 obj.email)
 
 
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('post', 'ctime', 'content', 'name')
+
+
 admin.site.register(Category)
 admin.site.register(Post)
 admin.site.register(Like)
+admin.site.register(Comment, CommentAdmin)
 
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderPayment, OrderPaymentAdmin)
