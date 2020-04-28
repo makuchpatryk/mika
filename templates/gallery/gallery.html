@@ -9,8 +9,8 @@
 <!-- Slideshow container -->
 
 <div class="slideshow-container">
-  {% if images %}
-  		{% for image in images %}
+  {% if page_obj.object_list %}
+  		{% for image in page_obj.object_list %}
 
   			{% with image|split:'.' as strs %}
   				{% with strs|length as str_arr_len %}
@@ -29,6 +29,23 @@
   		<p>No image available.</p>
   	{% endif %}
   	<div class="clear"></div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; pierwsza </a>
+                <a href="?page={{ page_obj.previous_page_number }}">&lsaquo; poprzednia</a>
+            {% endif %}
+
+            <span class="current">
+                Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">następna &rsaquo;</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">ostatnia &raquo;</a>
+            {% endif %}
+        </span>
+  </div>
 </div>
 {% endblock %}
 

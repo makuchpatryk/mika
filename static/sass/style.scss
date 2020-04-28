@@ -104,38 +104,43 @@ header.sticky .mobile-menu .menu {
 .classynav {
 	height: 50px;
 }
-ul.menu {
+.menu {
 	float: right;
 	width: 435px;
 	padding-right: 20px;
 	margin: 12px 0;
+	li {
+		display: inline-block;
+		width: auto;
+		padding-left: 20px;
+		a {
+			color: white;
+		}
+		&:hover a {
+			color: #bbb;
+		}
+	}
 }
-ul.menu li {
-	display: inline-block;
-	width: auto;
-	padding-left: 20px;
-}
-ul.menu li a {
-	color: white;
-}
+
 .dropdown {
 	display: none;
 	position: absolute;
-	border: white 1px solid;
 	border-radius: 10px;
-	background-color: rgba(255,255,255,0.7);
+	background-color: rgba(255,255,255,1);
 	padding: 5px;
-}
-ul.dropdown li {
-	display: block;
-	color: #333;
-	padding: 2px 5px;
-}
-ul.dropdown li a {
-	color: #333 !important;
-}
-ul.dropdown li a:hover {
-	color: #333 !important;
+	min-width: 90px;
+	li {
+		display: block;
+		color: #333;
+		padding: 2px 5px;
+		a {
+			color: #333 !important;
+			&:hover {
+			color: #333 !important;
+			font-weight: 800;
+			}
+		}
+	}
 }
 .hero-area {
 	width: 100%;
@@ -502,10 +507,23 @@ h4 {
 	margin-right: auto;
 	padding-top: 10px;
 }
-.preview, .lists {
+.preview {
 	width: 800px;
 	margin-left: auto;
 	margin-right: auto;
+}
+.lists {
+	width: 100%;
+	text-align: left;
+	h4 {
+		text-align: left;
+		margin-top: 10px;
+		margin-bottom: 5px;
+	}
+	ul {
+		margin-top: 0;
+		padding-left: 0;
+	}
 }
 @media (max-width: 1024px)
 {
@@ -1163,4 +1181,20 @@ ul.messages {
 
 .cookieinfo {
 	background-color: #555 !important;
+}
+
+.pagination {
+	margin-top: 20px;
+	.step-links {
+		a {
+			color: white;
+			&:hover {
+				color: #bbb;
+			}
+		}
+		.current {
+			margin-right: 10px;
+			margin-left: 10px;
+		}
+	}
 }

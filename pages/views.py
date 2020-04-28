@@ -128,7 +128,11 @@ def post(request, pk):
 def akustycznie(request):
     path = settings.STATICFILES_DIRS[0]
     img_list = os.listdir(path + '/img/gallery/akustycznie/')
-    context = {'images' : img_list, 'folder': 'akustycznie'}
+    paginator = Paginator(img_list, settings.GALLERY_NUM)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'page_obj' : page_obj, 'folder': 'akustycznie'}
     return render(request, "gallery/gallery.html", context)
 
 
@@ -136,41 +140,65 @@ def koncert(request):
     path = settings.STATICFILES_DIRS[0]
 
     img_list = os.listdir(path + '/img/gallery/koncert/')
-    context = {'images' : img_list, 'folder': 'koncert'}
+    paginator = Paginator(img_list, settings.GALLERY_NUM)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'page_obj' : page_obj, 'folder': 'koncert'}
     return render(request, "gallery/gallery.html", context)
 
 def Sesja_2016(request):
     path = settings.STATICFILES_DIRS[0]
     img_list = os.listdir(path + '/img/gallery/sesja_2016/')
-    context = {'images' : img_list, 'folder': 'sesja_2016'}
+    paginator = Paginator(img_list, settings.GALLERY_NUM)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'page_obj' : page_obj, 'folder': 'sesja_2016'}
     return render(request, "gallery/gallery.html", context)
 
 
 def Sesja_2017(request):
     path = settings.STATICFILES_DIRS[0]
     img_list = os.listdir(path + '/img/gallery/sesja_2017/')
-    context = {'images' : img_list, 'folder': 'sesja_2017'}
+    paginator = Paginator(img_list, settings.GALLERY_NUM)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'page_obj' : page_obj, 'folder': 'sesja_2017'}
     return render(request, "gallery/gallery.html", context)
 
 
 def Sesja_2019(request):
     path = settings.STATICFILES_DIRS[0]
     img_list = os.listdir(path + '/img/gallery/sesja_2019/')
-    context = {'images' : img_list, 'folder': 'sesja_2019'}
+    paginator = Paginator(img_list, settings.GALLERY_NUM)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'page_obj' : page_obj, 'folder': 'sesja_2019'}
     return render(request, "gallery/gallery.html", context)
 
 
 def Sesja_2020(request):
     path = settings.STATICFILES_DIRS[0]
     img_list = os.listdir(path + '/img/gallery/sesja_2020/')
-    context = {'images' : img_list, 'folder': 'sesja_2020'}
+    paginator = Paginator(img_list, settings.GALLERY_NUM)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'page_obj' : page_obj, 'folder': 'sesja_2020'}
     return render(request, "gallery/gallery.html", context)
 
 
 def sesja_ayz(request):
     path = settings.STATICFILES_DIRS[0]
     img_list = os.listdir(path + '/img/gallery/sesja_ayz/')
-    context = {'images' : img_list, 'folder': 'sesja_ayz'}
+    paginator = Paginator(img_list, settings.GALLERY_NUM)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'page_obj' : page_obj, 'folder': 'sesja_ayz'}
     return render(request, "gallery/gallery.html", context)
 
 
