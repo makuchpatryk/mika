@@ -8,18 +8,54 @@
     <div class="container">
         <div class="row">
         	{% csrf_token %}
-            <h1>Zaplac po przez:</h1>
-            <!-- writes out the form tag automatically -->
-            <span class="cena"></span>
-            <div id="paypal-button-container"></div>
-            {# <span class="back-main-page"><a href="{% url 'index' %}">Wroc do Strony Glownej</a></span> #}
+        	{% if payment_display %}
+			<section class="preorder" id="preorder">
+				<h3>Sprzedaż „Pył”</h3>
+				<div class="left-side">
+					<p>Zamów wersję fizyczną CD z książeczką z tekstami oraz ilustracjami piosenek.</p>
+					<span class="price">cena: 30.00 zl + Przesyłka: 4.10 zł - list ekonomiczny</span>
+					<div class="desc">
+						<p>Płyta zostanie do Ciebie wysłana po zaksięgowaniu wpłaty.</p>
+			            <p>Płyta jest domyślnie wysyłana na adres rozliczeniowy.</p>
+			            <p>Jeżeli adres rozliczeniowy nie jest twoim obecnym adresem, pamiętaj, żeby podać przed zakupem adres wysyłkowy.</p>
+			        </div>
+				</div>
+				<div class="right-side">
+					<span class="image">
+			            <img src="{% static 'img/gallery' %}/sesja_2020/podglad4.jpg" alt=""  border="">
+			        </span>
+				</div>
+
+
+	            <!-- writes out the form tag automatically -->
+	            <span class="cena"></span>
+	            <div class="payment-container">
+	            	<h2>Zapłać po przez:</h2>
+		            <div id="paypal-button-container"></div>
+		        </div>
+
+				<p class="kup">Możesz również zamówić wersję cyfrową lub wersje fizyczną CD z książeczką z tekstami oraz ilustracjami piosenek przez serwis Bandcamp, <a href="https://tomaszmika.bandcamp.com/releases">klikając tutaj.</a></p>
+				<p>Album jest także dostępny do posłuchania na Spotify, Apple Music, Tidal, Soundcloud, Youtube Music oraz wielu innych platformach streamingowych.</p>
+				<div class="icons">
+					<a href="https://tomaszmika.bandcamp.com/releases"><i class="fa fa-bandcamp"></i></a>
+					<a href="https://www.youtube.com/watch?v=8Dw9JfAKSc0&list=OLAK5uy_kzRSRhMUWXGHpOHD8-o4t3RuYkak1q-nk"><i class="fa fa-youtube"></i></a>
+					<a href="https://open.spotify.com/album/6SLUXZJKVSl6P5jHRlpb9r?si=gcGt5LwRTKOGYKj-ry1aSg"><i class="fa fa-spotify"></i></a>
+					<a href="https://soundcloud.com/ayzon-1/sets/pyl"><i class="fa fa-soundcloud"></i></a>
+					<a href="https://tidal.com/album/128782276"><span class="tidal"></span></a>
+					<a href="https://music.apple.com/pl/album/py%C5%82/1495812517"><span class="itunes"></span></a>
+				</div>
+			</section>
+			{% endif %}
+            <span class="back-main-page"><a href="{% url 'index' %}">Wroc do Strony Glownej</a></span>
         </div>
     </div>
 </div>
-{# tomek id #AWiaPNzYoZQpydxjlxRcg-moV4E-ciHtiTBcWicOgaqVZlQb5xARnW9ELcP5u9ZMGIavP9Lh5c_d7o58 #}
+
+
 {% endblock %}
 
 {% block javascript %}
+	{% if payment_display %}
 	<script src="https://www.paypal.com/sdk/js?client-id={{ P_AYPAL }}&currency=PLN"></script>
     <script>
     	var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
@@ -72,7 +108,6 @@
 			},
 			onError: function (err) {
 			    console.log(err, 'fail');
-			    debugger
 
 				window.location.href = document._scd['routing']['order_fail'];
 			},
@@ -81,4 +116,5 @@
 			// }
 		}).render('#paypal-button-container');
     </script>
+    {% endif %}
 {% endblock javascript %}

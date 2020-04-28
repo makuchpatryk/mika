@@ -58,7 +58,7 @@ header {
 	left: 0;
 	width: 100%;
 	color: white;
-	z-index: 3;
+	z-index: 101;
 	background-color: #333;
 }
 .index header {
@@ -451,7 +451,10 @@ h4 {
 	margin-top: 74px;
 }
 .album1, .album2, .album3 {
-	padding: 20px;
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 10px;
 }
 .album1 h3, .album2 h3, .album3 h3 {
 	text-align: center;
@@ -491,14 +494,12 @@ h4 {
 }
 .album2 img {
 	padding-right: 0;
-	padding-left: 20px;
 	float: right;
 }
 .preorder {
 	width: 800px;
 	margin-left: auto;
 	margin-right: auto;
-	border-top: 1px solid #fff;
 	padding-top: 10px;
 }
 .preview, .lists {
@@ -518,7 +519,8 @@ h4 {
 	.gallery-main-container .img {
 		width: 100%;
 	}
-	.preorder, .preview, .lists {
+	.preorder, .preview, .lists,
+	.album1, .album2, .album3 {
 		width: 100%;
 		padding-left: 20px;
 		padding-right: 20px;
@@ -702,12 +704,18 @@ header.sticky .preorder-btn {
 	display: block;
 	font-weight: 600;
 	font-size: 22px;
+	text-align: left;
+	margin-bottom: 20px;
 }
-.account-num .num {
-	display: block;
-	font-size: 22px;
-
-	font-weight: 600;
+.account-num {
+	text-align: left;
+	font-size: 16px;
+	color: #ccc;
+	.num {
+		display: block;
+		font-size: 22px;
+		font-weight: 600;
+	}
 }
 .order {
 	display: block;
@@ -1050,54 +1058,95 @@ ul.messages {
 .order-process {
 	padding: 10px;
 	margin-top: 75px;
-}
-.order-process .fail {
-	background-color: #FC1414;
-	padding: 20px;
-	border-radius: 10px;
-}
-.order-process .info {
-	background-color: #0099CC;
-	padding: 20px;
-	border-radius: 10px;
+	text-align: center;
+	h3 {
+		margin-top: 0;
+		text-align: left;
+	}
+	.fail {
+		background-color: #FC1414;
+		padding: 20px;
+		border-radius: 10px;
+		a {
+			font-weight: 800;
+			font-size: 20px;
+			color: white;
+		}
+	}
+	.info {
+		background-color: #0099CC;
+		padding: 20px;
+		border-radius: 10px;
+	}
+
+	.success {
+		padding: 20px;
+		border-radius: 10px;
+		background-color: #00a000;
+		a {
+			font-weight: 800;
+			font-size: 20px;
+			color: white;
+		}
+	}
+	p {
+		display: inline-block;
+		font-size: 20px;
+		text-align: left;
+	}
+
+	.back-main-page a {
+		color: white;
+		padding: 10px 15px;
+		border-radius: 10px;
+		border:2px solid white;
+		display: inline-block;
+		margin-right: auto;
+		margin-left: auto;
+		margin-top: 15px;
+		font-size: 14px;
+		&:hover {
+			background-color: rgba(255,255,255,0.5);
+		}
+	}
+	.payment-container {
+		text-align: center;
+		border-radius: 10px;
+		background-color: rgba(255,255,255,0.9);
+		display: inline-block;
+		min-width: 500px;
+		padding: 20px;
+		h2 {
+			font-weight: 600;
+			font-size: 20px;
+			color: #333;
+			margin-top: 0;
+		}
+		@media (max-width: 600px) {
+			min-width: 0;
+			width: 100%;
+		}
+
+	}
+	.desc {
+		text-align: left;
+		p {
+			font-size: 16px;
+			color: #ccc;
+			margin: 0;
+			text-align: left;
+			line-height: normal;
+			margin-bottom: 7px;
+		}
+	}
+	.left-side {
+		text-align: left;
+		p {
+			margin-top: 0;
+		}
+	}
 }
 
-.order-process .success {
-	padding: 20px;
-	border-radius: 10px;
-	background-color: #00a000;
-}
-.order-process p {
-	display: inline-block;
-	font-size: 20px;
-}
-.order-process .success a {
-	font-weight: 800;
-	font-size: 20px;
-	color: white;
-}
-.order-process .fail a {
-	font-weight: 800;
-	font-size: 20px;
-	color: white;
-}
-
-
-.order-process .back-main-page a {
-	color: white;
-	padding: 10px 15px;
-	border-radius: 10px;
-	border:2px solid white;
-	display: inline-block;
-	margin-right: auto;
-	margin-left: auto;
-	margin-top: 15px;
-	font-size: 14px;
-
-}
-.order-process .back-main-page a:hover {
-	background-color: rgba(255,255,255,0.5);
-}
 
 .like-post {
 	float: right;

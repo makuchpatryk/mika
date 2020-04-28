@@ -242,6 +242,9 @@ def order_payment(request):
     context = {
         'payment_display': True
     }
+    if not request.user.is_staff:
+        context['payment_display'] = False
+        messages.error(request, msg_error)
     # if request.method == "GET":
     #     try:
     #         order = models.OrderPayment.objects.get(pk=order_id)
