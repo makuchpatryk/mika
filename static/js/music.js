@@ -43,7 +43,7 @@ $(document).ready(function()
 					console.log('error');
 					$( "#musicplay" ).trigger('click');
 				});
-			}, 2000);
+			}, 200);
 		}
 		setInterval(function()
 		{
