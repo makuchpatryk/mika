@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.utils.text import slugify
 
 # Create your models here.
 
@@ -15,11 +16,13 @@ class Hashtag(models.Model):
     def __str__(self):
         return self.title
 
+
 class Category(models.Model):
     title = models.CharField(max_length=255, verbose_name="Title")
 
     def __str__(self):
         return self.title
+
 
 class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -72,7 +75,6 @@ class Comment(models.Model):
     ctime = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     content = models.CharField(max_length=500, null=False, blank=False)
     name = models.CharField(max_length=100, null=False, blank=False)
-
 
 
 class Order(models.Model):
@@ -136,3 +138,16 @@ class OrderPayment(models.Model):
 
     def __str__(self):
         return '{} {}'.format(self.email, self.surname)
+
+
+class Snippet(models.Model):
+    title = models.CharField(max_length=80)
+    slug = models.SlugField(blank=True, null=True)
+    body = models.TextField()
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return '/{}'.format(self.slug)

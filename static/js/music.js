@@ -31,8 +31,10 @@ $(document).ready(function()
 		{
 			audio.currentTime = tillPlayed;
 		}
+		console.log("play music1", playPromise)
 		if (playPromise !== undefined)
 		{
+			console.log("play music2")
 			setTimeout(function() {
 				playPromise.then(function() {
 					audio.muted = false;
@@ -41,7 +43,7 @@ $(document).ready(function()
 					console.log('error');
 					$( "#musicplay" ).trigger('click');
 				});
-			}, 100);
+			}, 2000);
 		}
 		setInterval(function()
 		{

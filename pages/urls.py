@@ -1,11 +1,11 @@
 # pages/urls.py
 from django.conf.urls import url
-
-
 from . import views
+
 
 urlpatterns = [
     url(r'^$', views.IndexPageView.as_view(), name='index'),
+    url(r'<slug:slug>/', views.snippet_detail),
     url(r'^about/$', views.AboutPageView.as_view(), name='about'),
     url(r'^feed/?$', views.feed, name='feed'),
     url(r'^feed/(?P<pk>\d+)/post/?$', views.post, name='post'),

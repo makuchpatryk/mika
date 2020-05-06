@@ -4,7 +4,7 @@ from django.urls import reverse
 
 # Register your models here.
 from .models import Category, Post, Album, Song,\
-    Hashtag, Order, OrderPayment, Like, Comment
+    Hashtag, Order, OrderPayment, Like, Comment, Snippet
 
 
 class AlbumAdmin(admin.ModelAdmin):
@@ -55,3 +55,4 @@ admin.site.register(Song, SongAdmin)
 admin.site.register(Album, AlbumAdmin)
 
 admin.site.register(Hashtag)
+admin.site.register(Snippet)

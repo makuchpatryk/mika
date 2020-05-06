@@ -23,8 +23,11 @@ from django.views.decorators.http import require_http_methods
 
 from library import exceptions, logic
 
-
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
+from .models import Snippet
 from django.forms.models import model_to_dict
+
 
 class IndexPageView(FormView):
     template_name = 'index.html'
@@ -309,3 +312,8 @@ def order_fail(request):
 def order_cancel(request):
     context = {}
     return render(request, "order/cancel.html", context)
+
+
+def snippet_detail(request, slug):
+    snippet = get_object_or_404(Snippet, slug=slug)
+    return HttpResponse('the detailview for slug of {}'.format(slug))
