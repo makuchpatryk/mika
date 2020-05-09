@@ -11,7 +11,6 @@ class AlbumAdmin(admin.ModelAdmin):
     list_display = ('album_name', 'ctime', 'description', 'author')
 
 
-
 class SongAdmin(admin.ModelAdmin):
     list_display = ('song_name', 'album', 'ctime', 'description')
 
@@ -21,11 +20,12 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ['ctime']
 
     def send_confirmation(self, obj):
-    	if not obj.done:
-		    return format_html(
-		    	'<a href="{}?email={}">Wyslij Potwierdzenie</a>&nbsp;',
-		    	reverse('sent_confimation', kwargs={'pk': obj.pk}),
-				obj.email)
+        if not obj.done:
+            return format_html(
+                '<a href="{}?email={}">Wyslij Potwierdzenie</a>&nbsp;',
+                reverse('sent_confimation', kwargs={'pk': obj.pk}),
+                obj.email)
+        return ''
 
 
 class OrderPaymentAdmin(admin.ModelAdmin):

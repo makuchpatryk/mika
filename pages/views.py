@@ -116,9 +116,9 @@ def feed(request):
     return render(request, "blog/feed.html", context)
 
 
-def post(request, pk):
+def post(request, slug):
     try:
-        post = models.Post.objects.get(pk=pk)
+        post = models.Post.objects.get(slug=slug)
     except ObjectDoesNotExist:
         raise Http404
 

@@ -33,12 +33,17 @@ class Post(models.Model):
     text = models.TextField()
     yt_link = models.CharField(max_length=250, null=True, blank=True)
     tags = models.ManyToManyField(Hashtag)
+    slug = models.SlugField(blank=True, null=True)
 
     def __str__(self):
         return self.title
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
     def get_absolute_url(self):
-        return reverse('post', kwargs={'pk': self.pk})
+        return reverse('post', kwargs={'slug': self.slug})
     
     def comments(self):
         comments = Comment.objects.filter(post_id=self.pk).order_by('-ctime')

@@ -17,7 +17,7 @@
                                 <span class="author">author: {{ post.author }}</span>
                                 <span class="time">{{ post.ctime }}</span>
                             </span>
-                            <span class="content">{{ post.text }}</span>
+                            <span class="content">{{ post.text|safe }}</span>
                             {% if post.yt_link %}
                                 <span class="video">
                                     <iframe id="player" type="text/html" src="{{ post.yt_link }}" frameborder="0"></iframe>
@@ -47,13 +47,14 @@
                                                 <span class="author">{{ comment.name }}</span>
                                                 <span class="time">{{ comment.ctime }}</span>
                                             </span>
-                                            <span class="content">{{ comment.content }}</span>
+                                            <div class="content">
+                                                {{ comment.content }}
+                                            </div>
                                         </li>
                                         {% endfor %}
                                     </ul>
                                 {% endif %}
                             </span>
-                            
                         </li>
                     </ul>
                     <div id="comment_form_{{ post.id }}" data-init_vue="#comment_form_{{ post.id }}">

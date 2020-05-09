@@ -2,8 +2,10 @@ import json
 
 from django import template
 from pages import models
+from django.utils.safestring import mark_safe
 
 register = template.Library()
+
 
 @register.inclusion_tag('tags/blog/other_posts.html')
 def other_posts(limit=5):
@@ -11,6 +13,9 @@ def other_posts(limit=5):
     context = {'posts': posts}
     return context
 
-@register.filter
+
+@register.filter(name='jsonify')
 def jsonify(value):
     return json.dumps(value)
+
+

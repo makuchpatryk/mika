@@ -8,7 +8,7 @@ urlpatterns = [
     url(r'<slug:slug>/', views.snippet_detail),
     url(r'^about/$', views.AboutPageView.as_view(), name='about'),
     url(r'^feed/?$', views.feed, name='feed'),
-    url(r'^feed/(?P<pk>\d+)/post/?$', views.post, name='post'),
+    url(r'^feed/(?P<slug>[\w\-\_]+)/post/?$', views.post, name='post'),
 
     url(r'^gallery/$', views.GalleryView.as_view(), name='gallery'),
     url(r'^gallery/akustycznie/$', views.akustycznie, name='akustycznie'),

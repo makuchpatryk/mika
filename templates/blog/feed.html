@@ -19,7 +19,7 @@
                                     <span class="author">author: {{ obj.author }}</span>
                                     <span class="time">{{ obj.ctime }}</span>
                                 </span>
-                                <span class="content">{{ obj.text }}</span>
+                                <span class="content">{{ obj.text|safe }}</span>
                                 {% if obj.yt_link %}
                                     <span class="video">
                                         <iframe id="player" type="text/html" src="{{ obj.yt_link }}" frameborder="0"></iframe>
