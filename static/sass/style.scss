@@ -317,24 +317,26 @@ header.sticky .mobile-menu .menu {
 }
 .contact-details {
 	margin-top: 74px;
-	padding: 10px 20px;
 	margin-bottom: 30px;
-}
-.contact-area {
-    padding: 0 20px;
+	.contact-area {
+	    padding: 0 20px;
+		}
+	.details {
+		display: inline-block;
+		vertical-align: top;
+		@media (max-width: 1024px)
+		{
+			width: 100%;
+		}
 	}
-.contact-details .details {
-	display: inline-block;
-	vertical-align: top;
-width: 49%;
-}
-.contact-details .map {
-	display: inline-block;
-width: 49%;
-vertical-align: top;
-}
-.contact-area {
-
+	.map {
+		display: inline-block;
+		width: 49%;
+		vertical-align: top;
+	}
+	h3 {
+		width: 100%;
+	}
 }
 
 @-webkit-keyframes fade {
@@ -762,9 +764,6 @@ header.sticky .preorder-btn {
 	}
 	.preorder-btn {
 		right: 390px;
-	}
-	.contact-details .details {
-		width: 100%;
 	}
 }
 .gallery .se-pre-con {

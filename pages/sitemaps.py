@@ -5,7 +5,7 @@ from .models import Snippet
 
 class StaticViewSitemap(Sitemap):
     def items(self):
-        return ['index', 'about', 'feed', 'gallery', \
+        return ['index', 'o_mnie', 'feed', 'gallery', \
 	    	'akustycznie', 'koncert', 'sesja_2016', 'sesja_2017', \
 	    	'sesja_2019', 'sesja_2020', 'sesja_ayz', 'albums_almagest', \
 	    	'albums_awe', 'albums_pyl', 'contact', 'elements', 'event']
