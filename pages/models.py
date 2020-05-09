@@ -39,6 +39,19 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post', kwargs={'pk': self.pk})
+    
+    def comments(self):
+        comments = Comment.objects.filter(post_id=self.pk).order_by('-ctime')
+        return comments
+
+    def comments_total(self):
+        comments = Comment.objects.filter(post_id=self.pk).order_by('-ctime')
+        return comments.count()
+
+    def lastest_comments(self):
+        comments = Comment.objects.filter(
+            post_id=self.pk).order_by('-ctime')[:2]
+        return comments
 
 
 class Album(models.Model):
@@ -62,7 +75,7 @@ class Song(models.Model):
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return  self.song_name
+        return self.song_name
 
 
 class Like(models.Model):

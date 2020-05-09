@@ -38,6 +38,25 @@
                                     {% include 'blog/parts/like.html' with obj=obj %}
                                 </span>
                                 <span class="clearfix"></span>
+                                <span class="comment-container">
+                                    {% if obj.lastest_comments %}
+                                        <span class="comment-title">Komentarze:</span>
+                                        <ul>
+                                            {% for comment in obj.lastest_comments %}
+                                            <li>
+                                                <span class="meta">
+                                                    <span class="author">{{ comment.name }}</span>
+                                                    <span class="time">{{ comment.ctime }}</span>
+                                                </span>
+                                                <span class="content">{{ comment.content }}</span>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% if obj.comments_total > 2 %}
+                                            <span class="more"><a href="{{ obj.get_absolute_url }}">Sprawdź więcej »</a></span>
+                                        {% endif %}
+                                    {% endif %}
+                                </span>
                             </li>
                         {% endfor %}
                     </ul>

@@ -2,7 +2,7 @@ from django import forms
 from django.core.mail import send_mail
 from django.conf import settings
 
-from library import forms as lib_forms
+from library import forms as lib_forms, logic
 
 
 class NameForm(forms.Form):
@@ -26,6 +26,7 @@ class NameForm(forms.Form):
             fail_silently=False,
         )
         return mail
+
 
 class OrderForm(forms.Form):
     email = forms.EmailField(
@@ -94,6 +95,30 @@ class OrderPaymentForm(lib_forms.FormBase):
         mail = send_mail(
             sub,
             msg,
+            settings.EMAIL_HOST_USER,
+            [settings.EMAIL_RECIVER_USER],
+            fail_silently=False,
+        )
+        return mail
+
+
+class CommentPostForm(lib_forms.FormBase):
+    post_id = forms.IntegerField(widget=forms.TextInput(
+        attrs={"placeholder": "Imię", 'class': 'form-control'}), required=True)
+    name = forms.CharField(widget=forms.TextInput(
+        attrs={"placeholder": "Imię", 'class': 'form-control'}), required=True)
+    content = forms.CharField(widget=forms.TextInput(attrs={
+        "placeholder": "Nazwisko", 'class': 'form-control'}), required=True)
+
+    def send_email(self):
+        post = logic.get_post_by_uid(pk=self.cleaned_data['post_id'])
+        sub = '{} : {} : {}'.format(
+            self.cleaned_data['name'],
+            'skomentowal Post ',
+            post.title)
+        mail = send_mail(
+            sub,
+            self.cleaned_data['content'],
             settings.EMAIL_HOST_USER,
             [settings.EMAIL_RECIVER_USER],
             fail_silently=False,

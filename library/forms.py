@@ -1,5 +1,6 @@
 from django import forms
 
+
 class FormBase(forms.Form):
     def to_payload(self, post_query_dict):
         payload = {}

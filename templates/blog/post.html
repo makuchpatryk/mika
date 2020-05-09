@@ -37,10 +37,27 @@
                                 {% include 'blog/parts/like.html' with obj=post %}
                             </span>
                             <span class="clearfix"></span>
+                            <span class="comment-container">
+                                {% if post.comment_set.all %}
+                                    <span class="comment-title">Komentarze:</span>
+                                    <ul>
+                                        {% for comment in post.comment_set.all %}
+                                        <li>
+                                            <span class="meta">
+                                                <span class="author">{{ comment.name }}</span>
+                                                <span class="time">{{ comment.ctime }}</span>
+                                            </span>
+                                            <span class="content">{{ comment.content }}</span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </span>
+                            
                         </li>
                     </ul>
                     <div id="comment_form_{{ post.id }}" data-init_vue="#comment_form_{{ post.id }}">
-                        <vue-comment-form></vue-comment-form>
+                        <vue-comment-form :post-id="{{ post.id }}"></vue-comment-form>
                     </div>
                 </div>
             </div>

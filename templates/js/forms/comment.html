@@ -1,2 +1,18 @@
 {% verbatim %}
+<span v-if="canComment()">
+	<p>Napisz Komentarz:</p>
+	<form class="form-comment" method="POST" v-on:submit.prevent="postComment" accept-charset="utf-8" enctype="multipart/form-data" role="form">
+		<vue-error-component v-bind:errors="error.general"></vue-error-component>
+
+		<vue-error-component v-bind:errors="error.name"></vue-error-component>
+		<input type="text" name="name" placeholder="Podaj swoje imię..." v-model="obj.name" />
+
+		<vue-error-component v-bind:errors="error.content"></vue-error-component>
+		<textarea name="content" placeholder="Wpisz komentarz..." v-model="obj.content"></textarea>
+		<span class="form-submit">
+			<button type="submit">Wyślij</button>
+			<button type="reset" name="reset" value="Clear Form">Wyczyść Formularz</button>
+		</span>
+	</form>
+</span>
 {% endverbatim %}

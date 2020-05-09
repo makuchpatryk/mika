@@ -3,7 +3,7 @@ import os
 from django.shortcuts import render
 # pages/views.py
 from django.views.generic import TemplateView
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
 from django.views.generic.edit import FormView
 from .forms import NameForm, OrderForm, OrderPaymentForm
 from django.contrib import messages
@@ -24,7 +24,6 @@ from django.views.decorators.http import require_http_methods
 from library import exceptions, logic
 
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
 from .models import Snippet
 from django.forms.models import model_to_dict
 
@@ -32,7 +31,6 @@ from django.forms.models import model_to_dict
 class IndexPageView(FormView):
     template_name = 'index.html'
     form_class = OrderForm
-
 
     def get_success_url(self):
         return reverse('order_success')
@@ -254,7 +252,7 @@ class OrderFormView(FormView):
 
     def form_valid(self, form):
         try:
-            self.order_id = create_order_payment(form)
+            self.order_id = logic.create_order_payment(form)
         except Exception:
             return HttpResponseRedirect(reverse('order_fail'))
 
@@ -316,4 +314,4 @@ def order_cancel(request):
 
 def snippet_detail(request, slug):
     snippet = get_object_or_404(Snippet, slug=slug)
-    return HttpResponse('the detailview for slug of {}'.format(slug))
+    return HttpResponse('the detailview for slug of {slug}'.format())

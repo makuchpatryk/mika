@@ -27,6 +27,14 @@ def create_order_payment(payload):
     return order.pk
 
 
+def get_post_by_uid(pk):
+    try:
+        post = models.Post.objects.get(pk=pk)
+    except ObjectDoesNotExist as e:
+        raise exceptions.MikaException(e)
+    return post
+
+
 def like_post(pk):
     try:
         post = models.Post.objects.get(pk=pk)
@@ -37,3 +45,17 @@ def like_post(pk):
         raise exceptions.MikaException(e)
 
     return like
+
+
+def comment_post(**kwargs):
+    post = get_post_by_uid(kwargs['post_id'])
+    try:
+        comment = models.Comment()
+        comment.post = post
+        comment.content = kwargs['content']
+        comment.name = kwargs['name']
+        comment.save()
+    except Exception as e:
+        raise exceptions.MikaException(e)
+
+    return comment
