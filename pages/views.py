@@ -121,7 +121,6 @@ def post(request, slug):
         post = models.Post.objects.get(slug=slug)
     except ObjectDoesNotExist:
         raise Http404
-
     context = {'post': post}
     return render(request, "blog/post.html", context)
 

@@ -3,6 +3,13 @@
 {% load static %}
 {% load templatetags %}
 
+{% block meta %}
+    <meta property="og:title"         content="{{ post.title }}" />
+    <meta property="og:url"           content="{{ SITE_URL }}{{ request.path }}" />
+    <meta property="og:description"   content="{{ post.text }}" />
+    <meta property="og:image"         content="{{ SITE_URL }}/{{ post.image.url }}" />
+{% endblock meta %}
+
 {% block content %}
 <!-- ##### Blog Area Start ##### -->
 <div class="blog-area">
@@ -34,11 +41,16 @@
                             {% endif %}
 
                             <!-- Your share button code -->
-                            <div class="fb-share-button" data-href="https://tomaszmika.com/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tomaszmika.com/" class="fb-xfbml-parse-ignore">Udostępnij</a></div>
                             <span class="like-post">
                                 {% include 'blog/parts/like.html' with obj=post %}
                             </span>
+
                             <span class="clearfix"></span>
+
+                            <div class="fb-stuff">
+                                <div class="fb-like" data-href="{{ SITE_URL }}{{ request.path }}" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
+                            </div>
+
                             <span class="comment-container">
                                 {% if post.comment_set.all %}
                                     <span class="comment-title">Komentarze:</span>
