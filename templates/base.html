@@ -9,17 +9,21 @@
     <meta name="description" content="{% block meta_description %}Tomasz Mika : Piękne dźwięki. Piękne obrazy. Dusza. : Niech muzyka wychodzi ze stagnacji. Niech słowa piosenek przestaną być bierne. Niech dźwięki i głoski zaczną mówić językiem duszy i rozkołyszą ciało.{% endblock %}">
     <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
     <meta name="apple-mobile-web-app-capable" content="yes">
+
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    {% block meta %}
+        <meta property="og:url"           content="tomaszmika.com">
+        <meta property="og:type"          content="website">
+        <meta property="og:description"   content="Piękne dźwięki. Piękne obrazy. Dusza. Niech muzyka wychodzi ze stagnacji. Niech słowa piosenek przestaną być bierne. Niech dźwięki i głoski zaczną mówić językiem duszy i rozkołyszą ciało.">
+        <meta property="og:image" content="{{ SITE_URL }}{% static 'img/share.jpg' %}">
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+    {% endblock meta %}
 
     <!-- Title -->
     <title>MIKA</title>
-    {% block meta %}
-        <meta property="og:url"           content="tomaszmika.com" />
-        <meta property="og:type"          content="website" />
-        <meta property="og:title"         content="Tomasz Mika" />
-        <meta property="og:description"   content="Piękne dźwięki. Piękne obrazy. Dusza. Niech muzyka wychodzi ze stagnacji. Niech słowa piosenek przestaną być bierne. Niech dźwięki i głoski zaczną mówić językiem duszy i rozkołyszą ciało." />
-        <meta property="og:image"         content="{% static 'img/gallery/sesja_2020/sesja_2020-25.jpg' %}" />
-    {% endblock meta %}
+
     <!-- Favicon -->
     <link rel="icon" href="{% static 'img/favicon.ico' %}">
 
