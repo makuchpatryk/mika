@@ -11,16 +11,12 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
 
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    {% block meta %}
+      <meta property="fb:app_id"          content="{{ FACEBOOK_APP_ID }}">
         <meta property="og:site_name"     content="{{ SITE_NAME }}" />
-        <meta property="og:url"           content="tomaszmika.com">
-        <meta property="og:type"          content="website">
-        <meta property="og:description"   content="Piękne dźwięki. Piękne obrazy. Dusza. Niech muzyka wychodzi ze stagnacji. Niech słowa piosenek przestaną być bierne. Niech dźwięki i głoski zaczną mówić językiem duszy i rozkołyszą ciało.">
-        <meta property="og:image" content="{{ SITE_URL }}{% static 'img/share.jpg' %}">
-        <meta property="og:image:type" content="image/jpeg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-    {% endblock meta %}
+        <meta property="og:url"           content="tomaszmika.com" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:description"   content="Piękne dźwięki. Piękne obrazy. Dusza. Niech muzyka wychodzi ze stagnacji. Niech słowa piosenek przestaną być bierne. Niech dźwięki i głoski zaczną mówić językiem duszy i rozkołyszą ciało." />
+        <meta property="og:image" content="{{ SITE_URL }}{% static 'img/share.jpg' %}" />
 
     <!-- Title -->
     <title>MIKA</title>
@@ -164,14 +160,7 @@
 
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-        fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v7.0&appId=285761572453773&autoLogAppEvents=1"></script>
 
     {% block javascript_templates %}
     {% include "templates.html" %}
