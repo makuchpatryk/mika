@@ -18,7 +18,7 @@ def create_order_payment(payload):
         order.city = payload.get('city', '')
         order.state = payload.get('state', '')
         order.postcode = payload.get('postcode', '')
-        order.number =  payload.get('number', '')
+        order.number = payload.get('number', '')
 
         order.status = models.Order.ORDERED
         order.save()

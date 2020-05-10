@@ -17,3 +17,6 @@ class StaticViewSitemap(Sitemap):
 class SnippetSitemap(Sitemap):
     def items(self):
         return Snippet.objects.all()
+
+    def create(self, context):
+        pass

@@ -4,41 +4,47 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-  <meta name="description" content="{% block meta_description %}Tomasz Mika : Piękne dźwięki. Piękne obrazy. Dusza. : Niech muzyka wychodzi ze stagnacji. Niech słowa piosenek przestaną być bierne. Niech dźwięki i głoski zaczną mówić językiem duszy i rozkołyszą ciało.{% endblock %}">
-  <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="description" content="{% block meta_description %}Tomasz Mika : Piękne dźwięki. Piękne obrazy. Dusza. : Niech muzyka wychodzi ze stagnacji. Niech słowa piosenek przestaną być bierne. Niech dźwięki i głoski zaczną mówić językiem duszy i rozkołyszą ciało.{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-  <!-- Title -->
-  <title>MIKA</title>
+    <!-- Title -->
+    <title>MIKA</title>
+    {% block meta %}
+        <meta property="og:url"           content="tomaszmika.com" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="Tomasz Mika" />
+        <meta property="og:description"   content="Piękne dźwięki. Piękne obrazy. Dusza. Niech muzyka wychodzi ze stagnacji. Niech słowa piosenek przestaną być bierne. Niech dźwięki i głoski zaczną mówić językiem duszy i rozkołyszą ciało." />
+        <meta property="og:image"         content="{% static 'img/gallery/sesja_2020/sesja_2020-25.jpg' %}" />
+    {% endblock meta %}
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
 
-  <!-- Favicon -->
-  <link rel="icon" href="{% static 'img/favicon.ico' %}">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/jquery/jquery-ui.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?{{ VERSION }}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:400,700|Mukta:400,700|Quicksand:400,700&display=swap" rel="stylesheet">
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{% static 'css/jquery/jquery-ui.min.css' %}">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}?{{ VERSION }}">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:400,700|Mukta:400,700|Quicksand:400,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        var data = {
+        source: "{% static '/audio/Virgo_Jingle.mp3' %}",
+        slideIndex: 1
+        };
+        </script>
+        <script>
+        var audio = new Audio();
+        audio.src = data['source'];
+        audio.id = 'audio';
+        audio.muted = true;
 
-  <script src="https://unpkg.com/vue"></script>
-  <script>
-  var data = {
-    source: "{% static '/audio/Virgo_Jingle.mp3' %}",
-    slideIndex: 1
-  };
-  </script>
-  <script>
-    var audio = new Audio();
-    audio.src = data['source'];
-    audio.id = 'audio';
-    audio.muted = true;
-
-    audio.volume = 0.05;
-    audio.loop = true;
-  </script>
+        audio.volume = 0.05;
+        audio.loop = true;
+    </script>
 
 </head>
 
@@ -149,6 +155,19 @@
       <a href="https://open.spotify.com/artist/7sfo31WlAvO9zpFrwOq1if?si=c9j_JeMOQOW7ndxRPhp6tw" data-toggle="tooltip" data-placement="top" title="Spotify"><i class="fa fa-spotify" aria-hidden="true"></i></a>
 
   </div>
+
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
     {% block javascript_templates %}
     {% include "templates.html" %}
     {% endblock javascript_templates %}
