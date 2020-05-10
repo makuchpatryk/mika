@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
 
 <head>
     <meta charset="utf-8" />
@@ -12,6 +12,7 @@
 
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     {% block meta %}
+        <meta property="og:site_name"     content="{{ SITE_NAME }}" />
         <meta property="og:url"           content="tomaszmika.com">
         <meta property="og:type"          content="website">
         <meta property="og:description"   content="Piękne dźwięki. Piękne obrazy. Dusza. Niech muzyka wychodzi ze stagnacji. Niech słowa piosenek przestaną być bierne. Niech dźwięki i głoski zaczną mówić językiem duszy i rozkołyszą ciało.">
