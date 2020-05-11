@@ -63,7 +63,7 @@ class Post(models.Model):
         return comments
 
     def description(self):
-        return strip_tags(self.text)[:150]
+        return " ".join(strip_tags(self.text).split())[:150]
 
 
 class Album(models.Model):

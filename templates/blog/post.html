@@ -6,8 +6,10 @@
 {% block meta %}
     <meta property="og:title"         content="{{ post.title }}" />
     <meta property="og:url"           content="{{ SITE_URL }}{{ request.path }}" />
-    <meta property="og:description"   content="{{ post.description }}" />
     <meta property="og:image"         content="{{ SITE_URL }}{{ post.image.url }}" />
+    <meta property="og:image:width"   content="900" />
+    <meta property="og:image:height"  content="600" />
+    <meta property="og:description"   content="{{ post.description }}" />
 {% endblock meta %}
 
 {% block content %}
@@ -19,7 +21,6 @@
                 <div class="feed">
                     <ul>
                         <li>
-                            <img src="{{ post.image.url }}" />
                             <span class="title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></span>
                             <span class="meta">
                                 <span class="author">author: {{ post.author }}</span>
