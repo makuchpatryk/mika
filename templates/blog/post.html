@@ -19,6 +19,7 @@
                 <div class="feed">
                     <ul>
                         <li>
+                            <img src="{{ post.image.url }}" />
                             <span class="title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></span>
                             <span class="meta">
                                 <span class="author">author: {{ post.author }}</span>
@@ -34,7 +35,7 @@
                             <span class="tags">
                                 <ul>
                                     {% for tag in post.tags.all %}
-                                    <li>#{{ tag }} </li>
+                                    <li>{{ tag.hashtag }} </li>
                                     {% endfor %}
                                 </ul>
                             </span>

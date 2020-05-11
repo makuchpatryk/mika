@@ -141,9 +141,8 @@ EMAIL_USE_TLS = True
 EMAIL_RECIVER_USER = 'teespeem@gmail.com'
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/uploads/')
+MEDIA_URL = '/media/uploads/'
 
 CACHES = {
     'default': {

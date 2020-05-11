@@ -17,6 +17,9 @@ class Hashtag(models.Model):
     def __str__(self):
         return self.title
 
+    def hashtag(self):
+        return '#{}'.format(self.title)
+
 
 class Category(models.Model):
     title = models.CharField(max_length=255, verbose_name="Title")

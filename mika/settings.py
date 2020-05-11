@@ -13,3 +13,6 @@ PAYPAL_CLIENT = 'AV0wHGhZsvhxQpb__l2Zxq77SD8Xg76c-7uQVIgVeckWiIYZ_T121Tk5WOm2uqY
 PAYPAL_SECRET = 'EFeFw_4_csvaYboyAo_xPtmASxB5qZoKxH8NzLXMBix5qDxFp_M6M8SqN6RbMzQ_ze38XL5lC4_Ur0Vq'
 
 SECURE_SSL_REDIRECT = True
+
+MEDIA_ROOT = '/home/patryk/project/storage/media'
+MEDIA_URL = '/media/'
