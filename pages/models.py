@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils.text import slugify
+from django.utils.html import strip_tags
 
 # Create your models here.
 
@@ -57,6 +58,9 @@ class Post(models.Model):
         comments = Comment.objects.filter(
             post_id=self.pk).order_by('-ctime')[:2]
         return comments
+
+    def description(self):
+        return strip_tags(self.text)[:150]
 
 
 class Album(models.Model):
