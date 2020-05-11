@@ -14,5 +14,5 @@ PAYPAL_SECRET = 'EFeFw_4_csvaYboyAo_xPtmASxB5qZoKxH8NzLXMBix5qDxFp_M6M8SqN6RbMzQ
 
 SECURE_SSL_REDIRECT = True
 
-MEDIA_ROOT = '/home/patryk/project/storage/media'
+MEDIA_ROOT = '/home/patryk/project/storage/media/'
 MEDIA_URL = '/media/'
