@@ -13,12 +13,11 @@
     <meta property="fb:app_id"          content="{{ FACEBOOK_APP_ID }}">
     <meta property="og:site_name"     content="{{ SITE_NAME }}" />
     <meta property="og:type"          content="website" />
-
+    <meta property="og:image" content="{{ SITE_URL }}{% static 'img/share.jpg' %}" />
+    <meta property="og:url"           content="{{ SITE_URL }}" />
+    <meta property="og:description"   content="Piękne dźwięki. Piękne obrazy. Dusza. Niech muzyka wychodzi ze stagnacji. Niech słowa piosenek przestaną być bierne. Niech dźwięki i głoski zaczną mówić językiem duszy i rozkołyszą ciało." />
     {% block meta %}
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <meta property="og:url"           content="{{ SITE_URL }}" />
-        <meta property="og:description"   content="Piękne dźwięki. Piękne obrazy. Dusza. Niech muzyka wychodzi ze stagnacji. Niech słowa piosenek przestaną być bierne. Niech dźwięki i głoski zaczną mówić językiem duszy i rozkołyszą ciało." />
-        <meta property="og:image" content="{{ SITE_URL }}{% static 'img/share.jpg' %}" />
     {% endblock meta %}
     <!-- Title -->
     <title>Tomasz Mika</title>
