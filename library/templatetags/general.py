@@ -13,9 +13,14 @@ def other_posts(limit=5):
     context = {'posts': posts}
     return context
 
-
 @register.filter(name='jsonify')
 def jsonify(value):
     return json.dumps(value)
 
+@register.filter(name='split')
+def split(str, key):
+    return str.split(key)
 
+@register.filter
+def get_by_index(a, i):
+    return a[i]

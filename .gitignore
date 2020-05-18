@@ -3,6 +3,8 @@ __pycache__
 migrations
 staticfiles
 mika/wsgi.py
+mika/settings.py
+mika/settings.pyc
 manage.py
 media
 node_modules

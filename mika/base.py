@@ -67,6 +67,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'library.contextvars.context_data',
             ],
+            'builtins': ['library.templatetags.general'],
         },
     },
 ]

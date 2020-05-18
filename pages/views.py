@@ -15,11 +15,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from django.urls import reverse
 from django.shortcuts import HttpResponseRedirect
-
-from django.conf import settings
-from . import models
-from django.templatetags.static import static
 from django.views.decorators.http import require_http_methods
+from django.conf import settings
+
+from . import models
 
 from library import exceptions, logic
 
