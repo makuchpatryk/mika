@@ -1099,7 +1099,7 @@ ul.messages {
     background-image: url('img/ui-icons_777777_256x240.png');
 }
 
-.order-process {
+.preorder, .order-process {
 	padding: 10px;
 	margin-top: 75px;
 	text-align: center;
@@ -1184,10 +1184,15 @@ ul.messages {
 		}
 	}
 	.left-side {
+		float: left;
+		width: 50%;
 		text-align: left;
 		p {
 			margin-top: 0;
 		}
+	}
+	.right-side {
+		width: 50%;
 	}
 }
 

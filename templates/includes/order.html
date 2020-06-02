@@ -1,69 +1,32 @@
 {% load static %}
+{% csrf_token %}
+
 <section class="preorder" id="preorder">
 	<h3>Sprzedaż „Pył”</h3>
 	<div class="left-side">
-		<p>Zamów wersję fizyczną CD z książeczką z tekstami oraz ilustracjami piosenek wypełniając formularz poniżej (płatność przelewem).</p>
+		<p>Zamów wersję fizyczną CD z książeczką z tekstami oraz ilustracjami piosenek.</p>
 		<span class="price">cena: 30.00 zl + Przesyłka: 4.10 zł - list ekonomiczny</span>
-		<span class="account-num">Płyta zostanie do Ciebie wysłana po zaksięgowaniu wpłaty. Numer konta do zapłaty:
-			<span class="num">86 1020 4984 0000 4402 0134 9232</span>
-		</span>
-		<p>W tytule przelewu wpisz:  „TWOJE NAZWISKO - PYŁ”</p>
+		<div class="desc">
+			<p>Płyta zostanie do Ciebie wysłana po zaksięgowaniu wpłaty.</p>
+            <p>Płyta jest domyślnie wysyłana na adres rozliczeniowy.</p>
+            <p>Jeżeli adres rozliczeniowy nie jest twoim obecnym adresem, pamiętaj, żeby podać przed zakupem adres wysyłkowy.</p>
+        </div>
 	</div>
 	<div class="right-side">
 		<span class="image">
-            <img src="{% static 'img/gallery' %}/sesja_2020/podglad4.jpg" alt=""  border="">
+            <img src="{% static 'img/gallery' %}/sesja_2020/sesja_2020-1.jpg" alt=""  border="">
         </span>
 	</div>
-	<!-- <div class="bottom-side">
-		<span class="image">
-			<img src="{% static 'img/gallery' %}/sesja_2020/podglad.jpg" alt=""  border="">
-		</span>
-		<span class="image">
-			<img src="{% static 'img/gallery' %}/sesja_2020/podglad2.jpg" alt=""  border="">
-		</span>
-		<span class="image">
-			<img src="{% static 'img/gallery' %}/sesja_2020/podglad5.jpg" alt=""  border="">
-		</span>
-	</div> -->
-	<span class="order">Zamów, wypełniając poniższy formularz:</span>
-	<div class="contact-form-area">
-		{% if message_sent %}
-		<p>Płyta zostanie do Ciebie wysłana.</p>
-		{% else %}
-		<form method="post" action="">
-			{% csrf_token %}
-			<div class="row">
-				<div class="col-md-12 col-lg-12">
-					<div class="form-group wow fadeInUp" data-wow-delay="200ms">
-						<div class="error-form">{{ form.errors.email }}</div>
-						{{ form.email }}
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="form-group wow fadeInUp" data-wow-delay="300ms">
-						<div class="error-form">{{ form.errors.subject }}</div>
-						{{ form.subject }}
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="form-group wow fadeInUp" data-wow-delay="300ms">
-						<div class="error-form">{{ form.errors.number }}</div>
-						{{ form.number }}
-					</div>
-				</div>
-				<div class="col-12">
-					<div class="form-group wow fadeInUp" data-wow-delay="400ms">
-						<div class="error-form">{{ form.errors.adres_to_send }}</div>
-						{{ form.adres_to_send }}
-					</div>
-				</div>
-				<button class="btn oneMusic-btn mt-30 send-form" type="submit">Wyślij <i class="fa fa-angle-double-right"></i></button>
-				<button class="btn oneMusic-btn mt-30" type="reset" name="reset" value="Clear Form">Wyczyść formularz</button>
-			</div>
-		</form>
-		{% endif %}
-	</div>
-	<p class="kup"><a href="https://tomaszmika.bandcamp.com/releases">Możesz również zamówić wersję cyfrową lub wersje fizyczną CD z książeczką z tekstami oraz ilustracjami piosenek przez serwis Bandcamp, klikając tutaj.</a></p>
+
+
+    <!-- writes out the form tag automatically -->
+    <span class="cena"></span>
+    <div class="payment-container">
+    	<h2>Zapłać po przez:</h2>
+        <div id="paypal-button-container"></div>
+    </div>
+
+	<p class="kup">Możesz również zamówić wersję cyfrową lub wersje fizyczną CD z książeczką z tekstami oraz ilustracjami piosenek przez serwis Bandcamp, <a href="https://tomaszmika.bandcamp.com/releases">klikając tutaj.</a></p>
 	<p>Album jest także dostępny do posłuchania na Spotify, Apple Music, Tidal, Soundcloud, Youtube Music oraz wielu innych platformach streamingowych.</p>
 	<div class="icons">
 		<a href="https://tomaszmika.bandcamp.com/releases"><i class="fa fa-bandcamp"></i></a>
@@ -74,3 +37,67 @@
 		<a href="https://music.apple.com/pl/album/py%C5%82/1495812517"><span class="itunes"></span></a>
 	</div>
 </section>
+
+
+{% block javascript %}
+<script src="https://www.paypal.com/sdk/js?client-id={{ P_AYPAL }}&currency=PLN"></script>
+<script>
+	var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    paypal.Buttons({
+    	style: {
+		  shape: 'pill',
+		  color: 'gold',
+		  layout: 'vertical',
+		  label: 'paypal',
+		},
+	    createOrder: function(data, actions) {
+	      // This function sets up the details of the transaction, including the amount and line item details.
+	    return actions.order.create({
+			purchase_units: [{
+				amount: {
+					value: {{ PR1C3 }}
+				},
+			}]
+	    });
+	    },
+		onApprove: function (data, actions) {
+			// Get the order details
+			return actions.order.get().then(function (orderDetails) {
+				return actions.order.capture().then(function () {
+					payload = {
+						'email': typeof orderDetails.payer.email_address === 'undefined' ? '' : orderDetails.payer.email_address,
+						'name': typeof orderDetails.payer.name.given_name === 'undefined' ? '' : orderDetails.payer.name.given_name,
+						'surname': typeof orderDetails.payer.name.surname === 'undefined' ? '' : orderDetails.payer.name.surname,
+						'transation_id': typeof orderDetails.id === 'undefined' ? '' : orderDetails.id,
+
+						'address_1': typeof orderDetails.purchase_units[0].shipping.address.address_line_1 === 'undefined' ? '' : orderDetails.purchase_units[0].shipping.address.address_line_1,
+						'address_2': typeof orderDetails.purchase_units[0].shipping.address.address_line_2 === 'undefined' ? '' : orderDetails.purchase_units[0].shipping.address.address_line_2,
+						'city': typeof orderDetails.purchase_units[0].shipping.address.admin_area_2 === 'undefined' ? '' : orderDetails.purchase_units[0].shipping.address.admin_area_2,
+						'state': typeof orderDetails.purchase_units[0].shipping.address.admin_area_1 === 'undefined' ? '' : orderDetails.purchase_units[0].shipping.address.admin_area_1,
+						'postcode': typeof orderDetails.purchase_units[0].shipping.address.postal_code === 'undefined' ? '' : orderDetails.purchase_units[0].shipping.address.postal_code,
+					}
+					$.ajax({
+	                    method: 'POST',
+	                    url: document._scd['routing']['order_create'],
+	                    headers:{"X-CSRFToken": csrftoken},
+	                    data: payload,
+	                }).done(function(response) {
+	                	window.location.href = document._scd['routing']['order_success'];
+	                })
+	                .fail(function(response) {
+	                	console.log(response, 'fail');
+	                });
+				});
+			});
+		},
+		onError: function (err) {
+		    console.log(err, 'fail');
+
+			window.location.href = document._scd['routing']['order_fail'];
+		},
+		// onCancel: function (data) {
+		// 	window.location.href = document._scd['routing']['order_cancel'];
+		// }
+	}).render('#paypal-button-container');
+</script>
+{% endblock javascript %}
