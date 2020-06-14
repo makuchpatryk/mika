@@ -689,6 +689,9 @@ b {
 			vertical-align: top;
 			padding: 20px;
 			margin-top: 0;
+			@media (max-width: 1024px){
+				width: 100%;
+			}
 		}
 		.details p {
 			text-align: justify;
@@ -701,6 +704,9 @@ b {
 			padding: 20px;
 			img {
 				border-radius: 10px;
+			}
+			@media (max-width: 1024px){
+				width: 100%;
 			}
 		}
 	}
