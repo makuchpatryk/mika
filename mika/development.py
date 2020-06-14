@@ -4,7 +4,7 @@ from .safe import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-STATIC_ROOT = '/storage/home/django_learn/storage/static/'
+STATIC_ROOT = '/home/patryk/projects/mika/storage/static/'
 EMAIL_RECIVER_USER = 'makuchpatryk@gmail.com'
 
 SECURE_SSL_REDIRECT = False
