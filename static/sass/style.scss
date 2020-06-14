@@ -379,7 +379,10 @@ header.sticky .mobile-menu .menu {
 }
 .contact-form-area form .col-lg-6 {
 	width: 49.7%;
-	display: inline-block;;
+	display: inline-block;
+	@media (max-width: 1024px) {
+		width: 100%;
+	}
 }
 .contact-form-area form .col-md-12 {
 	width: 100%;
