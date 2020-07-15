@@ -8,7 +8,7 @@ def context_data(request):
         'MUSIC_PLAYING': music,
         'P_AYPAL': settings.PAYPAL_CLIENT,
         'VERSION': settings.VERSION,
-        'PR1C3': 30.00,
+        'PR1C3': 20.00,
         # 'PR1C3': 00.10,
         'SITE_NAME': settings.SITE_NAME,
         'SITE_URL': settings.SITE_URL,
