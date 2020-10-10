@@ -201,6 +201,17 @@ def sesja_ayz(request):
     return render(request, "gallery/gallery.html", context)
 
 
+def sesja_turkus(request):
+    path = settings.STATICFILES_DIRS[0]
+    img_list = os.listdir(path + '/img/gallery/sesja_turkus/')
+    paginator = Paginator(img_list, settings.GALLERY_NUM)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'page_obj' : page_obj, 'folder': 'sesja_turkus'}
+    return render(request, "gallery/gallery.html", context)
+
+
 def create_order(form):
     try:
         order = models.Order()

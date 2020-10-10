@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^galeria/sesja-3/$', views.Sesja_2019, name='sesja_2019'),
     url(r'^galeria/sesja-4/$', views.Sesja_2020, name='sesja_2020'),
     url(r'^galeria/sesja-ayz/$', views.sesja_ayz, name='sesja_ayz'),
+    url(r'^galeria/sesja-turkus/$', views.sesja_turkus, name='sesja_turkus'),
 
     url(r'^album-almagest/$', views.AlbumsAlmagestPageView.as_view(), name='albums_almagest'),
     url(r'^album-awe/$', views.AlbumsAwePageView.as_view(), name='albums_awe'),
