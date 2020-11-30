@@ -239,7 +239,7 @@ def sent_confimation(request, pk):
         order.save()
 
         send_mail(
-            "tomashmika.com : Twoje Zamowienie",
+            "tomaszmika.com : Twoje Zamowienie",
             "twoje zamowienie zostalo wyslane.",
             settings.EMAIL_HOST_USER,
             [email],
