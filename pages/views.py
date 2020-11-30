@@ -233,7 +233,7 @@ def sent_confimation(request, pk):
         if not email:
             return messages.error(request, 'Error there is not email.')
 
-        order = models.Order.objects.get(pk=pk)
+        order = models.OrderPayment.objects.get(pk=pk)
         order.done = True
         order.status = models.Order.COMPLETED
         order.save()
@@ -247,7 +247,7 @@ def sent_confimation(request, pk):
         )
     messages.success(request, 'Sent Confirmation.')
 
-    return HttpResponseRedirect(reverse('admin:pages_order_changelist'))
+    return HttpResponseRedirect(reverse('admin:pages_orderpayment_changelist'))
 
 
 # Order
